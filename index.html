@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<script>
+/* v96 · Cihaz kademesi: dokunmatik telefon/tablet = perf-lite (hafif küre, sade açılış); zayıf cihaz/veri tasarrufu = perf-low (statik küre) */
+(function () {
+  var d = document.documentElement, mm = function (q) { return matchMedia(q).matches; };
+  var touch = mm('(pointer: coarse)') || mm('(hover: none)');
+  var lite = touch && Math.min(screen.width, screen.height) <= 1100;
+  var n = navigator, c = n.connection || {}, mem = n.deviceMemory || 8, cores = n.hardwareConcurrency || 8;
+  if (lite) { d.classList.add('perf-lite'); if (Math.min(screen.width, screen.height) >= 600) d.classList.add('perf-tab'); }
+  if (lite && (c.saveData || /(^|-)2g$/.test(c.effectiveType || '') || mem <= 2 || cores <= 2)) d.classList.add('perf-low');
+  try { if (/[?&]perf=(lite|low|full)/.test(location.search)) { var v = RegExp.$1; d.classList.remove('perf-lite', 'perf-low'); if (v !== 'full') d.classList.add('perf-lite'); if (v === 'low') d.classList.add('perf-low'); } } catch (e) {}
+})();
+</script>
+
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://formspree.io https://unpkg.com https://cdn.jsdelivr.net data: blob:; worker-src 'self' blob:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action https://formspree.io">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -2201,18 +2214,42 @@ html body .give--feature .cinar__poster figcaption { font-size: 14px !important;
 .ldr__proof .tl__ph, #gonullu .tl__ph, #anilar .tl__ph, #hakkimda .tl__ph, .bridge .tl__ph { background: #faf6ee !important; outline: 1px solid rgba(94, 52, 30, .10); outline-offset: -1px;
   box-shadow: 0 1px 1.5px rgba(48, 24, 14, .34), 0 5px 9px -3px rgba(48, 24, 14, .30), 0 18px 26px -12px rgba(48, 24, 14, .38), 0 38px 54px -26px rgba(60, 28, 16, .46) !important; }
 .ldr__proof .tl__ph.zoomable:hover, #gonullu .tl__ph.zoomable:hover, #anilar .tl__ph.zoomable:hover { box-shadow: 0 2px 3px rgba(48, 24, 14, .3), 0 34px 50px -20px rgba(40, 18, 10, .6) !important; }
+/* ═══ v96 · Mobil ve tablet performansı ═══ */
+/* Küre gelene kadar masanın kendisi: aynı ceviz, aynı ışık; küre üstüne yumuşakça belirir */
+.perf-lite .hero__stage { background: #2a140c url(assets/desk/kure-zemin-d.webp) center / cover no-repeat; }
+@media (max-width: 900px) { .perf-lite .hero__stage { background-image: url(assets/desk/kure-zemin-m.webp); } }
+.perf-lite #globe { opacity: 0; transition: opacity 1.1s var(--ease-out, ease-out); }
+.perf-lite.globe-on #globe { opacity: 1; }
+.perf-lite .hero__fallback { background: url(assets/desk/kure-poster-d.webp) center / cover no-repeat !important; }
+@media (max-width: 900px) { .perf-lite .hero__fallback { background-image: url(assets/desk/kure-poster-m.webp) !important; } }
+/* Kürenin üstündeki hareketli gren ve karışım katmanları: dokunmatikte sabit, karışımsız */
+.perf-lite .hero__stage::after { animation: none !important; mix-blend-mode: normal; opacity: .1; }
+.perf-lite body::after { mix-blend-mode: normal; opacity: .035; }
+.perf-lite .work__media--art::after, .perf-lite .gv::before, .perf-lite .fx-grid, .perf-lite .fx-scan, .perf-lite .gv__shine { animation: none !important; }
+/* Buzlu cam yerine dolgun yarı saydam yüzey: her karede yeniden bulanıklaştırma yok */
+.perf-lite .mnav__btn, .perf-lite .tag, .perf-lite .tl__card, .perf-lite .give, .perf-lite .work__chip, .perf-lite .ph-more,
+.perf-lite .hero__grid::before, .perf-lite .fx-ink, .perf-lite .nav { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+.perf-lite .mnav__btn { background: rgba(250, 246, 238, .94) !important; }
+.perf-lite .tag { background: rgba(250, 246, 238, .95) !important; }
+.perf-lite .ph-more { background: rgba(29, 23, 21, .72) !important; }
+/* Başlık harf girişi bulanıklıksız: yalnız opaklık ve kayma */
+.perf-lite.js .mg-title, .perf-lite.js .mg-title.mg-in { filter: none !important; }
+/* Hareketi azalt: tüm döngüler tek kare, geçişler anlık */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
+}
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp" type="image/webp" media="(min-width: 901px)">
 <link rel="preload" as="image" href="assets/desk/ahsap-1024.webp" type="image/webp" media="(max-width: 900px)">
 </head>
 <body>
-<script>window.__PHOTOS = ["armagan-1", "armagan-2", "armagan-3", "armagan-4", "armagan-5", "cinar-afis", "cinar-foto-1", "david-3d-baski", "david-murat-tuvor", "deprem-viransehir-1", "deprem-viransehir-2", "deprem-viransehir-3", "deprem-viransehir-4", "deprem-viransehir-5", "deprem-viransehir-6", "dogan-hoca-2015", "dogan-hoca-2019", "dogan-imza", "dogan-imzali-not", "formator-gevas", "formator-kizilcahamam", "fractal-istanbul", "fractal-istanbul-2", "fractal-tarik-tolunay", "kardes-koy-okulu-1", "kardes-koy-okulu-2", "kardes-koy-okulu-3", "kitap-baba-dede", "kitap-kibo", "kitap-kutusu", "kitap-nnnn", "kodlama-1", "kodlama-2", "kodlama-3", "kodlama-4", "kodlama-5", "metronom-2019", "metronom-2020", "sokrates-3d-baski", "ssci-veri-toplama", "surki-ilk-derslik", "tevafuk-1", "tevafuk-2", "tevafuk-3", "tisort-1", "tisort-2", "tisort-3", "tisort-4", "tubitak-1", "tubitak-2", "tubitak-3", "tusba-afis-dikey", "tusba-afis-yatay", "tusba-atolye-1", "tusba-atolye-2", "tusba-panel-1", "tusba-panel-2", "tusba-panel-2-kadraj", "tuspa-arayuz-dil-ar", "tuspa-arayuz-dil-ku", "tuspa-arayuz-dil-tr", "tuspa-arayuz-emek", "tuspa-arayuz-emek-ar", "tuspa-arayuz-emek-ku", "tuspa-arayuz-menu-ar", "tuspa-arayuz-menu-ku", "tuspa-blender-akdamar", "tuspa-blender-horhor", "tuspa-blender-hosap", "tuspa-blender-iskele", "tuspa-blender-kaya-celebi", "tuspa-blender-kedi", "tuspa-blender-kumbet", "tuspa-canavar-akdamar", "tuspa-canavar-goz", "tuspa-canavar-kus", "tuspa-canavar-selam", "tuspa-canavar-yakin", "tuspa-ikon", "tuspa-oyun-akdamar", "tuspa-oyun-canavar", "tuspa-oyun-cavustepe", "tuspa-oyun-cavustepe-2", "tuspa-oyun-horhor", "tuspa-oyun-horhor-2", "tuspa-oyun-iskele", "tuspa-oyun-kahvalti", "tuspa-oyun-kahvalti-2", "tuspa-oyun-kale", "tuspa-oyun-kaya-celebi", "tuspa-oyun-kumbet", "tuspa-oyun-kumbet-2", "tuspa-oyun-kumbet-3", "tuspa-oyun-mangala", "tuspa-oyun-muradiye", "tuspa-oyun-oynanis", "tuspa-oyun-tamara", "tuspa-sikkeler", "zehra-anne-armagan"];</script>
+<script>window.__PHOTOS = ["armagan-1", "armagan-2", "armagan-3", "armagan-4", "armagan-5", "cinar-afis", "cinar-foto-1", "david-3d-baski", "david-murat-tuvor", "deprem-viransehir-1", "deprem-viransehir-2", "deprem-viransehir-3", "deprem-viransehir-4", "deprem-viransehir-5", "deprem-viransehir-6", "dogan-hoca-2015", "dogan-hoca-2019", "dogan-imza", "dogan-imza-360", "dogan-imzali-not", "formator-gevas", "formator-kizilcahamam", "fractal-istanbul", "fractal-istanbul-2", "fractal-tarik-tolunay", "kardes-koy-okulu-1", "kardes-koy-okulu-2", "kardes-koy-okulu-3", "kitap-baba-dede", "kitap-kibo", "kitap-kutusu", "kitap-nnnn", "kodlama-1", "kodlama-2", "kodlama-3", "kodlama-4", "kodlama-5", "metronom-2019", "metronom-2020", "sokrates-3d-baski", "ssci-veri-toplama", "surki-ilk-derslik", "surki-ilk-derslik-360", "tevafuk-1", "tevafuk-2", "tevafuk-3", "tisort-1", "tisort-2", "tisort-3", "tisort-4", "tubitak-1", "tubitak-2", "tubitak-3", "tusba-afis-dikey", "tusba-afis-yatay", "tusba-atolye-1", "tusba-atolye-2", "tusba-panel-1", "tusba-panel-2", "tusba-panel-2-kadraj", "tuspa-arayuz-dil-ar", "tuspa-arayuz-dil-ku", "tuspa-arayuz-dil-tr", "tuspa-arayuz-emek", "tuspa-arayuz-emek-ar", "tuspa-arayuz-emek-ku", "tuspa-arayuz-menu-ar", "tuspa-arayuz-menu-ku", "tuspa-blender-akdamar", "tuspa-blender-horhor", "tuspa-blender-hosap", "tuspa-blender-iskele", "tuspa-blender-kaya-celebi", "tuspa-blender-kedi", "tuspa-blender-kumbet", "tuspa-canavar-akdamar", "tuspa-canavar-goz", "tuspa-canavar-kus", "tuspa-canavar-selam", "tuspa-canavar-yakin", "tuspa-ikon", "tuspa-oyun-akdamar", "tuspa-oyun-canavar", "tuspa-oyun-cavustepe", "tuspa-oyun-cavustepe-2", "tuspa-oyun-horhor", "tuspa-oyun-horhor-2", "tuspa-oyun-iskele", "tuspa-oyun-kahvalti", "tuspa-oyun-kahvalti-2", "tuspa-oyun-kale", "tuspa-oyun-kaya-celebi", "tuspa-oyun-kumbet", "tuspa-oyun-kumbet-2", "tuspa-oyun-kumbet-3", "tuspa-oyun-mangala", "tuspa-oyun-muradiye", "tuspa-oyun-oynanis", "tuspa-oyun-tamara", "tuspa-sikkeler", "zehra-anne-armagan"];</script>
 <script>
 /* Açılış sekansı: oturum başına bir kez, hareket azaltma tercihinde hiç */
 (function () {
   var d = document.documentElement, seen = false;
   try { seen = sessionStorage.getItem('ha-intro') === '1'; } catch (e) {}
-  if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-on');
+  if (!seen && !d.classList.contains('perf-lite') && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-on');
 })();
 </script>
 <div class="intro" id="intro" aria-hidden="true">
@@ -2247,10 +2284,10 @@ html body .give--feature .cinar__poster figcaption { font-size: 14px !important;
     <div class="hero__fallback"></div>
     <div class="desk" aria-hidden="true">
       <svg class="desk__obj desk__stain" style="--z:20;--ox:.7;--oy:-.5" viewBox="0 0 160 160"><defs><filter id="dkStain" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="7"/><feGaussianBlur stdDeviation=".6"/></filter></defs><g filter="url(#dkStain)"><circle cx="80" cy="80" r="60" fill="rgba(122,70,38,.05)"/><circle cx="80" cy="80" r="60" fill="none" stroke="rgba(110,58,30,.30)" stroke-width="2.4"/><path d="M28 70 A54 54 0 0 1 96 24" fill="none" stroke="rgba(110,58,30,.22)" stroke-width="4"/></g></svg>
-      <figure class="desk__obj desk__pol desk__pol--a" style="--z:10;--ox:-.5;--oy:-.85;--rot:-8deg"><img src="assets/foto/surki-ilk-derslik-800.webp" alt="" loading="eager" decoding="async"></figure>
-      <figure class="desk__obj desk__pol desk__pol--b" style="--z:16;--ox:.9;--oy:.2;--rot:11deg"><img src="assets/foto/dogan-imza-800.webp" alt="" loading="eager" decoding="async"></figure>
-      <span class="desk__obj desk__shine desk__shine--cup" style="--z:22;--ox:.75;--oy:-.65;--m:url(assets/desk/fincan-m.webp)" aria-hidden="true"></span><img class="desk__obj desk__cup" style="--z:22;--ox:.75;--oy:-.65" src="assets/desk/fincan.webp" alt="" width="607" height="608" decoding="async" fetchpriority="high">
-      <span class="desk__obj desk__shine desk__shine--pen" style="--z:28;--ox:-.15;--oy:1;--rot:-4deg;--m:url(assets/desk/kalem-m.webp)" aria-hidden="true"></span><img class="desk__obj desk__pen" style="--z:28;--ox:-.15;--oy:1;--rot:-4deg" src="assets/desk/kalem.webp" alt="" width="1299" height="230" decoding="async">
+      <figure class="desk__obj desk__pol desk__pol--a" style="--z:10;--ox:-.5;--oy:-.85;--rot:-8deg"><img src="assets/foto/surki-ilk-derslik-800.webp" srcset="assets/foto/surki-ilk-derslik-360.webp 360w, assets/foto/surki-ilk-derslik-800.webp 800w" sizes="(max-width: 900px) 110px, 280px" alt="" loading="eager" decoding="async"></figure>
+      <figure class="desk__obj desk__pol desk__pol--b" style="--z:16;--ox:.9;--oy:.2;--rot:11deg"><img src="assets/foto/dogan-imza-800.webp" srcset="assets/foto/dogan-imza-360.webp 360w, assets/foto/dogan-imza-800.webp 800w" sizes="(max-width: 900px) 100px, 280px" alt="" loading="eager" decoding="async"></figure>
+      <span class="desk__obj desk__shine desk__shine--cup" style="--z:22;--ox:.75;--oy:-.65;--m:url(assets/desk/fincan-m.webp)" aria-hidden="true"></span><img class="desk__obj desk__cup" style="--z:22;--ox:.75;--oy:-.65" src="assets/desk/fincan.webp" srcset="assets/desk/fincan-320.webp 320w, assets/desk/fincan.webp 607w" sizes="(max-width: 900px) 104px, 300px" alt="" width="607" height="608" decoding="async" fetchpriority="high">
+      <span class="desk__obj desk__shine desk__shine--pen" style="--z:28;--ox:-.15;--oy:1;--rot:-4deg;--m:url(assets/desk/kalem-m.webp)" aria-hidden="true"></span><img class="desk__obj desk__pen" style="--z:28;--ox:-.15;--oy:1;--rot:-4deg" src="assets/desk/kalem.webp" srcset="assets/desk/kalem-560.webp 560w, assets/desk/kalem.webp 1299w" sizes="(max-width: 900px) 168px, 560px" alt="" width="1299" height="230" decoding="async">
     </div>
   </div>
 
@@ -2633,14 +2670,14 @@ html body .give--feature .cinar__poster figcaption { font-size: 14px !important;
     <div class="works">
       <article class="work work--game gv will-reveal" id="tuspa" aria-labelledby="gv-title">
         <div class="gv__hero">
-          <img class="gv__heroimg" src="assets/tuspa/hero.webp" srcset="assets/tuspa/hero-1200.webp 1200w, assets/tuspa/hero.webp 2400w" sizes="(max-width: 1100px) 100vw, 1280px" alt="Oyundan bir kare: Van Gölü’nün canavarı Akdamar Adası’nın önünde sudan yükseliyor" decoding="async">
+          <img loading="lazy" class="gv__heroimg" src="assets/tuspa/hero.webp" srcset="assets/tuspa/hero-1200.webp 1200w, assets/tuspa/hero.webp 2400w" sizes="(max-width: 1100px) 100vw, 1280px" alt="Oyundan bir kare: Van Gölü’nün canavarı Akdamar Adası’nın önünde sudan yükseliyor" decoding="async">
           <div class="gv__veil" aria-hidden="true"></div>
           <div class="gv__shine" aria-hidden="true"></div>
           <span class="work__chip gv__chip"><i aria-hidden="true"></i>Kapalı Beta</span>
           <div class="gv__lead">
             <p class="work__meta">Oyun · 3D Macera · Oyun Vitrini</p>
             <p class="gv__when"><span class="gv__when-d">Eylül 2025 – Ekim 2026</span><span class="gv__when-live"><i aria-hidden="true"></i>Devam Ediyor</span><span class="gv__when-t">Godot &amp; Blender</span></p>
-            <h3 class="gv__title" id="gv-title"><img class="gv__logo" src="assets/tuspa/logo.webp" width="720" height="565" alt="Tuşpa: Van Gölü’nün Kayıp Hafızası"></h3>
+            <h3 class="gv__title" id="gv-title"><img loading="lazy" class="gv__logo" src="assets/tuspa/logo.webp" width="720" height="565" alt="Tuşpa: Van Gölü’nün Kayıp Hafızası"></h3>
             <p class="gv__quote">“Su… hafızayı saklar. <em>Ama efsaneler asla gömülü kalmaz.</em>”</p>
           </div>
         </div>
@@ -2712,11 +2749,11 @@ html body .give--feature .cinar__poster figcaption { font-size: 14px !important;
           <div class="v3d-strip">
             <p class="v3d-strip__k"><span class="v3d-strip__deg">360°</span> Yakından bakın: <em>karakter ve sikkeler</em></p>
             <ul class="v3d-strip__grid">
-              <li><button type="button" class="v3d-card" data-v3d="tuspa" data-t="Tuşpa" data-s="Van kedisi · bir gözü mavi, bir gözü yeşil · oyunun kahramanı"><img src="assets/3d/poster-tuspa.webp" alt="" width="440" height="440" decoding="async"><span class="v3d-card__t">Tuşpa</span><span class="v3d-card__s">Van kedisi</span></button></li>
-              <li><button type="button" class="v3d-card" data-v3d="pers" data-t="Pers Siklosu" data-s="Gümüş · MÖ 5. yüzyıl"><img src="assets/3d/poster-pers.webp" alt="" width="440" height="440" decoding="async"><span class="v3d-card__t">Pers Siklosu</span><span class="v3d-card__s">MÖ 5. yüzyıl</span></button></li>
-              <li><button type="button" class="v3d-card" data-v3d="selcuklu" data-t="Selçuklu Dirhemi" data-s="Gümüş · 1071 sonrası"><img src="assets/3d/poster-selcuklu.webp" alt="" width="440" height="440" decoding="async"><span class="v3d-card__t">Selçuklu Dirhemi</span><span class="v3d-card__s">1071 sonrası</span></button></li>
-              <li><button type="button" class="v3d-card" data-v3d="akce" data-t="Osmanlı Akçesi" data-s="Gümüş · 1548, Kanuni dönemi"><img src="assets/3d/poster-akce.webp" alt="" width="440" height="440" decoding="async"><span class="v3d-card__t">Osmanlı Akçesi</span><span class="v3d-card__s">1548</span></button></li>
-              <li><button type="button" class="v3d-card v3d-card--gold" data-v3d="sultani" data-t="Osmanlı Sultanisi" data-s="Altın · Fatih Sultan Mehmet dönemi"><img src="assets/3d/poster-sultani.webp" alt="" width="440" height="440" decoding="async"><span class="v3d-card__t">Osmanlı Sultanisi</span><span class="v3d-card__s">Altın</span></button></li>
+              <li><button type="button" class="v3d-card" data-v3d="tuspa" data-t="Tuşpa" data-s="Van kedisi · bir gözü mavi, bir gözü yeşil · oyunun kahramanı"><img loading="lazy" src="assets/3d/poster-tuspa.webp" alt="" width="440" height="440" decoding="async"><span class="v3d-card__t">Tuşpa</span><span class="v3d-card__s">Van kedisi</span></button></li>
+              <li><button type="button" class="v3d-card" data-v3d="pers" data-t="Pers Siklosu" data-s="Gümüş · MÖ 5. yüzyıl"><img loading="lazy" src="assets/3d/poster-pers.webp" alt="" width="440" height="440" decoding="async"><span class="v3d-card__t">Pers Siklosu</span><span class="v3d-card__s">MÖ 5. yüzyıl</span></button></li>
+              <li><button type="button" class="v3d-card" data-v3d="selcuklu" data-t="Selçuklu Dirhemi" data-s="Gümüş · 1071 sonrası"><img loading="lazy" src="assets/3d/poster-selcuklu.webp" alt="" width="440" height="440" decoding="async"><span class="v3d-card__t">Selçuklu Dirhemi</span><span class="v3d-card__s">1071 sonrası</span></button></li>
+              <li><button type="button" class="v3d-card" data-v3d="akce" data-t="Osmanlı Akçesi" data-s="Gümüş · 1548, Kanuni dönemi"><img loading="lazy" src="assets/3d/poster-akce.webp" alt="" width="440" height="440" decoding="async"><span class="v3d-card__t">Osmanlı Akçesi</span><span class="v3d-card__s">1548</span></button></li>
+              <li><button type="button" class="v3d-card v3d-card--gold" data-v3d="sultani" data-t="Osmanlı Sultanisi" data-s="Altın · Fatih Sultan Mehmet dönemi"><img loading="lazy" src="assets/3d/poster-sultani.webp" alt="" width="440" height="440" decoding="async"><span class="v3d-card__t">Osmanlı Sultanisi</span><span class="v3d-card__s">Altın</span></button></li>
             </ul>
           </div>
         </section>
@@ -3187,6 +3224,15 @@ async function importFirst(urls) {
   for (const u of urls) { if (location.protocol === 'file:' && u.startsWith('./')) continue; try { return await import(u); } catch (e) { last = e; } }
   throw last;
 }
+const LITE = document.documentElement.classList.contains('perf-lite');
+let glGate = !LITE, glFrozen = false, skipTick = false, slowWin = 0, glDirty = true, glT0 = 0;
+// Dokunmatikte parmak sayfayı kaydırırken küre bir an durur: kaydırma tek başına akar
+let scrollHold = 0; if (LITE) addEventListener('scroll', () => { scrollHold = performance.now() + 220; }, { passive: true });
+if (document.documentElement.classList.contains('perf-low')) { document.documentElement.classList.add('no-webgl'); throw new Error('perf-low: statik küre gösteriliyor'); }
+if (LITE) await new Promise((res) => {
+  let ok = false; const go = () => { if (ok) return; ok = true; window.requestIdleCallback ? requestIdleCallback(() => res(), { timeout: 900 }) : setTimeout(res, 150); };
+  if (document.readyState === 'complete') go(); else { addEventListener('load', go, { once: true }); setTimeout(go, 2200); }
+});
 let THREE, PAPER;
 try {
   [THREE, PAPER] = await Promise.all([
@@ -3277,7 +3323,13 @@ try {
   document.documentElement.classList.add('no-webgl');
   throw e;
 }
-renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+function prMax() {
+  const dpr = devicePixelRatio || 1; if (!LITE) return Math.min(dpr, 2);
+  const w = stage.clientWidth || innerWidth, h = stage.clientHeight || innerHeight * 0.62;
+  const budget = document.documentElement.classList.contains('perf-tab') ? 0.85e6 : 0.42e6;
+  return Math.max(1, Math.min(dpr, 1.75, Math.sqrt(budget / (w * h))));
+}
+renderer.setPixelRatio(prMax());
 renderer.toneMapping = THREE.NeutralToneMapping;
 renderer.toneMappingExposure = 1.0;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -3502,7 +3554,7 @@ background.frustumCulled = false;
 window.__introHold = true; const releaseIntro = () => { window.__introHold = false; }; setTimeout(releaseIntro, 2200);
 window.__woodTarget = 0;
 new THREE.TextureLoader().load('assets/desk/ahsap-n.webp', (tn) => { tn.colorSpace = THREE.NoColorSpace; tn.anisotropy = 4; bgUniforms.u_woodN.value = tn; });
-new THREE.TextureLoader().load(innerWidth <= 900 ? 'assets/desk/ahsap-1024.webp' : 'assets/desk/ahsap.webp', (tx) => {
+new THREE.TextureLoader().load((innerWidth <= 900 || LITE) ? 'assets/desk/ahsap-1024.webp' : 'assets/desk/ahsap.webp', (tx) => {
   tx.colorSpace = THREE.NoColorSpace; tx.anisotropy = 4;
   bgUniforms.u_wood.value = tx; bgUniforms.u_woodSize.value.set(tx.image.width, tx.image.height);
   window.__woodTarget = 1; if (document.documentElement.classList.contains('intro-on')) bgUniforms.u_woodOn.value = 1;
@@ -3538,12 +3590,12 @@ const glassMat = new THREE.MeshPhysicalMaterial({
   iridescenceThicknessRange: [120, 420],
   envMapIntensity: 1.25,
 });
-const glass = new THREE.Mesh(new THREE.SphereGeometry(R, 128, 96), glassMat);
+const glass = new THREE.Mesh(new THREE.SphereGeometry(R, LITE ? 72 : 128, LITE ? 54 : 96), glassMat);
 tilt.add(glass);
 
 // Fresnel kontur: siluete keskin, mürekkep tonunda bir kenar çizgisi + üstte ince ışık kesiği
 const rim = new THREE.Mesh(
-  new THREE.SphereGeometry(R * 1.002, 128, 96),
+  new THREE.SphereGeometry(R * 1.002, LITE ? 72 : 128, LITE ? 54 : 96),
   new THREE.ShaderMaterial({
     transparent: true, depthWrite: false, toneMapped: false,
     uniforms: { u_ink: { value: new THREE.Color('#2a0f0c') }, u_lite: { value: new THREE.Color('#fff6ea') } },
@@ -3679,6 +3731,7 @@ shadowSoft.position.set(0.62, -0.78, -R * 1.2); shadowCore.position.set(0.36, -0
 /* ═══ Yerleşim: kürenin ekrandaki yeri (masaüstü sol, mobil üst-orta) ══ */
 const layout = { fx: 0.36, fy: 0.52, w: 1, h: 1 };
 function resize() {
+  glDirty = true;
   // Kap henüz ölçülmemişse (gizli iframe, yükleme anı) pencere boyutuna düş; ResizeObserver sonra düzeltir
   const w = stage.clientWidth || innerWidth || 1, h = stage.clientHeight || innerHeight || 1;
   layout.w = w; layout.h = h;
@@ -3693,6 +3746,7 @@ function resize() {
   const minW = mobile ? 4.6 : 0;
   camera.position.z = Math.max(dist, minW / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect));
   camera.updateProjectionMatrix();
+  camera.updateMatrixWorld();
 
   // dünya konumu: ekran oranından (fx, fy) ışınla z=0 düzlemine
   const v = new THREE.Vector3(layout.fx * 2 - 1, -(layout.fy * 2 - 1), 0.5).unproject(camera);
@@ -3820,6 +3874,9 @@ function frame() {
   rafId = 0;
   if (!running || glLost) return;
   rafId = requestAnimationFrame(frame);
+  if (LITE && !glDirty && !drag.on && idleFor > 0.6 && (skipTick = !skipTick)) return;
+  if (glFrozen && !glDirty && !drag.on && idleFor > 1.5) { clock.getDelta(); return; }
+  if (LITE && !glDirty && !drag.on && performance.now() < scrollHold) { clock.getDelta(); return; }
   const dt = Math.min(clock.getDelta(), 1 / 20);
   const motion = reduceMotion.matches ? 0 : 1;
   t += dt * motion;
@@ -3895,6 +3952,7 @@ function frame() {
   });
 
   renderer.render(scene, camera);
+  glDirty = false;
   adaptQuality(dt);
 }
 
@@ -3907,9 +3965,11 @@ function adaptQuality(dt) {
   if (perfAcc < 2) return;
   const avg = perfAcc / perfN; perfAcc = 0; perfN = 0;
   const pr = renderer.getPixelRatio();
-  if (avg > 1 / 40 && pr > 1) { renderer.setPixelRatio(Math.max(1, pr - 0.5)); resize(); goodWin = 0; }
+  if (avg > (LITE ? 1 / 25 : 1 / 40) && pr > 1) { renderer.setPixelRatio(Math.max(1, pr - (LITE ? 0.25 : 0.5))); resize(); goodWin = 0; }
   // Geçici yavaşlama geçtiyse (başka sekme, açılış) kaliteyi kademeli geri al
-  else if (avg < 1 / 57 && pr < Math.min(devicePixelRatio || 1, 2) && ++goodWin >= 3) { renderer.setPixelRatio(Math.min(Math.min(devicePixelRatio || 1, 2), pr + 0.5)); resize(); goodWin = 0; }
+  else if (!LITE && avg < 1 / 57 && pr < prMax() && ++goodWin >= 3) { renderer.setPixelRatio(Math.min(prMax(), pr + 0.5)); resize(); goodWin = 0; }
+  // Dokunmatikte en düşük çözünürlükte bile 20 kare/sn'yi tutamıyorsa: küre durur, yalnız dokunulunca çizilir
+  else if (LITE && pr <= 1.01 && avg > 1 / 20 && performance.now() - glT0 > 5000 && ++slowWin >= 2) glFrozen = true;
 }
 
 /* Kürenin üstünde, imleci izleyen ince etiket */
@@ -3930,6 +3990,7 @@ function updateTag() {
 /* Görünmezken boşa çizme */
 let inView = true;
 function startLoop() {
+  if (!glGate) return;
   running = true;
   if (!rafId && !glLost) { clock.getDelta(); rafId = requestAnimationFrame(frame); }
 }
@@ -3964,14 +4025,15 @@ canvas.addEventListener('webglcontextrestored', () => { glLost = false; document
         u_noiseTexture: noise,
         u_fit: 2, u_scale: 0.85, u_rotation: 0, u_offsetX: 0.25, u_offsetY: -0.1,
         u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0,
-      }, undefined, reduceMotion.matches ? 0 : 0.18, 0, 1, 960 * 540);
+      }, undefined, reduceMotion.matches ? 0 : (LITE ? 0.12 : 0.18), 0, 1, LITE ? 440 * 260 : 960 * 540);
     } catch (e) { /* WebGL yoksa CSS degrade + gren yedekte kalır */ }
   };
   if (noise && !noise.complete) noise.addEventListener('load', start, { once: true }); else start();
 })();
 
-renderer.compile(scene, camera);
-startLoop();
+function globeOn() { glGate = true; glT0 = performance.now(); glDirty = true; resize(); globeScreen(); syncLoop(); requestAnimationFrame(() => requestAnimationFrame(() => { document.documentElement.classList.remove('no-webgl'); document.documentElement.classList.add('globe-on'); })); }
+if (LITE && renderer.compileAsync) renderer.compileAsync(scene, camera).catch(() => {}).then(globeOn);
+else { renderer.compile(scene, camera); globeOn(); }
 window.__hero = { renderer, scene, camera, state };
 /* Açılış animasyonu için kürenin ekrandaki merkezi ve yarıçapı */
 function globeScreen() {
@@ -4748,7 +4810,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 (function () {
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   /* Küre yüklenmezse (ağ, WebGL yok) boş kalmasın: statik yedek göster */
-  setTimeout(function () { if (!window.__hero) document.documentElement.classList.add('no-webgl'); }, 9000);
+  setTimeout(function () { if (!window.__hero) document.documentElement.classList.add('no-webgl'); }, document.documentElement.classList.contains('perf-lite') ? 16000 : 9000);
 
   var band = document.getElementById('egitim');
   /* Tüm bölüm başlıkları: harf harf, sinematik bulanıklıktan netleşerek */
@@ -4802,7 +4864,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 
   /* Yumuşak parallax: [data-par] öğeleri ekran ortasına uzaklıkla orantılı kayar */
   var pars = [].slice.call(document.querySelectorAll('[data-par]'));
-  if (pars.length && !reduce) {
+  if (pars.length && !reduce && !document.documentElement.classList.contains('perf-lite')) {
     var pRaf = 0;
     function parStep() {
       pRaf = 0;
@@ -4832,7 +4894,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   [].slice.call(document.querySelectorAll('.gv__pair')).forEach(function (pair) {
     if (pair.querySelectorAll(':scope > .gv__row:not([hidden])').length < 2) pair.classList.add('gv__pair--solo');
   });
-  var eagerIO = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return; var im = e.target.querySelector('.ph-img'); if (im) im.loading = 'eager'; eagerIO.unobserve(e.target); }); }, { rootMargin: '2200px 0px' }) : null;
+  var eagerIO = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return; var im = e.target.querySelector('.ph-img'); if (im) im.loading = 'eager'; eagerIO.unobserve(e.target); }); }, { rootMargin: (document.documentElement.classList.contains('perf-lite') ? '1000px' : '2200px') + ' 0px' }) : null;
   [].slice.call(document.querySelectorAll('[data-photo]')).forEach(function (slot) {
     var name = slot.getAttribute('data-photo');
     if (have.indexOf(name) < 0) return;
@@ -4984,7 +5046,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
     var contain = slot.getAttribute('data-photo-fit') === 'contain';
     var ar = contain ? '3 / 4' : (slot.classList.contains('spark__ph') ? '1 / 1' : '4 / 5');
     if (have.indexOf(name) >= 0) {
-      fig.innerHTML = '<img class="lb__img" alt="" draggable="false"><figcaption class="lb__cap"></figcaption>';
+      fig.innerHTML = '<img loading="lazy" class="lb__img" alt="" draggable="false"><figcaption class="lb__cap"></figcaption>';
       var img = fig.querySelector('img');
       img.alt = cap; img.decoding = 'async';
       var th = slot.querySelector('.ph-img'), full = 'assets/foto/' + name + '.webp';
@@ -5208,8 +5270,11 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   fit();
 })();
 </script>
-<script src="vendor/gsap/gsap.min.js"></script>
-<script src="vendor/gsap/ScrollTrigger.min.js"></script>
+<script>
+(function () { if (document.documentElement.classList.contains('perf-lite') || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  ['vendor/gsap/gsap.min.js', 'vendor/gsap/ScrollTrigger.min.js'].forEach(function (u, i) { var e = document.createElement('script'); e.src = u; e.async = false; if (i) e.onload = function () { window.__gsapReady && window.__gsapReady(); }; document.head.appendChild(e); });
+})();
+</script>
 <script>
 /* v70 · Arşiv masası: fare paralaksı, küreye odak, kaydırınca masa geri çekilir ve sayfa kapanır */
 (function () {
@@ -5239,6 +5304,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   }, { passive: true });
   hero.addEventListener('pointerleave', function () { tx = ty = 0; tf = 0; window.__deskFocus = false; hero.classList.remove('desk-focus'); kick(); });
 
+  function initScroll() {
   if (!window.gsap || !window.ScrollTrigger || reduce) return;
   gsap.registerPlugin(ScrollTrigger);
   var mm = gsap.matchMedia();
@@ -5265,6 +5331,8 @@ html.lb-open, html.lb-open body { overflow: hidden; }
     });
     return function () { gsap.set(leaves, { clearProps: 'transform' }); gsap.set([stage, grid, foot, page], { clearProps: 'transform,borderRadius,boxShadow,opacity' }); gsap.set('.desk__obj', { clearProps: '--sx,--sy' }); };
   });
+  }
+  if (window.gsap && window.ScrollTrigger) initScroll(); else window.__gsapReady = initScroll;
 })();
 </script>
 <nav class="mnav" aria-label="Bölümler">
@@ -5290,7 +5358,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 <div class="v3d" hidden role="dialog" aria-modal="true" aria-labelledby="v3dTitle">
   <div class="v3d__veil" data-v3d-close></div>
   <div class="v3d__box">
-    <div class="v3d__stage"><img class="v3d__poster" alt=""><span class="v3d__load">Model hazırlanıyor…</span><span class="v3d__fail">Model şu an açılamadı; biraz sonra yeniden deneyin.</span></div>
+    <div class="v3d__stage"><img loading="lazy" class="v3d__poster" alt=""><span class="v3d__load">Model hazırlanıyor…</span><span class="v3d__fail">Model şu an açılamadı; biraz sonra yeniden deneyin.</span></div>
     <div class="v3d__cap">
       <p class="v3d__k">360° · Tuşpa: Van Gölü’nün Kayıp Hafızası</p>
       <h3 class="v3d__t" id="v3dTitle"></h3>
