@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+Disallow: /assets/3d/
+Disallow: /assets/foto/ham/
+Disallow: /tools/
+Disallow: /onizleme/
+Disallow: /surumler/
+Disallow: /.git/
+
+Sitemap: https://hakanaltay.net/sitemap.xml
