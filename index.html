@@ -2282,6 +2282,88 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 @media (max-width: 620px) {
   .story__body p, .tb__text, .columns p, .chap__body p, .give__text { hyphens: auto; -webkit-hyphens: auto; }
 }
+
+/* ═══ v99 · Mobil öncelikli düzeltmeler (telefon ≤620 px önce; büyük ekran yalnız gerektiğinde) ═══ */
+
+/* Deprem: üç paragraf + tek alıntı; masaüstünde iki sütunlu akış korunur */
+#deprem .quake__body { margin: 0; }
+#deprem .quake__body .give__text { column-count: 1 !important; max-width: 62ch; margin: 0 0 1em; }
+.give__pull { margin: .2em 0 1.1em; padding: 2px 0 2px 18px; border-left: 1.5px solid #8e3524; font: italic 400 clamp(21px, 2vw, 25px)/1.32 'Instrument Serif', Georgia, serif; color: #6a1d18; text-wrap: balance; break-inside: avoid; }
+@media (min-width: 901px) {
+  #deprem .quake__body { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; column-gap: 40px; align-content: start; }
+  #deprem .quake__body .give__text { max-width: none; }
+  #deprem .quake__body > :nth-child(1) { grid-area: 1 / 1; }
+  #deprem .quake__body > :nth-child(2) { grid-area: 2 / 1; }
+  #deprem .quake__body > :nth-child(3) { grid-area: 1 / 2; align-self: start; }
+  #deprem .quake__body > :nth-child(4) { grid-area: 2 / 2; }
+}
+
+/* Referanslar: Akademik listenin bağlamı */
+.rg__lead { margin: -6px 0 22px; max-width: 62ch; font-size: 15px; line-height: 1.7; color: #5b4c45; text-wrap: pretty; }
+
+/* Kaydırılabilir şeritler için küçük ipucu (yalnız taşan şeritte, kaydırınca söner) */
+.v99-swipe { display: none; margin: 0 0 8px; font: italic 400 15px/1 'Instrument Serif', Georgia, serif; letter-spacing: .01em; color: rgba(231, 185, 138, .85); transition: opacity .4s ease; }
+.v99-swipe.on { display: block; }
+.v99-swipe.gone { opacity: 0; }
+.section:not(.showcase):not(.sound) .v99-swipe { color: #8e3524; }
+
+@media (max-width: 620px) {
+  /* A · Tuşpa kartı: görsel tam kaplar, logo ve kurdele ortada, katman yazıları büyür */
+  #tuspa .gv__hero { min-height: 540px; }
+  #tuspa .gv__heroimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+  #tuspa .gv__chip { top: 14px; right: 14px; font-size: 13px; padding: 7px 12px; }
+  #tuspa .gv__lead { left: 16px; right: 16px; bottom: 22px; max-width: none; justify-items: center; text-align: center; gap: 10px; }
+  #tuspa .gv__lead .work__meta { font-size: 13.5px; letter-spacing: .02em; }
+  #tuspa .gv__when { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 12px; }
+  #tuspa .gv__when-d { font-size: 19px; }
+  #tuspa .gv__when-live { font-size: 13.5px; }
+  #tuspa .gv__when-t { font-size: 14px; flex-basis: 100%; }
+  #tuspa .gv__when-t::before { content: none; }
+  #tuspa .gv__title { display: flex; justify-content: center; margin: 4px 0 0; }
+  #tuspa .gv__logo { width: min(80%, 300px); margin: 0 auto; }
+  #tuspa .gv__quote { font-size: 20px; line-height: 1.3; max-width: 30ch; margin: 2px auto 0; }
+
+  /* B · SSCI polaroidi: ortada, en çok 300 px, düz */
+  .work--paper .work__media--paper { display: flex !important; justify-content: center; align-items: center; }
+  .work--paper .sci__ph { display: block !important; width: min(300px, 80%) !important; margin: 0 auto !important; }
+  .work--paper .sci__ph .tl__ph { width: 100% !important; --r: -1deg !important; }
+  /* 4 · Başlığın italik ikinci satırı sınırlı */
+  .work--paper .work__title { font-size: 28px !important; line-height: 1.08; }
+  .work--paper .work__title em { font-size: .9em; }
+
+  /* C · Hikâye fotoğrafları: 2'li ızgara, sabit 4:5, kırpılmış doldurma (v99.js taşır) */
+  .story__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 14px; margin: 1.3em 0 1.7em; clear: both; }
+  #gonullu .story__grid .story__photo, #gonullu .story__grid .story__photo--r, #gonullu .story__grid .story__photo--l { float: none !important; width: auto !important; max-width: none !important; margin: 0 !important; }
+  #gonullu .story__grid > .story__photo:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 7px) !important; }
+  .story__grid .story__photo { display: block !important; grid-template-columns: none !important; padding: 0 !important; }
+  .story__grid .tl__ph { aspect-ratio: 4 / 5; width: 100% !important; max-width: none !important; margin: 0 !important; }
+  .story__grid .tl__ph > span { font-size: 13px !important; }
+
+  /* 2 · Tevafuk tipografisi: büyük harf iki satırlık, metin nefes alır, alt çubuğa yer */
+  .story__lead::first-letter { font-size: 3.3em !important; line-height: .8 !important; margin: .1em .08em 0 0 !important; }
+  .story__lead { font-size: 18px !important; line-height: 1.7 !important; }
+  #gonullu .story__body p { line-height: 1.8 !important; }
+  body { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .sitefoot { padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px)) !important; }
+
+  /* 1 · Projeler girişi ile oyun kartı arası yarıya */
+  #projeler .section-head { margin-bottom: 28px !important; padding-bottom: 16px !important; }
+
+  /* 3 · Dokunma hedefleri ≥ 44 px */
+  .book__btn { min-height: 44px; display: inline-flex !important; align-items: center; justify-content: center; font-size: 14px !important; }
+  .sci__link, .bd-link, .covers__now, .tb__pl { min-height: 44px; display: inline-flex; align-items: center; }
+  .covers__now { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+  .echo a { display: inline-block; padding-block: 10px; }
+
+  /* Kaydedenler dalgası metnin arkasından çıkar: kapak arşivi ile buton arasında kendi satırı */
+  #muzik .pod .pod__wave { position: relative !important; inset: auto !important; transform: none !important; height: 52px !important; min-height: 52px !important; max-height: 52px !important; opacity: .6 !important; margin: 20px 0 22px !important; z-index: 0; }
+  .perf-lite .listen, .listen { gap: 0; padding-top: 26px; }
+
+  /* Anneye yazılan notun künyesi imza fotoğrafının altında kalmasın */
+  .imza__photos .memo__photo figcaption { text-align: left !important; left: 16px !important; right: auto !important; max-width: 42%; line-height: 1.2 !important; bottom: 10px !important; }
+}
+
+/* 19 · Mobil künyelerde satır başına düşen ayraç (v99.js ayraçları önceki kelimeye bağlar) */
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp?v=98" type="image/webp" media="(min-width: 901px)">
 <link rel="preload" as="image" href="assets/desk/ahsap-1024.webp?v=98" type="image/webp" media="(max-width: 900px)">
@@ -2342,6 +2424,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
         <li><a href="#hakkimda">Hakkımda</a></li>
         <li><a href="#anilar">İlham</a></li>
         <li><a href="#egitim">Kariyer</a></li>
+        <li><a href="#liderlik">Liderlik</a></li>
         <li><a href="#projeler">Projeler</a></li>
         <li><a href="#gonullu">Sosyal</a></li>
         <li><a href="#muzik">Müzik</a></li>
@@ -2411,7 +2494,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
       <div class="about__body">
         <div class="columns will-reveal" style="--d:120ms">
           <p>Her şey bir sınıfta başladı. Bir öğrencinin gözlerinde “anladım” ışığının ilk kez parladığını gördüğüm gün, hayatım boyunca neyin peşinden koşacağımı da anladım: öğrenmenin kendisi.</p>
-          <p>O ışığı büyütmek için hep yeni yollar aradım. Öğretmenlere eğitimler verdim, çünkü bir öğretmene dokunmak yüzlerce öğrenciye dokunmak demek. 2021’de yapay zekâ araçlarını araştırmaya başladığımda, bu yolun beni yepyeni bir öğrenme serüvenine çıkaracağını bilmiyordum; kod yazmak da bu serüvenin içinde kendiliğinden geldi. Bugün yapay zekâ araçları üretim hayatımın doğal bir parçası. Bazı dersler en iyi bir oyunun içinde anlatılıyor; <em class="title-ref">Tuşpa: Van Gölü’nün Kayıp Hafızası</em> böyle doğdu.</p>
+          <p>O ışığı büyütmek için hep yeni yollar aradım. Öğretmenlere eğitimler verdim; sınıfta öğrendiğimi çoğaltmanın en kısa yolu buydu. 2021’de yapay zekâ araçlarını araştırmaya başladığımda, bu yolun beni yepyeni bir öğrenme serüvenine çıkaracağını bilmiyordum; kod yazmak da bu serüvenin içinde kendiliğinden geldi. Bugün yapay zekâ araçları üretim hayatımın doğal bir parçası. Bazı dersler en iyi bir oyunun içinde anlatılıyor; <em class="title-ref">Tuşpa: Van Gölü’nün Kayıp Hafızası</em> böyle doğdu.</p>
           <p>Sorularım büyüdükçe kendine bir mikrofon buldu. Kaydedenler Kulübü, tasavvuftan yola çıkıp Doğu ve Batı okumalarıyla insanın anlam arayışının peşine düşen bir kültür-sanat podcast’i. Modern insanın hayatını sorguluyor, çıkış yolları arıyoruz. Mikrofonun öbür tarafında da bir tutkum var: mix, mastering ve ses tasarımıyla hem kendi bestelerimi hem de sevdiğim şarkıların yorumlarını üretiyorum.</p>
           <p>Sonra işin gönüllü tarafı geldi. 2018’de elimde gitarla Erzurum’un köy okullarına gittim; Kardeş Köy Okulu projesi bugün hâlâ sürüyor. TOG ile yürüttüğümüz çalışmalar ve deprem bölgesine uzanan elimiz bana şunu gösterdi: öğrenme en çok dayanışmada büyüyor.</p>
           <p>Bugün bir okulun yönetimindeyim. Ünvan değişti ama merak hiç değişmedi. Her sabah hâlâ aynı soruyla uyanıyorum: bugün kimden, ne öğreneceğim?</p>
@@ -2422,11 +2505,11 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
     <div class="portraits">
       <div class="portraits__head will-reveal"><p class="kicker">Portreler</p><p class="portraits__line">Aynı merakın <em>dört hâli.</em></p><p class="portraits__count">01 – 04</p></div>
       <ul class="roles" aria-label="Roller">
-<li class="will-reveal" style="--d:0ms"><article class="pt" style="--c:#a8873f"><div class="pt__head"><span class="pt__no">01</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="17"/><path d="M22 7v4M22 33v4M7 22h4M33 22h4"/><path d="M27 17l-3.5 8.5L15 29l3.5-8.5z"/></svg></span></div><p class="pt__meta">Eğitim</p><h3 class="pt__title">Öğretmen</h3><p class="pt__desc">Sınıf benim ilk sahnem: her gün yeniden kurulan, hiç bitmeyen bir deney.</p><p class="pt__foot"><span>Kitap &amp; Pusula</span></p></article></li>
-<li class="will-reveal" style="--d:110ms"><article class="pt" style="--c:#b27a55"><div class="pt__head"><span class="pt__no">02</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M8 10h28v18H8z"/><path d="M16 36l6-8 6 8"/><path d="M13 16h12M13 21h18"/></svg></span></div><p class="pt__meta">Formatörlük</p><h3 class="pt__title">Formatör</h3><p class="pt__desc">Bir öğretmene dokunmak, yüzlerce öğrenciye dokunmak demek.</p><p class="pt__foot"><span>Türkiye Yüzyılı Maarif Modeli</span></p></article></li>
-<li class="will-reveal" style="--d:220ms"><article class="pt" style="--c:#3e6a69"><div class="pt__head"><span class="pt__no">03</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="14" width="32" height="18" rx="2"/><path d="M14 19v8M10 23h8"/><circle cx="29" cy="21" r="1.5"/><circle cx="33" cy="25" r="1.5"/></svg></span></div><p class="pt__meta">Oyun · Teknoloji</p><h3 class="pt__title">Geliştirici</h3><p class="pt__desc">Bazı dersler en iyi bir oyunun içinde anlatılır. <em>Tuşpa: Van Gölü’nün Kayıp Hafızası</em> böyle doğdu.</p><p class="pt__foot"><span>Tuşpa: Van Gölü’nün Kayıp Hafızası</span><span class="pt__sep" aria-hidden="true">·</span><span>Blender</span></p></article></li>
-<li class="will-reveal" style="--d:330ms"><article class="pt" style="--c:#9a4b37"><div class="pt__head"><span class="pt__no">04</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="16" y="6" width="12" height="20" rx="6"/><path d="M11 21a11 11 0 0 0 22 0"/><path d="M22 32v6M16 38h12"/><path d="M16 14h4M16 19h4"/></svg></span></div><p class="pt__meta">Podcast · Müzik</p><h3 class="pt__title">Müzisyen</h3><p class="pt__desc">Sadece bir icracı değil; müzikal kurgunun, sesin dokusunun ve hikâyenin ruhunu birleştiren bir üretici.</p><p class="pt__foot"><span>Kaydedenler Kulübü</span><span class="pt__sep" aria-hidden="true">·</span><span>Cover</span></p></article></li>
-      </ul>
+<li class="will-reveal" style="--d:0ms"><article class="pt" style="--c:#a8873f"><div class="pt__head"><span class="pt__no">01</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="17"/><path d="M22 7v4M22 33v4M7 22h4M33 22h4"/><path d="M27 17l-3.5 8.5L15 29l3.5-8.5z"/></svg></span></div><p class="pt__meta">Eğitim · Formatörlük</p><h3 class="pt__title">Öğretmen</h3><p class="pt__desc">Hafta içi sınıfta, hafta sonu öğretmenlerle: modeli önce kendi sınıfımda yaşıyor, sonra paylaşıyorum.</p><p class="pt__foot"><span>Türkiye Yüzyılı Maarif Modeli</span></p></article></li>
+<li class="will-reveal" style="--d:110ms"><article class="pt" style="--c:#3e6a69"><div class="pt__head"><span class="pt__no">02</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="14" width="32" height="18" rx="2"/><path d="M14 19v8M10 23h8"/><circle cx="29" cy="21" r="1.5"/><circle cx="33" cy="25" r="1.5"/></svg></span></div><p class="pt__meta">Oyun · Teknoloji</p><h3 class="pt__title">Geliştirici</h3><p class="pt__desc">Van’ın binlerce yıllık hafızasını bir oyuna dönüştürüyorum: kodu Godot’ta yazıyor, dünyayı Blender’da kuruyorum.</p><p class="pt__foot"><span>Tuşpa</span><span class="pt__sep" aria-hidden="true">·</span><span>TÜBİTAK 4008</span></p></article></li>
+<li class="will-reveal" style="--d:220ms"><article class="pt" style="--c:#9a4b37"><div class="pt__head"><span class="pt__no">03</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="16" y="6" width="12" height="20" rx="6"/><path d="M11 21a11 11 0 0 0 22 0"/><path d="M22 32v6M16 38h12"/><path d="M16 14h4M16 19h4"/></svg></span></div><p class="pt__meta">Müzik · Kültür</p><h3 class="pt__title">Müzisyen</h3><p class="pt__desc">Podcast’te soruları soruyor, stüdyoda gitar, davul ve vokalle cevabını arıyorum.</p><p class="pt__foot"><span>Kaydedenler Kulübü</span><span class="pt__sep" aria-hidden="true">·</span><span>Kozmik Kalıntılar</span></p></article></li>
+<li class="will-reveal" style="--d:330ms"><article class="pt" style="--c:#b27a55"><div class="pt__head"><span class="pt__no">04</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 35s-12-7-12-15.5A6.5 6.5 0 0 1 22 15a6.5 6.5 0 0 1 12 4.5C34 28 22 35 22 35z"/><path d="M15 21h4l2-3 3 6 2-3h3"/></svg></span></div><p class="pt__meta">Sosyal Sorumluluk</p><h3 class="pt__title">Gönüllü</h3><p class="pt__desc">Erzurum’un köy okullarından deprem bölgesindeki destek sınıflarına: öğrendiğimi dayanışmayla çoğaltıyorum.</p><p class="pt__foot"><span>Kızılay</span><span class="pt__sep" aria-hidden="true">·</span><span>TOG</span><span class="pt__sep" aria-hidden="true">·</span><span>Kardeş Köy Okulu</span></p></article></li>
+</ul>
     </div>
   </div>
 </section>
@@ -2487,7 +2570,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
         <h3 class="chap__title" id="chap3-title">Bir heykelden doğan <em>kıvılcım.</em></h3>
         <p class="chap__lead will-reveal" style="--d:80ms">Michelangelo’nun David’i bana güzelliğin bir oran ve sabır meselesi olduğunu öğretti; Sokrates ise iyi bir sorunun iyi bir cevaptan daha uzağa taşıdığını.</p>
         <p class="will-reveal" style="--d:160ms">Görsel tasarımcı Murat Tüvör’le 2016’dan beri tanışıyoruz. Şubat 2019’da benim için özel bir 3D tasarım hazırladı ve onu Türkiye’nin ilk yerli 3D yazıcısıyla bastı; Blender’la da onun vesilesiyle tanıştım. Bu heykelleri sonra kalıba alıp yeniden üretirken, katman katman yükselen bir heykelin bir öğrenme sürecine ne kadar benzediğini gördüm. Biri estetiği, diğeri sorgulamayı temsil ediyor; sınıfta da, oyun tasarlarken de aradığım şey bu ikisinin buluştuğu yer.</p>
-        <p class="chap__aside will-reveal" style="--d:220ms">O gün zihnimde çakan kıvılcım, bugün tasarladığım oyunun, Tuşpa’nın temel taşlarından biri.</p>
+        <p class="chap__aside will-reveal" style="--d:220ms">O gün zihnimde kurulan bağ, bugün tasarladığım oyunun, Tuşpa’nın temel taşlarından biri.</p>
         <div class="chap__credit will-reveal" style="--d:280ms">
           <p class="chap__credit-line"><span>Heykel Tasarımları</span> Murat Tüvör</p>
           <ul class="bd-badges"><li class="bd-badge">Türkiye’nin ilk yerli 3D yazıcısı · 2019</li></ul>
@@ -2651,7 +2734,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
       </header>
       <div class="tb__body">
         <div class="tb__story">
-          <p class="tb__text"><span class="tb__drop">T</span>ürkiye Yüzyılı Maarif Modeli’nin mimarları; ülkemizin dört bir yanından gelen müfredat tasarımcıları, ders kitabı yazarları ve editörleri… Türkiye’nin eğitim geleceğini yeniden kuran ekip, bu isimlerden oluşuyordu. Ve biz, Van’ın üç merkez ilçesinden (İpekyolu, Edremit, Tuşba) gelen idareci ve öğretmenlerle onları aynı masada buluşturduk. Koordinatörlüğünü üstlendiğim bu iki günlük program, sadece bir eğitim değil; sahadaki uygulayıcılar ile müfredatın mimarlarını bir araya getiren bir köprüydü.</p>
+          <p class="tb__text"><span class="tb__drop">T</span>ürkiye Yüzyılı Maarif Modeli’nin mimarları; ülkemizin dört bir yanından gelen müfredat tasarımcıları, ders kitabı yazarları ve editörleri… Türkiye’nin eğitim geleceğini yeniden kuran ekip, bu isimlerden oluşuyordu. Ve biz, Van’ın üç merkez ilçesinden (İpekyolu, Edremit, Tuşba) gelen idareci ve öğretmenlerle onları aynı masada buluşturduk. Koordinatörlüğünü üstlendiğim iki günlük program, bu iki dünya arasında bir köprü olsun diye tasarlandı.</p>
           <blockquote class="tb__pull"><p>Sahadaki uygulayıcılar ile müfredatın mimarları, aynı masada.</p></blockquote>
           <p class="tb__text">İlk gün TED Van Koleji’nde, modeli yazanlarla onu sınıfa taşıyacak olanlar atölyelerde yan yana çalıştı. İkinci gün Evliya Çelebi Uygulama Oteli’nde “Erdem, Değer, Eylem” paneliyle program tamamlandı.</p>
           <ol class="tb__days" aria-label="Programın iki günü">
@@ -2691,8 +2774,8 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
         <blockquote class="tb__thanks"><p class="tb__thk">Teşekkür ve vefa</p><p>Bu anlamlı sürecin gerçekleşmesinde emeği geçen Van Vali Yardımcısı Sayın Musa Göktaş’a, Tuşba İlçe Millî Eğitim Müdürü Sayın Muhlis Ceylani’ye, TED Van Koleji Kurucusu Sayın Ahmet Tanrıtanır’a, proje ortağım Ali A. Bakan’a ve ülkemizin eğitim geleceğine emek veren tüm akademisyenlere içtenlikle teşekkür ederim.</p></blockquote>
         <nav class="tb__press" aria-label="Basındaki yansımalar">
           <p class="tb__presshead">Basındaki <em>yansımalar</em></p>
-          <a class="tb__pl" href="https://vanbolgehaber.com/turkiye-yuzyili-maarif-modeli-tusbada-ele-alindi/" target="_blank" rel="noopener"><span class="tb__src">Van Bölge Haber</span><span class="tb__hl">Türkiye Yüzyılı Maarif Modeli Tuşba’da ele alındı</span><span class="tb__go" aria-hidden="true">↗</span></a>
-          <a class="tb__pl" href="https://www.vanolay.com/turkiye-yuzyili-maarif-modeli-tusbada-ele-alindi" target="_blank" rel="noopener"><span class="tb__src">Van Olay</span><span class="tb__hl">Türkiye Yüzyılı Maarif Modeli Tuşba’da ele alındı</span><span class="tb__go" aria-hidden="true">↗</span></a>
+          <a class="tb__pl" href="https://vanbolgehaber.com/turkiye-yuzyili-maarif-modeli-tusbada-ele-alindi/" target="_blank" rel="noopener"><span class="tb__src">Van Bölge Haber</span><span class="tb__hl">Türkiye Yüzyılı Maarif Modeli Tuşba’da ele alındı · 5 Eylül 2026</span><span class="tb__go" aria-hidden="true">↗</span></a>
+          <a class="tb__pl" href="https://www.vanolay.com/turkiye-yuzyili-maarif-modeli-tusbada-ele-alindi" target="_blank" rel="noopener"><span class="tb__src">Van Olay</span><span class="tb__hl">“Eğitim yalnızca akademik başarıdan ibaret değil”</span><span class="tb__go" aria-hidden="true">↗</span></a>
           <a class="tb__pl" href="https://www.tusba.gov.tr/turkiye-yuzyili-maarif-modeli-kapsaminda-erdem-deger-ve-eylem-programi-devam-etti" target="_blank" rel="noopener"><span class="tb__src">Tuşba Kaymakamlığı</span><span class="tb__hl">“Erdem, Değer ve Eylem” programı devam etti</span><span class="tb__go" aria-hidden="true">↗</span></a>
         </nav>
         <ul class="bd-badges tb__badges"><li class="bd-badge">Koordinatör</li><li class="bd-badge">Türkiye Yüzyılı Maarif Modeli</li><li class="bd-badge">İpekyolu · Edremit · Tuşba</li><li class="bd-badge">İki günlük program</li></ul>
@@ -2708,7 +2791,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
       <p class="kicker"><span class="kno" aria-hidden="true">04</span>Yaratıcı Teknoloji ve Projeler</p>
       <div class="section-head__text">
         <h2 class="section-title will-reveal" id="proj-title">Merakın <em>somut hâlleri.</em></h2>
-        <p class="section-lead will-reveal" style="--d:120ms">Kitaplar, bir oyun, bir makale, atölyeler. Her biri sınıfta sorulan bir sorunun cevabı olarak doğdu.</p>
+        <p class="section-lead will-reveal" style="--d:120ms">Bir oyun, üç dijital kitap, bir makale ve iki atölye. Hepsinin başında sınıfta sorulmuş bir soru var.</p>
       </div>
     </header>
 
@@ -2718,17 +2801,17 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
           <img loading="lazy" class="gv__heroimg" src="assets/tuspa/hero.webp" srcset="assets/tuspa/hero-1200.webp 1200w, assets/tuspa/hero.webp 2400w" sizes="(max-width: 1100px) 100vw, 1280px" alt="Oyundan bir kare: Van Gölü’nün canavarı Akdamar Adası’nın önünde sudan yükseliyor" decoding="async">
           <div class="gv__veil" aria-hidden="true"></div>
           <div class="gv__shine" aria-hidden="true"></div>
-          <span class="work__chip gv__chip"><i aria-hidden="true"></i>Kapalı Beta</span>
+          <span class="work__chip gv__chip"><i aria-hidden="true"></i>Kapalı beta</span>
           <div class="gv__lead">
             <p class="work__meta">Oyun · 3D Macera · Oyun Vitrini</p>
-            <p class="gv__when"><span class="gv__when-d">Eylül 2025 – Ekim 2026</span><span class="gv__when-live"><i aria-hidden="true"></i>Devam Ediyor</span><span class="gv__when-t">Godot &amp; Blender</span></p>
+            <p class="gv__when"><span class="gv__when-d">2025’ten bu yana</span><span class="gv__when-live"><i aria-hidden="true"></i>Devam ediyor</span><span class="gv__when-t">Godot &amp; Blender</span></p>
             <h3 class="gv__title" id="gv-title"><img loading="lazy" class="gv__logo" src="assets/tuspa/logo.webp" width="720" height="565" alt="Tuşpa: Van Gölü’nün Kayıp Hafızası"></h3>
             <p class="gv__quote">“Su… hafızayı saklar. <em>Ama efsaneler asla gömülü kalmaz.</em>”</p>
           </div>
         </div>
 
         <div class="gv__intro">
-          <p class="work__text">Van’ın binlerce yıllık hafızasını keşfedilecek bir dünyaya dönüştüren 3D macera. Bir Van kedisi olan Tuşpa’yla gölün kıyısından Akdamar’a, kale surlarından şelalelere uzanan bir yolculuk. Şehrini katman katman kurduğum, kapalı beta sürümündeki oyunum.</p>
+          <p class="work__text">Van’ın binlerce yıllık hafızasını keşfedilecek bir dünyaya dönüştüren 3D macera. Bir Van kedisi olan Tuşpa’yla gölün kıyısından Akdamar’a, kale surlarından şelalelere uzanan bir yolculuk. Şehrini taş taş kurduğum, kapalı beta sürümündeki oyunum.</p>
           <ol class="gv__route" aria-label="Oyunda gezilen yerlerden bazıları">
             <li>Gevaş İskelesi</li><li>Akdamar Adası</li><li>Kahvaltıcılar Sokağı</li><li>Van Kalesi · Horhor</li><li>Çavuştepe</li><li>Halime Hatun Kümbeti</li><li>Muradiye Şelalesi</li><li class="gv__route-more">ve diğer mekânlar</li>
           </ol>
@@ -2744,7 +2827,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
         </section>
 
         <section class="gv__row gv__row--game" aria-labelledby="gv-r1">
-          <header class="gv__head"><span class="gv__no">01</span><h4 class="gv__h" id="gv-r1">Oyunun <em>içinden</em></h4><p class="gv__sub">Kodladığım mekânlar, Godot motorunda oyun içi kamerayla</p></header>
+          <header class="gv__head"><span class="gv__no">01</span><h4 class="gv__h" id="gv-r1">Oyunun <em>içinden</em></h4><p class="gv__sub">Godot’da kurup gezdiğim mekânlar, oyunun kendi kamerasından</p></header>
           <div class="tl__photos gv__strip" aria-label="Tuşpa · Oyunun içinden">
             <figure data-photo="tuspa-oyun-akdamar" class="tl__ph gv__ph" style="--r:-1.6deg;--op:60% 50%" data-photo-alt="Akdamar Adası ve kilisesi, Van Gölü’nün ortasında; kıyıya yakın sularda canavar dolaşıyor"><span>Akdamar Adası</span></figure>
             <figure data-photo="tuspa-oyun-kahvalti" class="tl__ph gv__ph" style="--r:1.2deg;--op:50% 50%" data-photo-alt="Kahvaltıcılar Sokağı: rengârenk cepheler, sokağa kurulmuş kahvaltı masaları"><span>Kahvaltıcılar Sokağı</span></figure>
@@ -2777,7 +2860,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
               <figure hidden data-photo="tuspa-canavar-yakin" class="tl__ph gv__ph" data-photo-alt="Canavar kıyıya yakın, merakla bakıyor"><span>Merak</span></figure>
             </div>
             <div class="gv__montext">
-              <p class="gv__lede">Yıllardır anlatılan efsaneyi korkutan bir yaratık olarak değil, <em>gölün hafızasını saklayan</em> merak dolu bir karakter olarak yeniden tasarladım.</p>
+              <p class="gv__lede">Yıllardır anlatılan efsanenin korkutucu yaratığını, <em>gölün hafızasını saklayan</em> meraklı bir karaktere dönüştürdüm.</p>
               <p>Boynuzları, yarı saydam yüzgeçleri ve gölün mavisini taşıyan pullarıyla Akdamar açıklarında dolaşıyor. Gövdesi, birbirini izleyen parçalardan oluşan bir zincirle suyun üstünde dalgalanıyor; Blender’da modelleyip Godot’ta kodla canlandırdım.</p>
               <ul class="bd-badges"><li class="bd-badge">Efsane</li><li class="bd-badge">Blender modeli</li><li class="bd-badge">Kodla animasyon</li></ul>
             </div>
@@ -2898,7 +2981,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
           <h3 class="work__title">Uluslararası yayına <em>veri katkısı</em></h3>
           <p class="work__text">Mayıs 2025’te, yapay zekânın ilkokul öğrencilerinin yazma becerilerine etkisini inceleyen bir araştırmanın verilerini sınıfta topladım. Sınıftaki gözlem, uluslararası bir bulguya dönüştü.</p>
           <dl class="sci__colo">
-            <div><dt>Makale</dt><dd lang="en"><i>Integration of AI into Primary School Students’ Writing Skills…</i></dd></div>
+            <div><dt>Makale</dt><dd lang="en"><i>Integration of Artificial Intelligence (AI) into Primary School Students’ Writing Skills: The Impact of ChatGPT on Creative Writing and Writing Self-Efficacy</i></dd></div>
             <div><dt>Dergi</dt><dd><span lang="en">Journal of Educational Computing Research</span> · SSCI Q1, JIF 4.9 · 2025</dd></div>
             <div><dt>Yazar</dt><dd>Doç. Dr. Yusuf Kızıltaş</dd></div>
             <div class="is-me"><dt>Rolüm</dt><dd>Veri toplama</dd></div>
@@ -2914,9 +2997,9 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
         </div>
         <div class="work__body">
           <p class="work__meta">Tasarım · Yapay Zekâ · 2024 – 2025</p>
-          <h3 class="work__title">Tasarlıyorum, <em>AI ile Üretiyoruz</em></h3>
+          <h3 class="work__title">Tasarlıyoruz, <em>yapay zekâyla üretiyoruz</em></h3>
           <p class="work__text">Fikirden ürüne bir atölye: kâğıt üzerindeki tasarımlar, yapay zekâ araçlarıyla geliştirilip giyilebilir tişörtlere dönüşüyor.</p>
-          <div class="tl__photos tl__photos--two ph-dark" aria-label="Tasarlıyorum, AI ile Üretiyoruz"><figure data-photo="tisort-1" class="tl__ph" style="--r:-2deg;--op:50% 50%" data-photo-alt="Kâğıt üzerindeki ilk tasarım, Ekim 2024"><span>Kâğıttaki tasarım</span></figure><figure data-photo="tisort-2" class="tl__ph" style="--r:1.5deg;--op:50% 50%" data-photo-alt="Tasarımın basıldığı turuncu tişört, Ekim 2024"><span>Tişörtte</span><i class="ph-more" aria-hidden="true">+2</i></figure><figure hidden data-photo="tisort-3" class="tl__ph" data-photo-alt="Aynı desen beyaz tişörtte, Ekim 2024"><span>Beyaz tişört</span></figure><figure hidden data-photo="tisort-4" class="tl__ph" data-photo-alt="Öğrencinin çizimi Hugging Face ile üç boyutlu tasarıma dönüşüyor, Nisan 2025"><span>Hugging Face ile tasarım</span></figure></div>
+          <div class="tl__photos tl__photos--two ph-dark" aria-label="Tasarlıyoruz, yapay zekâyla üretiyoruz"><figure data-photo="tisort-1" class="tl__ph" style="--r:-2deg;--op:50% 50%" data-photo-alt="Kâğıt üzerindeki ilk tasarım, Ekim 2024"><span>Kâğıttaki tasarım</span></figure><figure data-photo="tisort-2" class="tl__ph" style="--r:1.5deg;--op:50% 50%" data-photo-alt="Tasarımın basıldığı turuncu tişört, Ekim 2024"><span>Tişörtte</span><i class="ph-more" aria-hidden="true">+2</i></figure><figure hidden data-photo="tisort-3" class="tl__ph" data-photo-alt="Aynı desen beyaz tişörtte, Ekim 2024"><span>Beyaz tişört</span></figure><figure hidden data-photo="tisort-4" class="tl__ph" data-photo-alt="Öğrencinin çizimi Hugging Face ile üç boyutlu tasarıma dönüşüyor, Nisan 2025"><span>Hugging Face ile tasarım</span></figure></div>
           <ul class="bd-badges"><li class="bd-badge">Tişört projesi</li><li class="bd-badge">Üretken AI</li></ul>
         </div>
       </article>
@@ -2988,16 +3071,14 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
         <p>Bir hafta sonra çocuklar teşekkür etmek istedi. Kalemlerini aldılar ve Zehra Anne’yi çizdiler: kanatlı bir melek. Kâğıdın bir yanında Van, öbür yanında İstanbul; arada kendileri ve onlara uzanan bir el. Resimlerin hepsini kargoyla Cevahir’e, İsmail Abi’ye gönderdim.</p>
         <blockquote class="story__pull">Kargo ulaştığında telefonda ikimiz de hüngür hüngür ağladık.</blockquote>
         <p>Zehra Anne, çocukların kendisi için çizdiği meleği göremeden melek oldu.</p>
-        <p>O resimlerin hiçbirinin fotoğrafını çekmedim; yalnızca o baksın diye çizilmişlerdi. Doğan Hoca bir gün bana “Hayatın içinden bu hikâyeleri bana yaz” demişti. Nevin Yağmur’la tanışmamız o hikâyelerin ilk satırıydı; Zehra Anne’nin patikleri ve çorapları ise en sıcak sayfalarından biri oldu. Şimdi, Hoca’nın dediği gibi, yazıyorum.</p>
-        <p class="echo"><a href="#dogan-hoca">Doğan Hoca’nın “yaz” dediği gün, İlham ve Anılar’da.<span aria-hidden="true"> ↑</span></a></p>
-        <p class="story__note"><span aria-hidden="true">*</span> Çocukların çizdiği meleklerin fotoğrafı yoktur; yalnızca hafızalarda ve bu satırlarda yaşarlar.</p>
+        <p>O resimlerin hiçbirinin fotoğrafını çekmedim; yalnızca o baksın diye çizilmişlerdi. Doğan Hoca bana bu hikâyeleri yazmamı emanet etmişti. Nevin Yağmur’la tanışmamız o hikâyelerin ilk satırıydı; Zehra Anne’nin patikleri ve çorapları ise en sıcak sayfalarından biri oldu. Şimdi, Hoca’nın dediği gibi, yazıyorum.</p>
       </div>
     </article>
     </div>
     <p class="giving__turn will-reveal"><span>Hikâyeden sahaya</span></p>
     <div class="giving__grid">
       <div class="giving__aside">
-        <blockquote class="giving__quote will-reveal">“Bir kutu kitap, bir gitar ve biraz zaman. Bir çocuğun gününü değiştirmek için bazen <em>bu kadarı yetiyor.</em>”</blockquote>
+        <blockquote class="giving__quote will-reveal">“Bir kutu kitap, bir gitar ve biraz zaman. Bir çocuğun hayatını değiştirmek için bazen <em>bu kadarı yetiyor.</em>”</blockquote>
         <figure class="memo__photo giving__note will-reveal" style="--d:180ms" data-photo="kitap-kutusu" data-photo-target=".memo__frame" data-photo-alt="Öğrencilere ulaşan bir kutu kitap: Seksen Günde Dünya Turu, Edison, Nasreddin Hoca ve daha niceleri">
           <span class="memo__tape" aria-hidden="true"></span>
           <div class="memo__frame">
@@ -3022,14 +3103,13 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
           <h3 class="give__title">Van’a uzanan armağanlar</h3>
           <div class="tl__photos gifts__photos" data-hide-empty aria-label="Van’a uzanan armağanlar · 2024–2025"><figure data-photo="armagan-1" class="tl__ph" style="--r:-1.5deg;--op:50% 42%" data-photo-alt="Gitar elimde, çocuklarla şarkılar; Nevin Yağmur ve Van YYÜ TOG gönüllüleriyle, Ocak 2024"><span>Şarkılar · Ocak 2024</span></figure><figure hidden data-photo="armagan-2" class="tl__ph" style="--op:50% 60%" data-photo-alt="Van YYÜ TOG gönüllüleri ve Nevin Yağmur’la eğitime destek gününde, Ocak 2024"><span>TOG gönüllüleriyle · Ocak 2024</span></figure><figure data-photo="armagan-3" class="tl__ph" style="--r:1.2deg;--op:50% 50%" data-photo-alt="Arıtoprak köyünün öğrencileri armağanlarını almış, karda el sallıyor, 14 Şubat 2024"><span>Arıtoprak · Şubat 2024</span></figure><figure data-photo="armagan-4" class="tl__ph" style="--r:-.8deg;--op:50% 50%" data-photo-alt="Köy okulunda armağan günü, pasta kesimi, 17 Şubat 2025"><span>Armağan günü · Şubat 2025</span><i class="ph-more" aria-hidden="true">+2</i></figure><figure hidden data-photo="armagan-5" class="tl__ph" style="--op:50% 60%" data-photo-alt="Van Tuşba Yumrutepe İlkokulu’nun önünde Nevin Yağmur ve gönüllülerle hatıra, 17 Şubat 2025"><span>Yumrutepe İlkokulu · Şubat 2025</span></figure></div>
           <ul class="bd-badges"><li class="bd-badge">Bir Nevi Mutluluk</li><li class="bd-badge">Van YYÜ TOG</li><li class="bd-badge">Arıtoprak · Yumrutepe</li><li class="bd-badge">2019’dan bugüne</li></ul>
-          <p class="echo"><a href="#tevafuk">Nevin Yağmur’la tanışmamız: gecenin 02:30’unda yanlış çalan bir telefon.<span aria-hidden="true"> ↑</span></a></p>
         </article>
         <article class="give give--quake will-reveal" id="deprem" style="--d:80ms">
           <p class="give__meta">Şubat – Mart 2023 · Viranşehir</p>
           <h3 class="give__title">Deprem Bölgesi <em>Gönüllü Eğitim Desteği</em></h3>
-          <p class="give__text">6 Şubat 2023’te asrın felaketini yaşadık. On bir ilimizde yıkılan yalnızca binalar değildi; çocukların oyunları, okul yolları, güven duyguları da enkazın altında kalmıştı. O günlerde Türk Kızılay’ın gönüllüsü olarak Viranşehir’e gittim. Kendi ekibimizi kurduk; Bir Nevi Mutluluk ve Kızılay desteğiyle depremden etkilenen çocuklar için psikososyal destek sınıfları açtık: birkaç masa, renkli balonlar, bir tahta ve yeniden öğrenme isteği. Nevin Yağmur ve Bir Nevi Mutluluk ekibiyle ayrı bölgelerdeydik ama hep koordineli hareket ettik. Fiziken birlikte olmasak da gönül diliyle el ele çalıştık. Amacımız yalnızca dersleri sürdürmek değil, çocukların yeniden nefes alabileceği, kendini güvende hissedebileceği bir alan açmak, yaralarını birlikte sarmaktı. Orada iyiliğin örgütlendiğinde nasıl büyüdüğünü gördüm; o çocuklar da bana öğretmenliğin en saf hâlini yeniden hatırlattı.</p>
+          <div class="quake__body"><p class="give__text">6 Şubat 2023’te asrın felaketini yaşadık. On bir ilimizde binalarla birlikte çocukların oyunları, okul yolları ve güven duyguları da enkazın altında kaldı. O günlerde Türk Kızılay’ın gönüllüsü olarak Viranşehir’e gittim.</p><p class="give__text">Kendi ekibimizi kurduk; Bir Nevi Mutluluk ve Kızılay desteğiyle depremden etkilenen çocuklar için psikososyal destek sınıfları açtık: birkaç masa, renkli balonlar, bir tahta ve yeniden öğrenme isteği. Nevin Yağmur ve ekibiyle ayrı bölgelerdeydik ama hep koordineli hareket ettik.</p><blockquote class="give__pull">Orada iyiliğin örgütlendiğinde nasıl büyüdüğünü gördüm.</blockquote><p class="give__text">Amacımız dersleri sürdürmenin ötesinde, çocukların yeniden nefes alabileceği, kendini güvende hissedebileceği bir alan açmak ve yaralarını birlikte sarmaktı. O çocuklar da bana öğretmenliğin en saf hâlini yeniden hatırlattı.</p></div>
           <div class="tl__photos quake__photos" aria-label="Deprem Bölgesi Gönüllü Eğitim Desteği · Viranşehir"><figure data-photo="deprem-viransehir-1" class="tl__ph" style="--r:-2deg;--op:62% 50%" data-photo-alt="Viranşehir’de kurduğumuz psikososyal destek sınıfının kapısında, 15 Şubat 2023"><span>Psikososyal destek sınıfı</span></figure><figure data-photo="deprem-viransehir-2" class="tl__ph" style="--r:1.5deg;--op:50% 50%" data-photo-alt="Ekibimizle sınıfı balonlarla hazırlarken, 15 Şubat 2023"><span>Ekibimizle hazırlık</span></figure><figure data-photo="deprem-viransehir-3" class="tl__ph" style="--r:-1deg;--op:50% 50%" data-photo-alt="Türk Kızılay yelekli çocuklarla, 15 Şubat 2023"><span>Türk Kızılay ile</span><i class="ph-more" aria-hidden="true">+3</i></figure><figure hidden data-photo="deprem-viransehir-4" class="tl__ph" data-photo-alt="Çocuklar renkli pipetlerle yapılar kuruyor, Mart 2023"><span>Birlikte üretmek</span></figure><figure hidden data-photo="deprem-viransehir-5" class="tl__ph" data-photo-alt="Çadır kentte kurduğumuz oyun parkuru, Mart 2023"><span>Çadır kentte oyun</span></figure><figure hidden data-photo="deprem-viransehir-6" class="tl__ph" data-photo-alt="Çocuklarla açık havada balon oyunları, Mart 2023"><span>Açık havada</span></figure></div>
-          <ul class="bd-badges"><li class="bd-badge">Gönüllü</li><li class="bd-badge">MEB &amp; Kızılay</li><li class="bd-badge">Bir Nevi Mutluluk</li><li class="bd-badge">Viranşehir</li><li class="bd-badge">Psikososyal Destek</li></ul>
+          <ul class="bd-badges"><li class="bd-badge">Gönüllü</li><li class="bd-badge">Türk Kızılay</li><li class="bd-badge">Bir Nevi Mutluluk</li><li class="bd-badge">Viranşehir</li><li class="bd-badge">Psikososyal Destek</li></ul>
         </article>
 
         <article class="give give--feature will-reveal" style="--d:60ms">
@@ -3075,7 +3155,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
         <p class="pod__meta">Kültür · Sanat Podcast’i · 28 Eylül 2025’ten beri</p>
         <h3 class="pod__title">Kaydedenler <em>Kulübü</em></h3>
         <p class="pod__count"><span>18</span> Bölüm</p>
-        <p class="pod__text">Tasavvuftan yola çıkıp Doğu ve Batı okumalarıyla insanın anlam arayışının peşine düşen bir podcast. Modern insanın hayatını sorguluyor, çıkış yolları arıyoruz. Arada da sevdiğim şarkıların cover’ları.</p>
+        <p class="pod__text">Tasavvuftan yola çıkıp Doğu ve Batı okumalarıyla insanın anlam arayışının peşine düşen bir podcast. Modern insanın hayatını sorguluyor, çıkış yolları arıyoruz. Stüdyoda kaydettiğim cover’lar da aynı kanalda yayımlanıyor.</p>
         <figure class="kb" aria-labelledby="kb-cap"><figcaption class="kb__cap" id="kb-cap"><span>Kapak arşivi</span><i></i><em>Bölüme gitmek için kapağa dokunun</em></figcaption><ul class="kb__grid"><li style="--r:-2.4deg"><a class="kb__card" href="https://www.youtube.com/watch?v=6pp6X2yWHEA" target="_blank" rel="noopener" title="Şu Anı Kaçırıyorsun · Kaydedenler Kulübü #5"><img src="assets/foto/kaydedenler/kb-05.webp" width="640" height="310" loading="lazy" decoding="async" alt="Kaydedenler Kulübü #5 kapağı: Şu Anı Kaçırıyorsun"><span class="kb__label"><b>#5</b> Şu anı kaçırıyorsun</span></a></li><li style="--r:1.6deg"><a class="kb__card" href="https://www.youtube.com/watch?v=X-q6EhzhBoc" target="_blank" rel="noopener" title="Neden Hep Aynı İnsanları Buluyorum? · Kaydedenler Kulübü #9"><img src="assets/foto/kaydedenler/kb-09.webp" width="640" height="310" loading="lazy" decoding="async" alt="Kaydedenler Kulübü #9 kapağı: Neden Hep Aynı İnsanları Buluyorum?"><span class="kb__label"><b>#9</b> Bu tesadüf değil</span></a></li><li style="--r:-1deg"><a class="kb__card" href="https://www.youtube.com/watch?v=eRzo04dfo1o" target="_blank" rel="noopener" title="Zihnin Seni Kandırıyor Olabilir · Kaydedenler Kulübü #8"><img src="assets/foto/kaydedenler/kb-08.webp" width="640" height="310" loading="lazy" decoding="async" alt="Kaydedenler Kulübü #8 kapağı: Zihnin Seni Kandırıyor Olabilir"><span class="kb__label"><b>#8</b> Kandırılıyorsun</span></a></li><li style="--r:2.2deg"><a class="kb__card" href="https://www.youtube.com/watch?v=mNewXVia2ZM" target="_blank" rel="noopener" title="Rüyanı Öğrenirsen… Gerçek Başlar · Kaydedenler Kulübü #13"><img src="assets/foto/kaydedenler/kb-13.webp" width="640" height="310" loading="lazy" decoding="async" alt="Kaydedenler Kulübü #13 kapağı: Rüyanı Öğrenirsen… Gerçek Başlar"><span class="kb__label"><b>#13</b> Rüyan konuşuyor</span></a></li><li style="--r:1.8deg"><a class="kb__card" href="https://www.youtube.com/watch?v=6kO6-KldhSk" target="_blank" rel="noopener" title="Ağzından Çıkan Her Şey Bir Gün Başına Gelebilir · Kaydedenler Kulübü #14"><img src="assets/foto/kaydedenler/kb-14.webp" width="640" height="310" loading="lazy" decoding="async" alt="Kaydedenler Kulübü #14 kapağı: Ağzından Çıkan Her Şey Bir Gün Başına Gelebilir"><span class="kb__label"><b>#14</b> Dil, kaderini yazar</span></a></li><li style="--r:-1.6deg"><a class="kb__card" href="https://www.youtube.com/watch?v=jG2q-Iq6Ibk" target="_blank" rel="noopener" title="Bu Öfke Kimin? Seneca, Gazali ve Nörobilim Cevaplıyor · Kaydedenler Kulübü #16"><img src="assets/foto/kaydedenler/kb-16.webp" width="640" height="310" loading="lazy" decoding="async" alt="Kaydedenler Kulübü #16 kapağı: Bu Öfke Kimin? Seneca, Gazali ve Nörobilim Cevaplıyor"><span class="kb__label"><b>#16</b> Öfken kime?</span></a></li><li style="--r:2.4deg"><a class="kb__card" href="https://www.youtube.com/watch?v=cPQcC-F8TpM" target="_blank" rel="noopener" title="Hayatın Buz Gibi Yüzüyle Yüzleşmek · Kaydedenler Kulübü #17"><img src="assets/foto/kaydedenler/kb-17.webp" width="640" height="310" loading="lazy" decoding="async" alt="Kaydedenler Kulübü #17 kapağı: Hayatın Buz Gibi Yüzüyle Yüzleşmek"><span class="kb__label"><b>#17</b> Dur ve gör</span></a></li><li style="--r:-2deg"><a class="kb__card" href="https://www.youtube.com/watch?v=FYXqVyrB3sM" target="_blank" rel="noopener" title="Neden Başkasının Hayat Tarifini Yaşıyorsun? · Kaydedenler Kulübü #18"><img src="assets/foto/kaydedenler/kb-18.webp" width="640" height="310" loading="lazy" decoding="async" alt="Kaydedenler Kulübü #18 kapağı: Neden Başkasının Hayat Tarifini Yaşıyorsun?"><span class="kb__label"><b>#18</b> Tavsiyeye aldanma</span></a></li></ul></figure>
 <div class="pod__wave" aria-hidden="true"><i style="--h:8%;--d:0ms"></i><i style="--h:16%;--d:37ms"></i><i style="--h:25%;--d:74ms"></i><i style="--h:26%;--d:111ms"></i><i style="--h:31%;--d:148ms"></i><i style="--h:28%;--d:185ms"></i><i style="--h:24%;--d:222ms"></i><i style="--h:38%;--d:259ms"></i><i style="--h:39%;--d:296ms"></i><i style="--h:47%;--d:333ms"></i><i style="--h:40%;--d:370ms"></i><i style="--h:33%;--d:407ms"></i><i style="--h:40%;--d:444ms"></i><i style="--h:57%;--d:481ms"></i><i style="--h:53%;--d:518ms"></i><i style="--h:55%;--d:555ms"></i><i style="--h:55%;--d:592ms"></i><i style="--h:50%;--d:629ms"></i><i style="--h:54%;--d:666ms"></i><i style="--h:62%;--d:703ms"></i><i style="--h:78%;--d:740ms"></i><i style="--h:57%;--d:777ms"></i><i style="--h:64%;--d:814ms"></i><i style="--h:43%;--d:851ms"></i><i style="--h:55%;--d:888ms"></i><i style="--h:64%;--d:925ms"></i><i style="--h:71%;--d:962ms"></i><i style="--h:76%;--d:999ms"></i><i style="--h:50%;--d:1036ms"></i><i style="--h:57%;--d:1073ms"></i><i style="--h:72%;--d:1110ms"></i><i style="--h:75%;--d:1147ms"></i><i style="--h:78%;--d:1184ms"></i><i style="--h:59%;--d:1221ms"></i><i style="--h:44%;--d:1258ms"></i><i style="--h:54%;--d:1295ms"></i><i style="--h:77%;--d:1332ms"></i><i style="--h:77%;--d:1369ms"></i><i style="--h:71%;--d:1406ms"></i><i style="--h:66%;--d:1443ms"></i><i style="--h:48%;--d:1480ms"></i><i style="--h:60%;--d:1517ms"></i><i style="--h:80%;--d:1554ms"></i><i style="--h:81%;--d:1591ms"></i><i style="--h:65%;--d:28ms"></i><i style="--h:59%;--d:65ms"></i><i style="--h:52%;--d:102ms"></i><i style="--h:72%;--d:139ms"></i><i style="--h:76%;--d:176ms"></i><i style="--h:66%;--d:213ms"></i><i style="--h:72%;--d:250ms"></i><i style="--h:42%;--d:287ms"></i><i style="--h:49%;--d:324ms"></i><i style="--h:65%;--d:361ms"></i><i style="--h:58%;--d:398ms"></i><i style="--h:61%;--d:435ms"></i><i style="--h:44%;--d:472ms"></i><i style="--h:42%;--d:509ms"></i><i style="--h:50%;--d:546ms"></i><i style="--h:53%;--d:583ms"></i><i style="--h:58%;--d:620ms"></i><i style="--h:45%;--d:657ms"></i><i style="--h:41%;--d:694ms"></i><i style="--h:32%;--d:731ms"></i><i style="--h:38%;--d:768ms"></i><i style="--h:38%;--d:805ms"></i><i style="--h:39%;--d:842ms"></i><i style="--h:34%;--d:879ms"></i><i style="--h:23%;--d:916ms"></i><i style="--h:20%;--d:953ms"></i><i style="--h:16%;--d:990ms"></i><i style="--h:8%;--d:1027ms"></i></div>
         <a class="bd-btn bd-btn--light" href="https://youtube.com/@kaydedenlerpodcast?si=HDdzGssgM_zvTM3_" target="_blank" rel="noopener" data-link="youtube-kaydedenler">YouTube’da dinle <span class="bd-btn__arrow" aria-hidden="true">↗</span></a>
@@ -3084,10 +3164,10 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
       <div class="sound__side">
         <article class="track will-reveal" style="--d:90ms">
           <svg class="wave" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 Q 10 6 20 30 T 40 30 T 60 30 Q 70 14 80 30 T 100 30 Q 110 2 120 30 T 140 30 T 160 30 Q 170 10 180 30 T 200 30 Q 210 0 220 30 T 240 30 Q 250 18 260 30 T 280 30 Q 290 4 300 30 T 320 30 T 340 30 Q 350 12 360 30 T 380 30 T 400 30"/></svg>
-          <p class="track__meta">Beste</p>
+          <p class="track__meta">Beste · Ağustos 2023</p>
           <h3 class="track__title">Kozmik <em>Kalıntılar</em></h3>
-          <p class="track__text">Kendi bestem: sesle sessizlik arasında, uzak bir ışığın izini süren bir parça.</p>
-          <p class="track__note">Tek bir parça değil, bir süreç: 2019–2020’de Metronom Audio’da başlayan kayıt ve jam oturumlarının içinden, katman katman büyüdü.</p>
+          <p class="track__text">Stüdyodan çıkan ilk şarkımız “Neresindeyim”: söz, beste ve düzenleme benim; ritim, lead ve bas gitarı, davulu ve vokali de ben kaydettim. Piyanoda Ufuk Aksel.</p>
+          <p class="track__note">2019–2020’de Metronom Audio’da başlayan kayıt ve jam oturumlarının içinden büyüdü.</p>
           <a class="bd-link bd-link--light" href="https://youtu.be/hcgCzMNhtWs?si=r8XJYLG7MWYzZwZT" target="_blank" rel="noopener" data-link="youtube-kozmik">YouTube’da dinle ↗</a>
         </article>
         <article class="track will-reveal" id="metronom" style="--d:180ms">
@@ -3097,7 +3177,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
           <div class="tl__photos tl__photos--two track__photos" aria-label="Metronom Audio stüdyo fotoğrafları"><figure data-photo="metronom-2019" class="tl__ph" style="--r:-2deg;--op:71% 50%" data-photo-alt="Metronom Audio’da kayıt, 2019"><span>Stüdyoda, 2019</span></figure><figure data-photo="metronom-2020" class="tl__ph" style="--r:1.5deg;--op:79% 45%" data-photo-alt="Ağabeyim, müzisyen Onur Bolat’la iki gitar, aynı oda: jam session, 2020"><span>Onur Bolat ile, 2020</span></figure></div>
           <div class="covers">
             <p class="covers__head"><span class="covers__n">5</span> cover</p>
-            <p class="covers__text">Seslendirip çaldığım beş cover. Hiçbiri bir kopya değil; her biri, sevdiğim bir şarkıyı kendi sesimle yeniden okuma denemesi.</p>
+            <p class="covers__text">Stüdyoda seslendirip çaldığım, Kaydedenler Kulübü kanalında yayımladığım beş cover. Her biri, sevdiğim bir şarkıyı kendi sesimle yeniden okuma denemesi.</p>
             <a class="covers__now" href="https://www.youtube.com/watch?v=PET1M4LJ_7o&amp;list=PLxFxcCYDH8MBYFtL3aCcpcDK4pHxTU0Lj" target="_blank" rel="noopener" data-link="youtube-cover-liste"><span class="covers__song">Yerine Sevemem <i>·</i> Gökhan Kırdar cover’ı</span><span class="covers__by">YouTube’da dinle <span aria-hidden="true">↗</span></span></a>
           </div>
           <ul class="bd-badges"><li class="bd-badge">Kayıt</li><li class="bd-badge">Jam</li><li class="bd-badge">Cover</li></ul>
@@ -3107,13 +3187,8 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 
     <figure class="listen will-reveal" aria-label="Müzik künyesi">
       <div class="listen__wave" aria-hidden="true"><svg viewBox="0 0 1200 160" preserveAspectRatio="none"><path class="listen__p listen__p--0" d="M0 80.0 L12 87.9 L24 94.7 L36 99.6 L48 102.2 L60 102.6 L72 101.3 L84 99.3 L96 97.5 L108 96.8 L120 97.3 L132 98.8 L144 100.6 L156 101.6 L168 101.0 L180 98.6 L192 94.8 L204 90.7 L216 87.6 L228 86.8 L240 89.0 L252 93.7 L264 99.7 L276 105.1 L288 107.7 L300 106.1 L312 99.7 L324 89.3 L336 76.6 L348 63.8 L360 53.1 L372 45.8 L384 42.5 L396 42.5 L408 44.6 L420 47.4 L432 49.8 L444 51.3 L456 52.1 L468 52.9 L480 54.5 L492 57.6 L504 62.3 L516 68.2 L528 74.6 L540 80.3 L552 84.4 L564 86.3 L576 85.9 L588 83.5 L600 80.0 L612 76.5 L624 74.1 L636 73.7 L648 75.6 L660 79.7 L672 85.4 L684 91.8 L696 97.7 L708 102.4 L720 105.5 L732 107.1 L744 107.9 L756 108.7 L768 110.2 L780 112.6 L792 115.4 L804 117.5 L816 117.5 L828 114.2 L840 106.9 L852 96.2 L864 83.4 L876 70.7 L888 60.3 L900 53.9 L912 52.3 L924 54.9 L936 60.3 L948 66.3 L960 71.0 L972 73.2 L984 72.4 L996 69.3 L1008 65.2 L1020 61.4 L1032 59.0 L1044 58.4 L1056 59.4 L1068 61.2 L1080 62.7 L1092 63.2 L1104 62.5 L1116 60.7 L1128 58.7 L1140 57.4 L1152 57.8 L1164 60.4 L1176 65.3 L1188 72.1 L1200 80.0 L1212 87.9 L1224 94.7 L1236 99.6 L1248 102.2 L1260 102.6 L1272 101.3 L1284 99.3 L1296 97.5 L1308 96.8 L1320 97.3 L1332 98.8 L1344 100.6 L1356 101.6 L1368 101.0 L1380 98.6 L1392 94.8 L1404 90.7 L1416 87.6 L1428 86.8 L1440 89.0 L1452 93.7 L1464 99.7 L1476 105.1 L1488 107.7 L1500 106.1 L1512 99.7 L1524 89.3 L1536 76.6 L1548 63.8 L1560 53.1 L1572 45.8 L1584 42.5 L1596 42.5 L1608 44.6 L1620 47.4 L1632 49.8 L1644 51.3 L1656 52.1 L1668 52.9 L1680 54.5 L1692 57.6 L1704 62.3 L1716 68.2 L1728 74.6 L1740 80.3 L1752 84.4 L1764 86.3 L1776 85.9 L1788 83.5 L1800 80.0 L1812 76.5 L1824 74.1 L1836 73.7 L1848 75.6 L1860 79.7 L1872 85.4 L1884 91.8 L1896 97.7 L1908 102.4 L1920 105.5 L1932 107.1 L1944 107.9 L1956 108.7 L1968 110.2 L1980 112.6 L1992 115.4 L2004 117.5 L2016 117.5 L2028 114.2 L2040 106.9 L2052 96.2 L2064 83.4 L2076 70.7 L2088 60.3 L2100 53.9 L2112 52.3 L2124 54.9 L2136 60.3 L2148 66.3 L2160 71.0 L2172 73.2 L2184 72.4 L2196 69.3 L2208 65.2 L2220 61.4 L2232 59.0 L2244 58.4 L2256 59.4 L2268 61.2 L2280 62.7 L2292 63.2 L2304 62.5 L2316 60.7 L2328 58.7 L2340 57.4 L2352 57.8 L2364 60.4 L2376 65.3 L2388 72.1 L2400 80.0"/><path class="listen__p listen__p--1" d="M0 103.7 L12 104.4 L24 103.0 L36 99.5 L48 94.5 L60 88.8 L72 83.8 L84 80.5 L96 79.5 L108 80.9 L120 84.0 L132 87.7 L144 90.5 L156 91.6 L168 90.5 L180 87.3 L192 83.0 L204 78.6 L216 75.0 L228 72.6 L240 71.4 L252 70.6 L264 69.1 L276 66.3 L288 61.9 L300 56.3 L312 50.5 L324 45.8 L336 43.4 L348 44.2 L360 48.2 L372 54.6 L384 62.4 L396 70.1 L408 76.5 L420 80.9 L432 83.2 L444 83.7 L456 83.2 L468 82.4 L480 82.0 L492 82.4 L504 83.6 L516 85.2 L528 86.8 L540 87.9 L552 88.2 L564 87.7 L576 86.5 L588 85.4 L600 85.0 L612 86.1 L624 88.9 L636 93.4 L648 99.0 L660 104.7 L672 109.1 L684 111.1 L696 110.0 L708 105.9 L720 99.4 L732 91.7 L744 84.1 L756 77.8 L768 73.4 L780 70.6 L792 69.0 L804 67.4 L816 65.3 L828 62.2 L840 58.5 L852 55.1 L864 53.0 L876 53.0 L888 55.5 L900 60.1 L912 65.8 L924 71.1 L936 74.9 L948 76.3 L960 75.1 L972 71.8 L984 67.6 L996 63.8 L1008 61.4 L1020 61.1 L1032 62.8 L1044 66.3 L1056 70.7 L1068 75.2 L1080 79.2 L1092 82.2 L1104 84.2 L1116 85.7 L1128 87.0 L1140 88.7 L1152 91.1 L1164 94.3 L1176 97.8 L1188 101.2 L1200 103.7 L1212 104.4 L1224 103.0 L1236 99.5 L1248 94.5 L1260 88.8 L1272 83.8 L1284 80.5 L1296 79.5 L1308 80.9 L1320 84.0 L1332 87.7 L1344 90.5 L1356 91.6 L1368 90.5 L1380 87.3 L1392 83.0 L1404 78.6 L1416 75.0 L1428 72.6 L1440 71.4 L1452 70.6 L1464 69.1 L1476 66.3 L1488 61.9 L1500 56.3 L1512 50.5 L1524 45.8 L1536 43.4 L1548 44.2 L1560 48.2 L1572 54.6 L1584 62.4 L1596 70.1 L1608 76.5 L1620 80.9 L1632 83.2 L1644 83.7 L1656 83.2 L1668 82.4 L1680 82.0 L1692 82.4 L1704 83.6 L1716 85.2 L1728 86.8 L1740 87.9 L1752 88.2 L1764 87.7 L1776 86.5 L1788 85.4 L1800 85.0 L1812 86.1 L1824 88.9 L1836 93.4 L1848 99.0 L1860 104.7 L1872 109.1 L1884 111.1 L1896 110.0 L1908 105.9 L1920 99.4 L1932 91.7 L1944 84.1 L1956 77.8 L1968 73.4 L1980 70.6 L1992 69.0 L2004 67.4 L2016 65.3 L2028 62.2 L2040 58.5 L2052 55.1 L2064 53.0 L2076 53.0 L2088 55.5 L2100 60.1 L2112 65.8 L2124 71.1 L2136 74.9 L2148 76.3 L2160 75.1 L2172 71.8 L2184 67.6 L2196 63.8 L2208 61.4 L2220 61.1 L2232 62.8 L2244 66.3 L2256 70.7 L2268 75.2 L2280 79.2 L2292 82.2 L2304 84.2 L2316 85.7 L2328 87.0 L2340 88.7 L2352 91.1 L2364 94.3 L2376 97.8 L2388 101.2 L2400 103.7"/><path class="listen__p listen__p--2" d="M0 84.3 L12 82.1 L24 79.2 L36 76.1 L48 73.5 L60 72.1 L72 72.4 L84 74.1 L96 76.8 L108 79.6 L120 81.3 L132 81.2 L144 78.8 L156 74.5 L168 69.1 L180 63.6 L192 59.1 L204 56.5 L216 56.1 L228 57.6 L240 60.3 L252 63.4 L264 66.2 L276 68.5 L288 70.2 L300 71.5 L312 73.1 L324 75.3 L336 78.1 L348 81.5 L360 85.1 L372 88.2 L384 90.3 L396 91.2 L408 90.7 L420 89.1 L432 86.9 L444 84.6 L456 82.8 L468 81.9 L480 82.2 L492 83.5 L504 85.5 L516 87.8 L528 89.9 L540 91.3 L552 91.8 L564 91.4 L576 90.5 L588 89.6 L600 88.8 L612 88.6 L624 88.6 L636 88.5 L648 87.6 L660 85.3 L672 81.2 L684 75.5 L696 69.0 L708 62.5 L720 57.3 L732 54.3 L744 54.0 L756 56.2 L768 60.1 L780 64.6 L792 68.7 L804 71.6 L816 72.9 L828 72.9 L840 72.1 L852 71.4 L864 71.2 L876 71.9 L888 73.4 L900 75.2 L912 76.9 L924 77.9 L936 78.1 L948 77.6 L960 76.8 L972 76.2 L984 76.3 L996 77.5 L1008 79.8 L1020 83.0 L1032 86.7 L1044 90.3 L1056 93.3 L1068 95.2 L1080 95.8 L1092 95.3 L1104 93.7 L1116 91.7 L1128 89.7 L1140 88.2 L1152 87.2 L1164 86.7 L1176 86.3 L1188 85.6 L1200 84.3 L1212 82.1 L1224 79.2 L1236 76.1 L1248 73.5 L1260 72.1 L1272 72.4 L1284 74.1 L1296 76.8 L1308 79.6 L1320 81.3 L1332 81.2 L1344 78.8 L1356 74.5 L1368 69.1 L1380 63.6 L1392 59.1 L1404 56.5 L1416 56.1 L1428 57.6 L1440 60.3 L1452 63.4 L1464 66.2 L1476 68.5 L1488 70.2 L1500 71.5 L1512 73.1 L1524 75.3 L1536 78.1 L1548 81.5 L1560 85.1 L1572 88.2 L1584 90.3 L1596 91.2 L1608 90.7 L1620 89.1 L1632 86.9 L1644 84.6 L1656 82.8 L1668 81.9 L1680 82.2 L1692 83.5 L1704 85.5 L1716 87.8 L1728 89.9 L1740 91.3 L1752 91.8 L1764 91.4 L1776 90.5 L1788 89.6 L1800 88.8 L1812 88.6 L1824 88.6 L1836 88.5 L1848 87.6 L1860 85.3 L1872 81.2 L1884 75.5 L1896 69.0 L1908 62.5 L1920 57.3 L1932 54.3 L1944 54.0 L1956 56.2 L1968 60.1 L1980 64.6 L1992 68.7 L2004 71.6 L2016 72.9 L2028 72.9 L2040 72.1 L2052 71.4 L2064 71.2 L2076 71.9 L2088 73.4 L2100 75.2 L2112 76.9 L2124 77.9 L2136 78.1 L2148 77.6 L2160 76.8 L2172 76.2 L2184 76.3 L2196 77.5 L2208 79.8 L2220 83.0 L2232 86.7 L2244 90.3 L2256 93.3 L2268 95.2 L2280 95.8 L2292 95.3 L2304 93.7 L2316 91.7 L2328 89.7 L2340 88.2 L2352 87.2 L2364 86.7 L2376 86.3 L2388 85.6 L2400 84.3"/><path class="listen__p listen__p--3" d="M0 77.2 L12 76.0 L24 74.4 L36 72.9 L48 71.8 L60 71.4 L72 71.6 L84 72.2 L96 72.6 L108 72.7 L120 72.1 L132 71.2 L144 70.2 L156 69.7 L168 70.1 L180 71.6 L192 74.1 L204 77.4 L216 81.0 L228 84.2 L240 86.6 L252 88.0 L264 88.3 L276 87.8 L288 86.8 L300 85.8 L312 84.9 L324 84.4 L336 84.3 L348 84.4 L360 84.6 L372 84.6 L384 84.3 L396 83.6 L408 82.8 L420 81.9 L432 81.3 L444 81.2 L456 81.7 L468 82.8 L480 84.1 L492 85.4 L504 86.0 L516 85.7 L528 84.1 L540 81.5 L552 78.1 L564 74.4 L576 71.2 L588 68.8 L600 67.4 L612 67.1 L624 67.5 L636 68.1 L648 68.6 L660 68.8 L672 68.8 L684 68.8 L696 69.3 L708 70.5 L720 72.6 L732 75.3 L744 78.3 L756 80.9 L768 82.7 L780 83.5 L792 83.1 L804 81.8 L816 80.2 L828 78.8 L840 78.0 L852 78.0 L864 78.9 L876 80.4 L888 82.2 L900 83.9 L912 85.3 L924 86.1 L936 86.5 L948 86.4 L960 86.3 L972 86.2 L984 86.3 L996 86.6 L1008 87.1 L1020 87.4 L1032 87.3 L1044 86.5 L1056 85.0 L1068 82.7 L1080 79.9 L1092 77.1 L1104 74.7 L1116 73.1 L1128 72.6 L1140 73.2 L1152 74.4 L1164 75.9 L1176 77.1 L1188 77.6 L1200 77.2 L1212 76.0 L1224 74.4 L1236 72.9 L1248 71.8 L1260 71.4 L1272 71.6 L1284 72.2 L1296 72.6 L1308 72.7 L1320 72.1 L1332 71.2 L1344 70.2 L1356 69.7 L1368 70.1 L1380 71.6 L1392 74.1 L1404 77.4 L1416 81.0 L1428 84.2 L1440 86.6 L1452 88.0 L1464 88.3 L1476 87.8 L1488 86.8 L1500 85.8 L1512 84.9 L1524 84.4 L1536 84.3 L1548 84.4 L1560 84.6 L1572 84.6 L1584 84.3 L1596 83.6 L1608 82.8 L1620 81.9 L1632 81.3 L1644 81.2 L1656 81.7 L1668 82.8 L1680 84.1 L1692 85.4 L1704 86.0 L1716 85.7 L1728 84.1 L1740 81.5 L1752 78.1 L1764 74.4 L1776 71.2 L1788 68.8 L1800 67.4 L1812 67.1 L1824 67.5 L1836 68.1 L1848 68.6 L1860 68.8 L1872 68.8 L1884 68.8 L1896 69.3 L1908 70.5 L1920 72.6 L1932 75.3 L1944 78.3 L1956 80.9 L1968 82.7 L1980 83.5 L1992 83.1 L2004 81.8 L2016 80.2 L2028 78.8 L2040 78.0 L2052 78.0 L2064 78.9 L2076 80.4 L2088 82.2 L2100 83.9 L2112 85.3 L2124 86.1 L2136 86.5 L2148 86.4 L2160 86.3 L2172 86.2 L2184 86.3 L2196 86.6 L2208 87.1 L2220 87.4 L2232 87.3 L2244 86.5 L2256 85.0 L2268 82.7 L2280 79.9 L2292 77.1 L2304 74.7 L2316 73.1 L2328 72.6 L2340 73.2 L2352 74.4 L2364 75.9 L2376 77.1 L2388 77.6 L2400 77.2"/></svg></div>
-      <dl class="listen__facts">
-        <div><dt>16</dt><dd>Kaydedenler Kulübü bölümü</dd></div>
-        <div><dt>1</dt><dd>Kendi bestem: Kozmik Kalıntılar</dd></div>
-        <div><dt>5</dt><dd>Cover yorumu</dd></div>
-        <div><dt>2019 – <i>bugün</i></dt><dd>Metronom Audio’da kayıt ve jam</dd></div>
-      </dl>
-      <p class="sound__live"><span class="sound__rec" aria-hidden="true"></span><span class="sound__live-k">Kayıt sürüyor</span><span class="sound__live-t">Stüdyo çalışmalarım ve müzik üretimim bugün de tüm hızıyla devam ediyor.</span></p>
+      
+      <p class="sound__live"><span class="sound__rec" aria-hidden="true"></span><span class="sound__live-k">Kayıt sürüyor</span><span class="sound__live-t">Stüdyo çalışmalarım ve müzik üretimim bugün de sürüyor.</span></p>
     </figure>
   </div>
 </section>
@@ -3128,6 +3203,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
     </header>
     <div class="rg">
       <header class="rg__head"><h3 class="rg__label">Akademik</h3><span class="rg__count">16</span></header>
+      <p class="rg__lead">Lisans ve yüksek lisans yıllarımda derslerinde, araştırmalarında ve tez sürecimde yanında öğrendiğim akademisyenler.</p>
       <ul class="rg__grid">
         <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Hüseyin Anılan</p></li>
         <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Emre Ünal</p></li>
@@ -3158,10 +3234,10 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
     <div class="rg rg--ilham">
       <header class="rg__head"><h3 class="rg__label">İlham</h3><span class="rg__count">04</span></header>
       <ul class="rg__grid">
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Çizer · Fractal İstanbul</p><p class="rc__name">Tarık Tolunay</p><p class="rc__note">Fractal İstanbul’la bir şehrin katman katman nasıl kurulduğunu gösterdi; <em>Tuşpa: Van Gölü’nün Kayıp Hafızası</em>’nın şehir tasarımı o sergide filizlendi.</p></li>
-        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Psikolog · Yazar · 1938 – 2021</p><p class="rc__name">Doğan Cüceloğlu</p><p class="rc__note">“Hayatın içinden bu hikâyeleri bana yaz” diyen gönül insanı. Ruhu şad olsun.</p></li>
-        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Görsel Tasarımcı</p><p class="rc__name">Murat Tüvör</p><p class="rc__note">Şubat 2019’da beni Blender ve 3D tasarımla tanıştırdı; <em>Tuşpa: Van Gölü’nün Kayıp Hafızası</em>’nın ilk kıvılcımı onunla çaktı.</p></li>
-        <li class="rc will-reveal" style="--d:180ms"><p class="rc__title">Eğitimci · Sosyal Girişimci</p><p class="rc__name">Emre Alettin Keskin</p></li>
+        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Çizer · Fractal İstanbul</p><p class="rc__name">Tarık Tolunay</p><p class="rc__note">Fractal İstanbul’la bir şehrin tek bir çizimde nasıl yaşayabileceğini gösterdi; Tuşpa’nın şehir tasarımı o sergide filizlendi.</p></li>
+        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Psikolog · Yazar · 1938 – 2021</p><p class="rc__name">Doğan Cüceloğlu</p><p class="rc__note">Bana hikâyelerimi yazmayı emanet eden gönül insanı. Ruhu şad olsun.</p></li>
+        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Görsel Tasarımcı</p><p class="rc__name">Murat Tüvör</p><p class="rc__note">Şubat 2019’da beni Blender ve 3D tasarımla tanıştırdı; Tuşpa’nın ilk tohumu onunla atıldı.</p></li>
+        <li class="rc will-reveal" style="--d:180ms"><p class="rc__title">Eğitim Tasarımcısı · Sosyal Girişimci</p><p class="rc__name">Emre Alettin Keskin</p><p class="rc__note">Eğitim tasarımcısı ve sosyal girişimci; öğrenmenin sınıf dışında da tasarlanabileceğini hatırlatan isimlerden.</p></li>
       </ul>
     </div>
     <p class="refs__foot">Referansların iletişim bilgileri talep üzerine paylaşılır.</p>
@@ -5544,6 +5620,63 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   }, true);
   if (location.hash.length > 1) addEventListener('load', function () { var t = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (t) setTimeout(function () { jump(want(t)); }, 60); });
 })();
+</script>
+<script>
+/* v99 · Mobil: hikâye fotoğrafları 2'li ızgara; taşan şeritlere kaydırma ipucu; künye ayraçları satır başına düşmesin; menü boşta çekilir */
+(function () {
+  var mq = matchMedia('(max-width: 620px)');
+  // 1) Ayraçlar: " · " öncesindeki boşluk bölünmez olsun (ayraç önceki kelimeyle kalır)
+  var tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { return /\s·/.test(n.nodeValue) && !n.parentNode.closest('script,style,svg') ? 1 : 3; } });
+  var ns = [], n; while ((n = tw.nextNode())) ns.push(n);
+  ns.forEach(function (t) { t.nodeValue = t.nodeValue.replace(/[ \t]+·/g, ' ·'); });
+  // ayrı <i>/<span> ayraçları (pt__sep, hero__spine): bir önceki kardeşe yapışık dursun
+  [].forEach.call(document.querySelectorAll('.pt__sep'), function (e) { e.style.marginLeft = '0'; });
+
+  // 2) Hikâye fotoğrafları: telefonda giriş paragrafının ardında tek bir 2'li ızgara
+  function grid() {
+    if (!mq.matches) return;
+    [].forEach.call(document.querySelectorAll('#gonullu .story'), function (st) {
+      if (st.querySelector('.story__grid')) return;
+      var body = st.querySelector('.story__body'), lead = body && body.querySelector('.story__lead');
+      var ph = body ? [].slice.call(body.querySelectorAll(':scope > .story__photo')) : [];
+      if (!lead || !ph.length) return;
+      var g = document.createElement('div'); g.className = 'story__grid';
+      ph.forEach(function (p) { g.appendChild(p); });
+      lead.after(g);
+      var cap = body.querySelector(':scope > .story__photo-cap'); if (cap) g.after(cap);
+    });
+  }
+  grid(); mq.addEventListener && mq.addEventListener('change', grid);
+
+  // 3) Kaydırma ipucu: yalnız gerçekten yana taşan şeritlerde
+  function hints() {
+    if (!matchMedia('(max-width: 900px)').matches) return;
+    [].forEach.call(document.querySelectorAll('.v3d-strip__grid, .gv__strip, .tl__photos, .kb__grid'), function (el) {
+      var cs = getComputedStyle(el);
+      if (!/(auto|scroll)/.test(cs.overflowX) || el.scrollWidth <= el.clientWidth + 24) return;
+      var prev = el.previousElementSibling; if (prev && prev.classList.contains('v99-swipe')) return;
+      var h = document.createElement('p'); h.className = 'v99-swipe on'; h.setAttribute('aria-hidden', 'true'); h.textContent = '→ kaydırın';
+      el.before(h);
+      el.addEventListener('scroll', function () { if (el.scrollLeft > 30) h.classList.add('gone'); }, { passive: true });
+    });
+  }
+  addEventListener('load', function () { setTimeout(hints, 600); });
+
+  // 3b) Mobil menü numaraları bölüm folyolarıyla aynı kalsın: Liderlik numarasız (Kariyer'in alt başlığı)
+  function nums() {
+    var k = 0; [].forEach.call(document.querySelectorAll('.mnav__panel a'), function (a) {
+      var sp = a.querySelector('span'); if (!sp) return;
+      sp.textContent = a.getAttribute('href') === '#liderlik' ? '·' : ('0' + (++k)).slice(-2);
+    });
+  }
+  nums(); addEventListener('load', nums);
+
+  // 4) Menü: yukarı kaydırınca gelir, 2,2 sn boşta kalınca (sayfa başı hariç) yeniden çekilir
+  var m = document.querySelector('.mnav'); if (!m) return; var tmr;
+  function arm() { clearTimeout(tmr); tmr = setTimeout(function () { if (scrollY > 160 && !m.classList.contains('is-open') && !m.matches(':focus-within')) m.classList.add('is-tucked'); }, 2200); }
+  addEventListener('scroll', function () { if (!m.classList.contains('is-tucked')) arm(); }, { passive: true });
+})();
+
 </script>
 </body>
 </html>
