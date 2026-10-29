@@ -1917,7 +1917,7 @@ html.v3d-open { overflow: hidden; }
 .hero .domain.is-active .domain__swatch { border-color: rgba(94, 26, 23, .7); background: rgba(94, 26, 23, .7); }
 .hero .domain.is-active .domain__idx { color: #5e1a17 !important; }
 .hero .domain:focus-visible { outline: 1px solid rgba(94, 26, 23, .45); outline-offset: 3px; }
-.hero .status { font-family: 'Instrument Serif', var(--font-display); font-style: italic; font-size: 15px; color: rgba(29, 23, 21, .6); }
+.hero .status { font-family: 'Instrument Serif', var(--font-display); font-style: italic; font-size: 15px; color: rgba(29, 23, 21, .7); }
 .hero .status b, .hero .status strong { font-weight: 400; color: #5e1a17; }
 
 /* ═══ v82 · Hero eylemleri: koyu bordo, yumuşak köşeli dergi butonu + aynı boyda altı çizgili bağlantı ═══ */
@@ -2567,6 +2567,13 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 /* Kılcal çizgi: text-decoration, satır kırılsa da her satırın altında kalır */
 .accent-editorial { text-decoration: underline 1px; text-underline-offset: .2em; text-decoration-color: color-mix(in srgb, currentColor 30%, transparent); }
 .title--ed .t-last em.accent-strategic { font-weight: 600 !important; letter-spacing: -.01em; }
+/* v104 · Klavye odağı: bordo çizgi + krem hale, açık ve koyu zeminde aynı anda görünür.
+   Form alanları kendi kenarlık rengiyle odak gösterir, onlara dokunulmaz. */
+/* Tekrarlanan :focus-visible özgüllüğü yükseltir; kart/fotoğraf kurallarındaki !important gölgeleri odakta yener */
+:focus-visible:focus-visible:focus-visible:not(input, textarea, select) {
+  outline: 2px solid #6e1f1a !important; outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px #f3e6d4 !important;
+}
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp?v=98" type="image/webp" media="(min-width: 901px)">
 <link rel="preload" as="image" href="assets/desk/ahsap-1024.webp?v=98" type="image/webp" media="(max-width: 900px)">
