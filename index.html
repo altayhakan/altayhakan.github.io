@@ -5996,6 +5996,39 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   .mektup__field textarea { min-height: 0 !important; height: 104px; }
   .mektup__foot { margin-top: 10px !important; }
 }
+/* v114 · Mobil hizalama ve alt yazılar */
+@media (max-width: 720px) {
+  /* Polaroid alt yazıları: kalın alt şerit, en çok iki satır (tek satıra sığmayınca fotoğrafın üstüne biniyordu) */
+  .tl__ph, .spark__ph { padding-bottom: 42px !important; }
+  .tl__ph .ph-img, .spark__ph .ph-img, .tl__ph::before, .tl__ph::after, .spark__ph::before, .spark__ph::after { bottom: 42px !important; }
+  /* görselin kendi sabit yüksekliği alt sınırı yok saydırıyordu: üst 5px + alt şerit 42px */
+  .tl__ph .ph-img, .spark__ph .ph-img { top: 5px !important; left: 5px !important; right: 5px !important; width: calc(100% - 10px) !important; height: calc(100% - 47px) !important; }
+  .tl__ph::before, .tl__ph::after, .spark__ph::before, .spark__ph::after { top: 5px !important; left: 5px !important; right: 5px !important; }
+  /* çift sınıf: sonradan gelen v105 alt yazı boyutunu (16px) yener */
+  .tl__ph.tl__ph > span, .spark__ph.spark__ph > span { top: auto !important; bottom: 3px !important; height: 38px; display: flex !important; align-items: center; justify-content: center;
+    padding-inline: 6px; font-size: 14px !important; line-height: 1.12 !important; white-space: normal !important; text-wrap: balance; overflow: hidden; }
+  /* İki sütunlu dizide görünen son fotoğraf tek kalınca ortada durur (gizli "+N" fotoğrafları sayılmaz) */
+  .tl__photos > .tl__ph:not([hidden]):nth-child(odd of .tl__ph:not([hidden])):not(:nth-child(1 of .tl__ph:not([hidden]))):not(:has(~ .tl__ph:not([hidden]))) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 6px); }
+  /* İki sütunlu ızgarada tek öğe (ör. uygulama ikonu) */
+  .tl__photos:not(.tl__photos--one):has(> :only-child) { grid-template-columns: minmax(0, calc(50% - 6px)); justify-content: center; }
+  .chap__photos > :nth-child(odd):not(:first-child):last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 11px); }
+  /* Tek fotoğraflı kartlar: dar sütun ortada */
+  .tl__photos--one { justify-content: center; }
+  /* Hikâyeden sahaya: ortalı başlık çizgisi, ortalı alıntı ve ortalı fotoğraf */
+  .giving__quote { text-align: center; text-indent: 0 !important; hanging-punctuation: none; }
+  .giving__note.memo__photo { justify-self: center !important; margin-inline: auto !important; }
+  /* Alt bilgi: tek sütunda ortalı, eşit aralıklı */
+  .contact .sitefoot { margin-top: 64px; padding-bottom: 32px; }
+  .sitefoot .wrap { flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+  .sitefoot__legal { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 24px; }
+  .sitefoot .bd-link { font-size: 13.5px !important; }
+  .sitefoot__legal { margin-inline: 0 !important; }  /* başka bir kuraldan gelen margin-left:auto satırı sağa itiyordu */
+  /* Müzik: cover başlığı solda, bağlantısı da solda */
+  .covers__now { align-items: flex-start !important; }
+  /* Liderlik rakamları: üçü yan yana, tek kalan olmasın */
+  .ldr__stats { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 14px !important; }
+  .ldr__stats .stat { flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; }
+}
 /* Bölüm etiketleri: numara ve çizgi yok, yalnız bölüm adı */
 .kicker .kno { display: none !important; }
 .kicker::before { display: none !important; }
