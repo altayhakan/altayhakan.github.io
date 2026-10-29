@@ -5959,6 +5959,27 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 })();
 
 </script>
+<!-- v110 · Sanat yönetimi: bölümler farklı hareket eder, tek zıt renk (mürekkep laciverti), bölüm numaraları sade. -->
+<style>
+/* Hareket orkestrası (masaüstü): her bölümün kendi girişi var; telefonda sade yükselme kalır */
+@media (prefers-reduced-motion: no-preference) and (min-width: 901px) {
+  .js :is(#hakkimda, #referanslar) .will-reveal:not(.is-in) { transform: none; clip-path: none; }
+  .js :is(#anilar, #gonullu) .will-reveal:not(.is-in) { transform: translateX(-36px); }
+  .js #egitim .will-reveal:not(.is-in) { transform: translateX(36px); }
+  .js #projeler .will-reveal:not(.is-in) { transform: scale(.965); clip-path: none; }
+  /* v72 belirmelerde maskeyi !important ile kapatıyor; müzik perdesi onu açıkça geçersiz kılar */
+  .js #muzik .will-reveal:not(.is-in) { transform: none; clip-path: inset(0 0 100% 0) !important; }
+  .js #muzik .will-reveal.is-in { clip-path: inset(-30% -8% -30% -8%) !important; transition: opacity 600ms var(--ease-out-strong), clip-path 1000ms var(--ease-out-strong) !important; transition-delay: var(--d, 0ms) !important; }
+}
+/* Tek kırılma rengi: mektuptaki mürekkep laciverti, yalnız ana çağrıda ve ilerleme çizgisinde */
+:root { --ink-accent: #222a4c; }
+.hero .actions .bd-btn--primary { background: var(--ink-accent) !important; border-color: var(--ink-accent) !important; color: #f6eee3 !important; }
+.hero .actions .bd-btn--primary:hover { background: #2f3a66 !important; border-color: #2f3a66 !important; }
+.fx-line__bar { background: linear-gradient(to bottom, transparent, var(--ink-accent) 30%, var(--ink-accent)) !important; opacity: .7 !important; }
+/* Bölüm etiketleri: numara ve çizgi yok, yalnız bölüm adı */
+.kicker .kno { display: none !important; }
+.kicker::before { display: none !important; }
+</style>
 <!-- v109 · Okunurluk tabanı: sitedeki her yazı ölçüldü; rolüne göre alt boyut ve en az koyuluk.
      Uzun metin ≥16px · künye satırı ≥14.5px · küçük etiket ≥13.5px · yazı koyuluğu ≥%74 (gövdede %80).
      Renkler her öğenin kendi tonundan türetildi, yalnız saydamlık yükseldi. -->
