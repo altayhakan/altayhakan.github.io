@@ -6022,6 +6022,12 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   .sitefoot__legal { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 24px; }
   .sitefoot .bd-link { font-size: 13.5px !important; }
   .sitefoot__legal { margin-inline: 0 !important; }  /* başka bir kuraldan gelen margin-left:auto satırı sağa itiyordu */
+  /* v116 · Hikâyeler (Tevafuk, Kanatlı Melek) telefonda uzun okunur: biraz daha büyük ve koyu */
+  .story .story__lead { font-size: 20px !important; line-height: 1.6 !important; }
+  .story .story__body > p:not(.story__lead):not(.echo):not([class*="story__"]) { font-size: 18px !important; line-height: 1.75 !important; color: rgba(29, 23, 21, .92) !important; }
+  .story .story__body .echo, .story .story__body .echo a { font-size: 20px !important; }
+  .story .story__pull { font-size: 29px !important; }
+  .story .story__meta { font-size: 15.5px !important; }
   /* Müzik: cover başlığı solda, bağlantısı da solda */
   .covers__now { align-items: flex-start !important; }
   /* Liderlik rakamları: üçü yan yana, tek kalan olmasın */
