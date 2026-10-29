@@ -3540,10 +3540,14 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
     // İlk ekranda görünenler baştan görünür: sayfa dinlenme hâlinde eksiksiz
     requestAnimationFrame(function () {
     items.forEach(function (el) { if (el.getBoundingClientRect().top < innerHeight * 0.92) el.classList.add('is-in'); });
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px 24% 0px', threshold: 0 });
-    items.forEach(function (el) { if (!el.classList.contains('is-in')) io.observe(el); });
+    var reveal = function (es, ob) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); ob.unobserve(e.target); } });
+    };
+    var io = new IntersectionObserver(reveal, { rootMargin: '0px 0px 24% 0px', threshold: 0 });
+    // v111 · Müzik perdesi ekranın içinde açılsın (erken tetiklenince görünmeden bitiyordu); yalnız masaüstü
+    var late = matchMedia('(prefers-reduced-motion: no-preference) and (min-width: 901px)').matches
+      && new IntersectionObserver(reveal, { rootMargin: '0px 0px -18% 0px', threshold: 0 });
+    items.forEach(function (el) { if (!el.classList.contains('is-in')) (late && el.closest('#muzik') ? late : io).observe(el); });
     });
   }
   var tl = document.getElementById('timeline'), fill = tl.querySelector('.timeline__fill');
