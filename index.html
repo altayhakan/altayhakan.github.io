@@ -2561,6 +2561,9 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 *, *::before, *::after { font-style: normal !important; }
 .accent-strategic { font-weight: 600; color: var(--surface-strong); letter-spacing: -.01em; }
 .accent-curated { font-family: 'Geist Mono', ui-monospace, monospace !important; font-size: .92em; opacity: .8; letter-spacing: .02em; }
+/* "Bugün": koyu zeminde okunur, sıcak vurgu rengiyle şimdiki zamanı işaret eder */
+.tl__when .accent-curated { font-size: 18px; letter-spacing: .08em; opacity: 1; color: #e7b98a; }
+@media (max-width: 720px) { .tl__when .accent-curated { font-size: 15px; } }
 /* Kılcal çizgi: text-decoration, satır kırılsa da her satırın altında kalır */
 .accent-editorial { text-decoration: underline 1px; text-underline-offset: .2em; text-decoration-color: color-mix(in srgb, currentColor 30%, transparent); }
 .title--ed .t-last em.accent-strategic { font-weight: 600 !important; letter-spacing: -.01em; }
