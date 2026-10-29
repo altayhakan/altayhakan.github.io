@@ -3391,7 +3391,7 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
           <svg class="wave" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 Q 10 6 20 30 T 40 30 T 60 30 Q 70 14 80 30 T 100 30 Q 110 2 120 30 T 140 30 T 160 30 Q 170 10 180 30 T 200 30 Q 210 0 220 30 T 240 30 Q 250 18 260 30 T 280 30 Q 290 4 300 30 T 320 30 T 340 30 Q 350 12 360 30 T 380 30 T 400 30"/></svg>
           <p class="track__meta">Beste · Ağustos 2023</p>
           <h3 class="track__title">Kozmik <em>Kalıntılar</em></h3>
-          <p class="track__text">Stüdyodan çıkan ilk şarkımız “Neresindeyim”: söz, beste ve düzenleme benim; ritim, lead ve bas gitarı, davulu ve vokali de ben kaydettim. Piyanoda Ufuk Aksel.</p>
+          <p class="track__text">“Neresindeyim”: bir sorudan doğup stüdyoda sese dönüşen ilk şarkı. Piyanoda Ufuk Aksel.</p>
           <p class="track__note">2019–2020’de Metronom Audio’da başlayan kayıt ve jam oturumlarının içinden büyüdü.</p>
           <a class="bd-link bd-link--light" href="https://youtu.be/hcgCzMNhtWs?si=r8XJYLG7MWYzZwZT" target="_blank" rel="noopener" data-link="youtube-kozmik">YouTube’da dinle ↗</a>
         </article>
@@ -5901,14 +5901,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   }
   addEventListener('load', function () { setTimeout(hints, 600); });
 
-  // 3b) Mobil menü numaraları bölüm folyolarıyla aynı kalsın: Liderlik numarasız (Kariyer'in alt başlığı)
-  function nums() {
-    var k = 0; [].forEach.call(document.querySelectorAll('.mnav__panel a'), function (a) {
-      var sp = a.querySelector('span'); if (!sp) return;
-      sp.textContent = a.getAttribute('href') === '#liderlik' ? '·' : ('0' + (++k)).slice(-2);
-    });
-  }
-  nums(); addEventListener('load', nums);
+  // 3b) v113 · Bölüm folyoları kalktı: mobil menü v72'deki gibi 01–08 sırayla numaralanır
 
   // 4) Menü: yukarı kaydırınca gelir, 2,2 sn boşta kalınca (sayfa başı hariç) yeniden çekilir
   var m = document.querySelector('.mnav'); if (!m) return; var tmr;
@@ -5944,10 +5937,13 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 
 /* v99f · Tablette İletişim: iniş mektubun kendisine olur; mektup görünür yüksekliğe sığacak kadar ölçeklenir ve dikeyde ortalanır */
 (function () {
-  var tab = matchMedia('(min-width: 621px) and (pointer: coarse)');
+  var tab = matchMedia('(min-width: 621px) and (pointer: coarse)'), phone = matchMedia('(max-width: 620px)');
   window.__wantX = function (t, absTop, gap) {
-    if (!t || t.id !== 'iletisim' || !tab.matches) return null;
+    if (!t || t.id !== 'iletisim') return null;
     var w = t.querySelector('.mektup-wrap'); if (!w) return null;
+    // v113 · Telefonda da iniş mektubun başına (ölçekleme yok; menünün altında küçük boşluk)
+    if (phone.matches) return absTop(w) - gap() + 8;
+    if (!tab.matches) return null;
     var g = gap(), key = innerWidth + 'x' + innerHeight;
     if (w.__fit !== key) {   // ölçek ekran boyu başına bir kez hesaplanır (iniş düzeltmeleri sırasında titremesin)
       w.style.zoom = ''; var h0 = w.getBoundingClientRect().height, room = innerHeight - 2 * Math.min(g, 32);
@@ -5987,6 +5983,19 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 .fx-line__bar { background: linear-gradient(to bottom, transparent, var(--ink-accent) 30%, var(--ink-accent)) !important; opacity: .7 !important; }
 /* Makale künyesi: uzun dergi adı Rolüm sütununu 6px'e eziyordu; sütunlar sabit oranlı */
 @media (min-width: 621px) { .sci__colo { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, .75fr); } }
+/* v113 · Telefonda Tuşpa görseli: iOS Safari hareketli görseli yuvarlak çerçevede kırpmayabiliyor (gökyüzü
+   mavi şerit gibi taşıyor). Telefonda yakınlaşma kapalı, çerçeve kırpmayı zorlar. */
+#tuspa .gv__hero { isolation: isolate; -webkit-mask-image: -webkit-radial-gradient(white, black); }
+.perf-lite .gv__heroimg { animation: none !important; transform: none !important; }
+/* v113 · Mektup telefonda biraz daha derli toplu */
+@media (max-width: 620px) {
+  .mektup { padding: 20px 18px !important; }
+  .mektup__title { font-size: 34px !important; margin: 4px 0 16px !important; }
+  .mektup__topics { margin-bottom: 14px !important; }
+  .mektup__field { margin-bottom: 12px !important; }
+  .mektup__field textarea { min-height: 0 !important; height: 104px; }
+  .mektup__foot { margin-top: 10px !important; }
+}
 /* Bölüm etiketleri: numara ve çizgi yok, yalnız bölüm adı */
 .kicker .kno { display: none !important; }
 .kicker::before { display: none !important; }
