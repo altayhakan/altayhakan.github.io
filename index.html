@@ -6034,6 +6034,14 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   .ldr__stats { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 14px !important; }
   .ldr__stats .stat { flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; }
 }
+/* v117 · Masaüstü açılış: 01–04 listesi ve tanıtım cümlesi bir kademe büyük (açılış ekranına sığacak kadar) */
+@media (min-width: 901px) {
+  .hero .domain__label { font-size: 17px !important; line-height: 22px !important; }
+  .hero .domain__sub { font-size: 15px !important; line-height: 20px !important; }
+  .hero .domain__idx { font-size: 21px !important; }
+  .hero .lead { font-size: 20px !important; }
+  .hero .status { font-size: 18px !important; }
+}
 /* Bölüm etiketleri: numara ve çizgi yok, yalnız bölüm adı */
 .kicker .kno { display: none !important; }
 .kicker::before { display: none !important; }
@@ -6108,6 +6116,123 @@ dd > i { font-size: 19px !important; }
   .tb__hl { font-size: 18.5px !important; }
   .stories__lede { font-size: 22px !important; }
   .tl__ph span, .spark__ph span, .memo__photo figcaption, .cinar__poster figcaption, .kb__cap em, .story__photo-cap { font-size: 16px !important; }
+}
+</style>
+<!-- v118 · Tipografik ölçek: sitedeki her Work Sans metni beş role ayrıldı ve bir kademe büyütüldü.
+     Giriş 20/19 · gövde 18/17.5 · kart metni 17/16.5 · künye 15/15 · etiket 14/14 (masaüstü/telefon).
+     html:root öneki önceki katmanlardaki !important kuralları tutarlı biçimde geçer. -->
+<style>
+html:root .section-lead,
+html:root .band__lead,
+html:root .story__lead,
+html:root .hero .lead { font-size: 20px !important; line-height: 1.6 !important; }
+html:root .columns p,
+html:root .chap__body p.chap__lead ~ p:not([class]),
+html:root .story__body > p:not([class]),
+html:root .tb__text { font-size: 18px !important; line-height: 1.75 !important; }
+html:root .pt__desc,
+html:root .tl__text,
+html:root .duty__note,
+html:root .work__text,
+html:root .gv__origin-t,
+html:root .gv__montext p:not(.gv__lede),
+html:root .gv__icontext p:not(.gv__lede),
+html:root .give__text,
+html:root .pod__text,
+html:root .track__text,
+html:root .covers__text,
+html:root .rg__lead,
+html:root .rc__note,
+html:root .contact__note,
+html:root .tb__dd,
+html:root .gv__coins li span,
+html:root .gv__sub { font-size: 17px !important; line-height: 1.7 !important; }
+html:root .about__meta dt,
+html:root .about__meta dd,
+html:root .pt__meta,
+html:root .tl__role,
+html:root .stat__l,
+html:root .duty__role,
+html:root .work__meta,
+html:root .gv__when-t,
+html:root .gv__morelist,
+html:root .sci__colo dt,
+html:root .sci__colo dd,
+html:root .sci__link,
+html:root .story__meta,
+html:root .give__meta,
+html:root .pod__meta,
+html:root .track__meta,
+html:root .sound__live-k,
+html:root .rc__title,
+html:root .refs__foot,
+html:root .chap__meta { font-size: 15px !important; }
+html:root .kicker,
+html:root .bd-badge,
+html:root .tl__side-k,
+html:root .tb__dl,
+html:root .tb__dockick,
+html:root .tb__src,
+html:root .work__chip,
+html:root .gv__when-live,
+html:root .pod__count,
+html:root .covers__by,
+html:root .book__series,
+html:root .book__long,
+html:root .tb__kicker,
+html:root .tb__thk,
+html:root .tb__presshead,
+html:root .stories__kicker,
+html:root .pt__foot span,
+html:root .letter__sign span,
+html:root .chap__credit-line span,
+html:root .bridge__go span,
+html:root .kb__cap span,
+html:root .mektup__field > span,
+html:root .mektup__topics legend,
+html:root .mektup__legal,
+html:root .pv-link,
+html:root .sitefoot span,
+html:root .sitefoot .bd-link,
+html:root .rg__label { font-size: 14px !important; }
+html:root .bd-btn,
+html:root .bd-link { font-size: 15px !important; }
+html:root .hero .domain__sub { font-size: 15px !important; }
+/* Daha öncelikli kurallarla ölçek dışında kalanlar */
+html:root body .gv__lead .work__meta, html:root body .gv__when-t, html:root body .tb__colo-l dt { font-size: 15px !important; }
+html:root body .work__chip, html:root body .gv__when-live, html:root body .v3d-strip__deg { font-size: 14px !important; }
+html:root body .tb__colo-l dd { font-size: 17px !important; }
+@media (max-width: 380px) { html:root body .tl__ph.tl__ph > span, html:root body .spark__ph.spark__ph > span { font-size: 13px !important; } }
+@media (max-width: 720px) {
+html:root .section-lead,
+html:root .band__lead,
+html:root .story__lead,
+html:root .hero .lead { font-size: 19px !important; }
+  html:root .story__lead { font-size: 20px !important; }
+html:root .columns p,
+html:root .chap__body p.chap__lead ~ p:not([class]),
+html:root .story__body > p:not([class]),
+html:root .tb__text { font-size: 17.5px !important; }
+  html:root .story__body > p:not([class]) { font-size: 18px !important; }
+html:root .pt__desc,
+html:root .tl__text,
+html:root .duty__note,
+html:root .work__text,
+html:root .gv__origin-t,
+html:root .gv__montext p:not(.gv__lede),
+html:root .gv__icontext p:not(.gv__lede),
+html:root .give__text,
+html:root .pod__text,
+html:root .track__text,
+html:root .covers__text,
+html:root .rg__lead,
+html:root .rc__note,
+html:root .contact__note,
+html:root .tb__dd,
+html:root .gv__coins li span,
+html:root .gv__sub { font-size: 16.5px !important; }
+  html:root .hero .domain__label { font-size: 16px !important; }
+  html:root .hero .domain__sub { font-size: 14.5px !important; }
 }
 </style>
 <!-- v100 · Masaüstü dokunuşları: ilerleme çizgisi, netleşerek belirme, ortam ışığı, imleç ve mıknatıs.
