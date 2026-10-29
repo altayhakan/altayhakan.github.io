@@ -2308,25 +2308,6 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 .section:not(.showcase):not(.sound) .v99-swipe { color: #8e3524; }
 
 @media (max-width: 620px) {
-  /* A · Tuşpa kartı: görsel tam kaplar, logo ve kurdele ortada, katman yazıları büyür */
-  #tuspa .gv__hero { min-height: 540px; }
-  #tuspa .gv__heroimg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
-  #tuspa .gv__chip { top: 14px; right: 14px; font-size: 13px; padding: 7px 12px; }
-  #tuspa .gv__lead { left: 16px; right: 16px; bottom: 22px; max-width: none; justify-items: center; text-align: center; gap: 10px; }
-  #tuspa .gv__lead .work__meta { font-size: 13.5px; letter-spacing: .02em; }
-  #tuspa .gv__when { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 12px; }
-  #tuspa .gv__when-d { font-size: 19px; }
-  #tuspa .gv__when-live { font-size: 13.5px; }
-  #tuspa .gv__when-t { font-size: 14px; flex-basis: 100%; }
-  #tuspa .gv__when-t::before { content: none; }
-  #tuspa .gv__title { display: flex; justify-content: center; margin: 4px 0 0; }
-  #tuspa .gv__logo { width: min(80%, 300px); margin: 0 auto; }
-  #tuspa .gv__quote { font-size: 20px; line-height: 1.3; max-width: 30ch; margin: 2px auto 0; }
-
-  /* B · SSCI polaroidi: ortada, en çok 300 px, düz */
-  .work--paper .work__media--paper { display: flex !important; justify-content: center; align-items: center; }
-  .work--paper .sci__ph { display: block !important; width: min(300px, 80%) !important; margin: 0 auto !important; }
-  .work--paper .sci__ph .tl__ph { width: 100% !important; --r: -1deg !important; }
   /* 4 · Başlığın italik ikinci satırı sınırlı */
   .work--paper .work__title { font-size: 28px !important; line-height: 1.08; }
   .work--paper .work__title em { font-size: .9em; }
@@ -2406,6 +2387,54 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 @media (min-width: 621px) and (max-width: 900px) {
   #gonullu .story__photo .tl__ph { width: 100%; }
   .story__grid { max-width: 540px; margin-inline: auto !important; gap: 22px 20px !important; }
+}
+
+/* ═══ v99c · Telefon: Tuşpa ve SSCI kartları, kitap butonları, kart içi ritim ═══ */
+@media (max-width: 620px) {
+  /* Tuşpa: görsel yalnız logo ve rozet taşır; künye ve slogan görselin altında, koyu zeminde */
+  #tuspa .gv__hero { position: relative; min-height: 0 !important; max-height: none !important; aspect-ratio: auto !important; height: auto !important; overflow: hidden; display: block; background: #0d1416; }
+  #tuspa .gv__heroimg { position: relative !important; inset: auto !important; display: block; width: 100%; height: auto !important; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 40%; }
+  #tuspa .gv__veil { inset: 0 0 auto 0 !important; height: auto; aspect-ratio: 1 / 1; background: linear-gradient(0deg, #0d1416 0%, rgba(13, 20, 22, .72) 16%, rgba(13, 20, 22, 0) 46%), linear-gradient(180deg, rgba(8, 16, 18, .45), transparent 24%) !important; }
+  #tuspa .gv__shine { display: none; }
+  #tuspa .gv__chip { position: absolute; top: 12px !important; right: 12px !important; left: auto !important; max-width: calc(100% - 24px); white-space: nowrap; font-size: 12.5px !important; padding: 6px 11px !important; z-index: 3; }
+  #tuspa .gv__lead { position: static !important; display: grid; justify-items: center; text-align: center; gap: 10px; padding: 8px 22px 30px; max-width: none; }
+  #tuspa .gv__lead::before { content: ""; position: absolute; left: 0; right: 0; height: 28px; margin-top: -26px; background: linear-gradient(0deg, #0d1416 40%, rgba(13, 20, 22, 0)); z-index: 1; pointer-events: none; }
+  #tuspa .gv__title { position: absolute !important; left: 0; right: 0; top: 0; aspect-ratio: 1 / 1; margin: 0 !important; display: flex !important; align-items: flex-end; justify-content: center; padding-bottom: 14px; pointer-events: none; z-index: 2; }
+  #tuspa .gv__logo { width: min(68%, 270px) !important; margin: 0 auto; }
+  #tuspa .gv__lead .work__meta { order: 1; margin: 4px 0 0; font-size: 12.5px !important; letter-spacing: .06em; color: rgba(246, 238, 227, .72) !important; text-shadow: none !important; }
+  #tuspa .gv__when { order: 2; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 12px; margin: 0; }
+  #tuspa .gv__when-d { font-size: 19px !important; color: #f6eee3; }
+  #tuspa .gv__when-live { font-size: 13px !important; }
+  #tuspa .gv__when-t { flex-basis: 100%; font-size: 13.5px !important; color: rgba(246, 238, 227, .66); }
+  #tuspa .gv__when-t::before { content: none !important; }
+  #tuspa .gv__quote { order: 3; margin: 10px auto 0 !important; padding-top: 16px; border-top: 1px solid rgba(231, 185, 138, .22); font-size: 20px !important; line-height: 1.34 !important; max-width: 28ch; }
+
+  /* SSCI: fotoğraf kartın üst alanını tamamen kaplar; boş bordo alan kalmaz */
+  .work--paper .work__media--paper { display: block !important; position: relative; padding: 0 !important; min-height: 0 !important; aspect-ratio: 4 / 3; overflow: hidden; }
+  .work--paper .work__media--paper .scatter { display: none; }
+  .work--paper .sci__ph { position: absolute !important; inset: 0; width: 100% !important; height: 100%; margin: 0 !important; display: block !important; }
+  .work--paper .sci__ph .tl__ph { position: absolute !important; inset: 0; width: 100% !important; height: 100% !important; aspect-ratio: auto !important; padding: 0 !important; border-radius: 0 !important; transform: none !important; --r: 0deg !important; box-shadow: none !important; background: #1d0d0b; }
+  .work--paper .sci__ph .tl__ph .ph-img { position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover; object-position: 50% 45%; border-radius: 0; }
+  .work--paper .sci__ph .tl__ph::before, .work--paper .sci__ph .tl__ph::after { display: none !important; }
+  .work--paper .sci__ph .tl__ph > span { position: absolute; z-index: 2; opacity: 1 !important; mix-blend-mode: normal !important; font-style: italic; left: 16px; right: auto; bottom: 12px; top: auto; padding: 0; color: #fbf5ec !important; font-size: 16px !important; text-shadow: 0 1px 2px rgba(0, 0, 0, .75), 0 0 14px rgba(0, 0, 0, .35); background: none; filter: none !important; }
+  .work--paper .work__media--paper::after { content: ""; position: absolute; inset: auto 0 0 0; height: 46%; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(20, 8, 6, .82), rgba(20, 8, 6, .3) 55%, transparent); }
+  .work--paper .sci__q1 { top: 12px !important; right: 12px !important; z-index: 3; transform: scale(.84); transform-origin: top right; }
+
+  /* Dijital kitaplar: ince, kapakla aynı genişlikte, dergi künyesi gibi bağlantı */
+  .books { gap: 12px !important; align-items: start !important; }
+  .book { gap: 0 !important; }
+  .book__btn { width: 100%; min-height: 44px; display: flex !important; align-items: center; justify-content: center; gap: 6px; margin: 0; padding: 0 !important; border: 0 !important; border-bottom: 1px solid rgba(231, 185, 138, .38) !important; border-radius: 0 !important; background: none !important; color: #e7b98a !important; font: italic 400 16px/1 'Instrument Serif', Georgia, serif !important; letter-spacing: .01em; }
+  .book__btn:active { color: #f6eee3 !important; border-bottom-color: #f6eee3 !important; }
+
+  /* Kart içi ritim: daha ferah ama sıkı bir dergi düzeni */
+  .work__body { padding: 28px 22px 32px !important; gap: 12px !important; }
+  .work--paper .work__body { padding: 26px 22px 30px !important; gap: 12px !important; }
+  .work__meta { line-height: 1.5; }
+  .work__title { margin: 2px 0 4px !important; }
+  .work__text { line-height: 1.74 !important; }
+  .sci__colo { margin-top: 10px !important; }
+  .sci__colo > div { padding: 12px 0 !important; }
+  .gv__intro { padding: 26px 22px 30px !important; }
 }
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp?v=98" type="image/webp" media="(min-width: 901px)">
