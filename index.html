@@ -3544,10 +3544,10 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); ob.unobserve(e.target); } });
     };
     var io = new IntersectionObserver(reveal, { rootMargin: '0px 0px 24% 0px', threshold: 0 });
-    // v111 · Müzik perdesi ekranın içinde açılsın (erken tetiklenince görünmeden bitiyordu); yalnız masaüstü
+    // v112 · Masaüstünde girişler ekranın içinde oynasın (erken tetiklenince görünmeden bitiyordu); telefonda erken açılma kalır
     var late = matchMedia('(prefers-reduced-motion: no-preference) and (min-width: 901px)').matches
-      && new IntersectionObserver(reveal, { rootMargin: '0px 0px -18% 0px', threshold: 0 });
-    items.forEach(function (el) { if (!el.classList.contains('is-in')) (late && el.closest('#muzik') ? late : io).observe(el); });
+      && new IntersectionObserver(reveal, { rootMargin: '0px 0px -14% 0px', threshold: 0 });
+    items.forEach(function (el) { if (!el.classList.contains('is-in')) (late || io).observe(el); });
     });
   }
   var tl = document.getElementById('timeline'), fill = tl.querySelector('.timeline__fill');
@@ -5968,9 +5968,14 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 /* Hareket orkestrası (masaüstü): her bölümün kendi girişi var; telefonda sade yükselme kalır */
 @media (prefers-reduced-motion: no-preference) and (min-width: 901px) {
   .js :is(#hakkimda, #referanslar) .will-reveal:not(.is-in) { transform: none; clip-path: none; }
-  .js :is(#anilar, #gonullu) .will-reveal:not(.is-in) { transform: translateX(-36px); }
-  .js #egitim .will-reveal:not(.is-in) { transform: translateX(36px); }
-  .js #projeler .will-reveal:not(.is-in) { transform: scale(.965); clip-path: none; }
+  .js :is(#anilar, #gonullu) .will-reveal:not(.is-in) { transform: translateX(-48px); }
+  .js #egitim .will-reveal:not(.is-in) { transform: translateX(48px); }
+  .js #projeler .will-reveal:not(.is-in) { transform: scale(.94); }
+  .js #projeler .will-reveal:not(.is-in) { clip-path: none; }
+  /* v72'nin kısa geçişleri hareketi ~200ms'de bitiriyordu; masaüstü girişleri göz izleyebilsin diye uzun ve yumuşak */
+  .js :is(#hakkimda, #anilar, #egitim, #liderlik, #projeler, #gonullu, #referanslar, #iletisim) .will-reveal.is-in {
+    transition: opacity 800ms cubic-bezier(.22, 1, .36, 1), transform 1100ms cubic-bezier(.22, 1, .36, 1), filter 800ms cubic-bezier(.22, 1, .36, 1) !important;
+    transition-delay: var(--d, 0ms) !important; }
   /* v72 belirmelerde maskeyi !important ile kapatıyor; müzik perdesi onu açıkça geçersiz kılar */
   .js #muzik .will-reveal:not(.is-in) { transform: none; clip-path: inset(0 0 100% 0) !important; }
   .js #muzik .will-reveal.is-in { clip-path: inset(-30% -8% -30% -8%) !important; transition: opacity 600ms var(--ease-out-strong), clip-path 1000ms var(--ease-out-strong) !important; transition-delay: var(--d, 0ms) !important; }
@@ -5980,6 +5985,8 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 .hero .actions .bd-btn--primary { background: var(--ink-accent) !important; border-color: var(--ink-accent) !important; color: #f6eee3 !important; }
 .hero .actions .bd-btn--primary:hover { background: #2f3a66 !important; border-color: #2f3a66 !important; }
 .fx-line__bar { background: linear-gradient(to bottom, transparent, var(--ink-accent) 30%, var(--ink-accent)) !important; opacity: .7 !important; }
+/* Makale künyesi: uzun dergi adı Rolüm sütununu 6px'e eziyordu; sütunlar sabit oranlı */
+@media (min-width: 621px) { .sci__colo { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, .75fr); } }
 /* Bölüm etiketleri: numara ve çizgi yok, yalnız bölüm adı */
 .kicker .kno { display: none !important; }
 .kicker::before { display: none !important; }
