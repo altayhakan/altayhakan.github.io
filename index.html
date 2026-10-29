@@ -2488,9 +2488,6 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
   #timeline .tl__photos, #timeline .tl__ph { max-width: 100%; }
 }
 @media (min-width: 901px) and (max-width: 1400px) and (pointer: coarse), (min-width: 901px) and (max-width: 1400px) and (hover: none) {
-  #timeline .tl { grid-template-columns: minmax(120px, .62fr) 32px minmax(0, 2fr); }
-  /* omurga, yeni tarih sütununun ardındaki düğüm ekseninde */
-  #timeline .timeline__spine { left: max(136px, calc((100% - 32px) * .62 / 2.62 + 16px)); }
   #timeline .tl__when { font-size: clamp(56px, 6.2vw, 92px); padding-right: clamp(14px, 2vw, 28px); }
   #timeline .tl__when.tl__when--soft { font-size: 12px !important; white-space: normal; }
   #timeline .tl__card { max-width: none; }
@@ -2516,6 +2513,40 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 
 /* v99e · Ekrandan uzak bölüm: çizilmez, boyu JS'in ölçtüğü değerde sabit kalır */
 .is-far { content-visibility: hidden; }
+
+
+/* ═══ v99g · Kariyer tek cetvelde: zaman çizelgesi bölüm başlığıyla aynı iki sütunu kullanır ═══
+   Tarih = künye sütunu (1fr), kart = başlık sütunu (2fr), aradaki boşluk başlıktaki boşlukla aynı; düğüm ve omurga o boşluğun ortasında.
+   Kart artık sağ kenara kadar uzanır (eskiden 760 px'te kesilip sağda 60 px kısa kalıyordu). */
+@media (min-width: 901px) {
+  #timeline .tl { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) !important; column-gap: var(--space-8) !important; }
+  #timeline .tl__when { grid-column: 1; grid-row: 1; padding-right: clamp(14px, 1.6vw, 24px); }
+  #timeline .tl__node { grid-column: 1; grid-row: 1; justify-self: end; margin-right: calc(var(--space-8) / -2 - 4.5px); }
+  #timeline .tl__card { grid-column: 2; grid-row: 1; max-width: none !important; width: 100%; box-sizing: border-box; }
+  #timeline .timeline__spine { left: calc((100% - var(--space-8)) / 3 + var(--space-8) / 2) !important; }
+  /* kart içi metin ölçüsü: okuma satırı 62ch, fotoğraf kartın içinde */
+  #timeline .tl__text { max-width: 62ch; }
+}
+
+/* ═══ v99g · Telefon ve tablet: Kariyer bandı hafifler (beyaz parlama ve takılma) ═══
+   Dev katmanlar (1700 px sarmal, 3 × 770 px tohum) giriş ölçek/dönüş geçişi ve sonsuz "nefes" animasyonu yerine yerinde durur;
+   kalıcı GPU katmanı istemez. Doku ve sarmal görünür kalır. Zeminin altına ucuz bir koyu bordo serilir: maskeli zemin bir kare geç
+   boyansa da krem sayfa (beyaz) görünmez. */
+.perf-lite .band__spiral, .perf-lite .band__seeds { transform: none !important; will-change: auto !important; animation: none !important; scale: 1 !important; rotate: 0deg !important; transition: opacity 700ms ease !important; }
+.perf-lite .band__seeds { opacity: .55; }
+.perf-lite .band .section-head, .perf-lite .tl__card, .perf-lite .fx-waves, .perf-lite .fx-wave, .perf-lite .fx-veil { will-change: auto !important; }
+/* paralaks kapalıyken translate3d(0,0,0) yine de her birine ayrı GPU dokusu açıyordu (sarmal 2×'te ~4100×5300 px) */
+.perf-lite .band .section-head, .perf-lite .band__bg::after, .perf-lite .band__grain { transform: none !important; }
+.perf-lite .band { background: linear-gradient(180deg, transparent 0, transparent calc(var(--seam) * .92), #2c0d0b var(--seam), #22090a calc(100% - var(--seam)), transparent calc(100% - var(--seam) * .92), transparent 100%) !important; }
+
+/* ═══ v99g · Telefon: Anılar'daki mürekkep dalgası metnin arkasından çekilir ═══
+   Dalga oranı korunur (1500:640), yalnız bölümün sağ üst köşesinden geçer; sola doğru silinir, çizgi daha soluk. */
+@media (max-width: 620px) {
+  .fx-ink { left: auto !important; right: -70%; width: 190% !important; height: auto !important; aspect-ratio: 1500 / 640; top: 18px !important; opacity: .75 !important;
+    -webkit-mask-image: linear-gradient(to left, #000 18%, rgba(0, 0, 0, .35) 42%, transparent 62%); mask-image: linear-gradient(to left, #000 18%, rgba(0, 0, 0, .35) 42%, transparent 62%); }
+  .fx-ink path { stroke: rgba(94, 26, 23, .11); }
+  .fx-ink path + path { stroke: rgba(201, 149, 47, .14); }
+}
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp?v=98" type="image/webp" media="(min-width: 901px)">
 <link rel="preload" as="image" href="assets/desk/ahsap-1024.webp?v=98" type="image/webp" media="(max-width: 900px)">
