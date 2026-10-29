@@ -2561,9 +2561,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 *, *::before, *::after { font-style: normal !important; }
 .accent-strategic { font-weight: 600; color: var(--surface-strong); letter-spacing: -.01em; }
 .accent-curated { font-family: 'Geist Mono', ui-monospace, monospace !important; font-size: .92em; opacity: .8; letter-spacing: .02em; }
-/* "Bugün": koyu zeminde okunur, sıcak vurgu rengiyle şimdiki zamanı işaret eder */
-.tl__when .accent-curated { font-size: 18px; letter-spacing: .08em; opacity: 1; color: #e7b98a; }
-@media (max-width: 720px) { .tl__when .accent-curated { font-size: 15px; } }
+.tl__when--now { color: #e7b98a; }
 /* Kılcal çizgi: text-decoration, satır kırılsa da her satırın altında kalır */
 .accent-editorial { text-decoration: underline 1px; text-underline-offset: .2em; text-decoration-color: color-mix(in srgb, currentColor 30%, transparent); }
 .title--ed .t-last em.accent-strategic { font-weight: 600 !important; letter-spacing: -.01em; }
@@ -2873,7 +2871,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
         </div>
       </li>
       <li class="tl tl--now will-reveal">
-        <p class="tl__when tl__when--soft"><span class="accent-curated">Bugün</span></p><span class="tl__node" aria-hidden="true"></span>
+        <p class="tl__when tl__when--now">Bugün</p><span class="tl__node" aria-hidden="true"></span>
         <div class="tl__card">
           <p class="tl__role">Yönetim · Özalp Atatürk İlkokulu · 2025’ten bugüne</p>
           <h3 class="tl__title">Müdür Yardımcısı</h3>
@@ -5943,6 +5941,41 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 })();
 
 </script>
+<!-- v105 · Okunurluk: Instrument Serif dar ve ince bir başlık yazısı; italik kalkınca küçük boylarda
+     okunmaz hale geldi. Cümle ve etiketler role göre büyütüldü (dosyanın sonunda, önceki !important kuralları yener). -->
+<style>
+/* Cümleler: bölüm metinleri, kart başlıkları, notlar */
+/* Çift sınıf: '.chap__body p' (17px !important) bu öğelerin tasarlanan boyutunu eziyordu */
+.chap__lead.chap__lead { font-size: clamp(24px, 2.1vw, 32px) !important; line-height: 1.3 !important; }
+.chap__aside.chap__aside { font-size: clamp(21px, 1.6vw, 23px) !important; line-height: 1.45 !important; }
+.track__note { font-size: 21px !important; line-height: 1.5 !important; }
+.tl__side-t { font-size: 21px !important; line-height: 1.35 !important; }
+.gv__lede.gv__lede { font-size: clamp(22px, 1.9vw, 28px) !important; line-height: 1.3 !important; }
+.stories__lede { font-size: 25px !important; }
+.tb__hl { font-size: 22px !important; }
+.tb__doct { font-size: 20px !important; }
+.echo a { font-size: 21px !important; }
+dd > i { font-size: 19px !important; }
+/* Etiketler ve künyeler */
+.tl__ph span, .spark__ph span, .memo__photo figcaption, .cinar__poster figcaption, .kb__cap em, .story__photo-cap { font-size: 18px !important; }
+.tb__when, .gv__when-d, .gv__langs li { font-size: 19px !important; }
+.tb__colo-k, .mektup__kicker { font-size: 18px !important; }
+.kb__label { font-size: 18px !important; }
+.v3d-card__t { font-size: 20px !important; }
+.v3d-card__s { font-size: 16px !important; }
+.letter__sign.letter__sign { font-size: 24px !important; }
+.chap__credit-line.chap__credit-line { font-size: 20px !important; }
+.eyebrow b { font-size: 19px !important; }
+.hero .status { font-size: 17px !important; }
+@media (max-width: 720px) {
+  .chap__lead.chap__lead { font-size: 22px !important; }
+  .chap__aside.chap__aside, .track__note, .tl__side-t, .echo a { font-size: 19px !important; }
+  .gv__lede.gv__lede { font-size: 20px !important; }
+  .tb__hl { font-size: 18.5px !important; }
+  .stories__lede { font-size: 22px !important; }
+  .tl__ph span, .spark__ph span, .memo__photo figcaption, .cinar__poster figcaption, .kb__cap em, .story__photo-cap { font-size: 16px !important; }
+}
+</style>
 <!-- v100 · Masaüstü dokunuşları: ilerleme çizgisi, netleşerek belirme, ortam ışığı, imleç ve mıknatıs.
      Yalnız fare + hover olan, hareketi azaltmayan, perf-lite olmayan cihazlarda çalışır. -->
 <style>
