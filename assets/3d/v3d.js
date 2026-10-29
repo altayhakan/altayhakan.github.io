@@ -8,10 +8,11 @@ const BASE = new URL('./', import.meta.url).href;
 const RADII = {"pers":[0.819,0.813,0.809,0.806,0.806,0.809,0.809,0.816,0.829,0.836,0.839,0.849,0.856,0.856,0.86,0.86,0.86,0.866,0.873,0.886,0.896,0.913,0.926,0.936,0.946,0.95,0.946,0.94,0.933,0.923,0.916,0.91,0.906,0.9,0.89,0.886,0.876,0.866,0.849,0.836,0.819,0.803,0.789,0.783,0.776,0.773,0.776,0.773,0.779,0.786,0.793,0.799,0.806,0.813,0.816,0.823,0.829,0.836,0.839,0.849,0.86,0.876,0.89,0.906,0.92,0.93,0.936,0.943,0.94,0.93,0.923,0.913,0.91,0.903,0.9,0.903,0.903,0.903,0.896,0.886,0.876,0.863,0.853,0.846,0.839,0.836,0.833,0.836,0.833,0.839,0.836,0.836,0.836,0.836,0.829,0.823],"selcuklu":[0.94,0.933,0.933,0.93,0.93,0.93,0.93,0.93,0.933,0.933,0.93,0.93,0.926,0.923,0.92,0.913,0.913,0.913,0.916,0.92,0.923,0.926,0.93,0.933,0.936,0.936,0.94,0.933,0.936,0.933,0.933,0.93,0.936,0.933,0.933,0.94,0.936,0.94,0.933,0.933,0.933,0.926,0.92,0.92,0.916,0.913,0.916,0.92,0.92,0.926,0.93,0.93,0.93,0.93,0.93,0.93,0.933,0.93,0.93,0.933,0.933,0.94,0.94,0.94,0.943,0.94,0.94,0.94,0.933,0.93,0.93,0.923,0.92,0.923,0.92,0.92,0.923,0.923,0.923,0.926,0.926,0.923,0.923,0.923,0.92,0.923,0.923,0.926,0.926,0.93,0.936,0.943,0.943,0.946,0.943,0.943],"akce":[0.943,0.936,0.933,0.93,0.93,0.93,0.93,0.926,0.933,0.933,0.93,0.93,0.92,0.916,0.913,0.91,0.91,0.91,0.913,0.913,0.92,0.926,0.933,0.936,0.94,0.946,0.943,0.94,0.94,0.94,0.936,0.933,0.936,0.936,0.94,0.94,0.943,0.94,0.94,0.933,0.933,0.926,0.916,0.913,0.91,0.91,0.91,0.91,0.916,0.923,0.923,0.926,0.933,0.93,0.93,0.93,0.926,0.933,0.93,0.933,0.936,0.94,0.943,0.946,0.95,0.946,0.95,0.943,0.936,0.93,0.923,0.923,0.916,0.913,0.916,0.913,0.92,0.923,0.923,0.923,0.923,0.92,0.92,0.916,0.916,0.916,0.92,0.923,0.926,0.933,0.94,0.946,0.95,0.95,0.953,0.95],"sultani":[0.936,0.933,0.933,0.93,0.93,0.93,0.93,0.93,0.933,0.933,0.93,0.93,0.926,0.93,0.923,0.923,0.923,0.923,0.923,0.923,0.923,0.926,0.93,0.933,0.933,0.933,0.933,0.93,0.933,0.933,0.933,0.93,0.933,0.933,0.933,0.933,0.933,0.933,0.933,0.933,0.933,0.926,0.923,0.923,0.923,0.923,0.92,0.923,0.923,0.926,0.93,0.93,0.93,0.93,0.93,0.93,0.926,0.933,0.93,0.933,0.933,0.933,0.933,0.933,0.936,0.933,0.936,0.933,0.933,0.93,0.93,0.926,0.923,0.926,0.923,0.923,0.93,0.926,0.93,0.926,0.926,0.926,0.923,0.93,0.926,0.93,0.923,0.926,0.933,0.93,0.933,0.933,0.936,0.94,0.936,0.933]};
 const COINS = { pers: { metal: '#c9c6c0', r: 1 }, selcuklu: { metal: '#cfcac2', r: 1 }, akce: { metal: '#c4bfb6', r: .86 }, sultani: { metal: '#d9b46a', r: .9 } };
 
-let renderer, scene, camera, controls, env, holder, raf = 0, canvasHost = null, current = null;
+let renderer, scene, camera, controls, env, holder, ro = null, raf = 0, canvasHost = null, current = null;
+const LITE = document.documentElement.classList.contains('perf-lite');
 const cache = {};
 const tl = new THREE.TextureLoader();
-function tex(name, color) { const t = tl.load(BASE + name); if (color) t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t; }
+function tex(name, color) { const t = tl.load(BASE + name); if (color) t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = LITE ? 4 : 8; return t; }
 
 function setup(w, h, opts = {}) {
   if (!renderer) {
@@ -27,7 +28,7 @@ function setup(w, h, opts = {}) {
     camera = new THREE.PerspectiveCamera(30, 1, .05, 100);
     holder = new THREE.Group(); scene.add(holder);
   }
-  renderer.setPixelRatio(opts.poster ? 1 : Math.min(2, devicePixelRatio || 1));
+  renderer.setPixelRatio(opts.poster ? 1 : Math.min(LITE ? 1.5 : 2, devicePixelRatio || 1));   // v98: telefon/tablette GPU belleği yarıya yakın
   renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
 }
 
@@ -112,7 +113,7 @@ export async function open(id, host) {
     controls.enableDamping = true; controls.dampingFactor = .07; controls.enablePan = false;
     controls.minDistance = 2.2; controls.maxDistance = 6; controls.autoRotate = true; controls.autoRotateSpeed = .9;
     controls.addEventListener('start', () => { controls.autoRotate = false; });
-    new ResizeObserver(() => { if (!canvasHost) return; const W = canvasHost.clientWidth, H = canvasHost.clientHeight; if (W && H) { renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix(); } }).observe(host);
+    ro = new ResizeObserver(() => { if (!canvasHost) return; const W = canvasHost.clientWidth, H = canvasHost.clientHeight; if (W && H) { renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix(); } }); ro.observe(host);
   }
   holder.clear(); holder.rotation.set(0, 0, 0);
   host.classList.add('is-loading');
@@ -126,4 +127,21 @@ export async function open(id, host) {
   const loop = () => { raf = requestAnimationFrame(loop); controls.update(); renderer.render(scene, camera); };
   loop();
 }
-export function close() { cancelAnimationFrame(raf); raf = 0; canvasHost = null; current = null; }
+/* v98 · Pencere kapanınca WebGL bağlamı tümüyle bırakılır: geometri, malzeme, doku, ortam haritası silinir, bağlam kapatılır.
+   iPhone/Safari'de cam küreyle aynı anda ikinci bir bağlamın bellekte kalmaması için; yeniden açılışta dosyalar tarayıcı önbelleğinden gelir. */
+function disposeTree(o) {
+  o.traverse((m) => {
+    if (m.geometry) m.geometry.dispose();
+    [].concat(m.material || []).forEach((mt) => { Object.values(mt).forEach((v) => { if (v && v.isTexture) v.dispose(); }); mt.dispose(); });
+  });
+}
+function free() {
+  if (!renderer) return;
+  Object.keys(cache).forEach((k) => { cache[k].then(disposeTree, () => {}); delete cache[k]; });
+  if (ro) { ro.disconnect(); ro = null; }
+  if (controls) { controls.dispose(); controls = null; }
+  if (env) { env.dispose(); env = null; }
+  holder.clear(); renderer.dispose(); renderer.forceContextLoss(); renderer.domElement.remove();
+  renderer = scene = camera = holder = null;
+}
+export function close() { cancelAnimationFrame(raf); raf = 0; canvasHost = null; current = null; free(); }
