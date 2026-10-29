@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://formspree.io https://unpkg.com https://cdn.jsdelivr.net data: blob:; worker-src 'self' blob:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action https://formspree.io">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hakan Altay — Eğitim Ekosistemi</title>
 <script>
 /* v96 · Cihaz kademesi: dokunmatik telefon/tablet = perf-lite (hafif küre, sade açılış); zayıf cihaz/veri tasarrufu = perf-low (statik küre) */
 (function () {
@@ -13,14 +20,6 @@
   try { if (/[?&]perf=(lite|low|full)/.test(location.search)) { var v = RegExp.$1; d.classList.remove('perf-lite', 'perf-low'); if (v !== 'full') d.classList.add('perf-lite'); if (v === 'low') d.classList.add('perf-low'); } } catch (e) {}
 })();
 </script>
-
-<meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://formspree.io https://unpkg.com https://cdn.jsdelivr.net data: blob:; worker-src 'self' blob:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action https://formspree.io">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hakan Altay — Eğitim Ekosistemi</title>
 <link rel="icon" href="assets/brand/favicon.ico" sizes="48x48">
 <link rel="icon" href="assets/brand/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="assets/brand/icon-192.png" type="image/png" sizes="192x192">
