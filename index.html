@@ -2410,14 +2410,17 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
   #tuspa .gv__quote { order: 3; margin: 10px auto 0 !important; padding-top: 16px; border-top: 1px solid rgba(231, 185, 138, .22); font-size: 20px !important; line-height: 1.34 !important; max-width: 28ch; }
 
   /* SSCI: fotoğraf kartın üst alanını tamamen kaplar; boş bordo alan kalmaz */
-  .work--paper .work__media--paper { display: block !important; position: relative; padding: 0 !important; min-height: 0 !important; aspect-ratio: 4 / 3; overflow: hidden; }
+  /* v99f · SSCI fotoğrafı da arşivin diğer kareleri gibi polaroid: krem çerçeve, yıpranmış kenar, altında künye */
+  .work--paper .work__media--paper { display: flex !important; align-items: center; justify-content: center; position: relative; padding: 40px 0 34px !important; min-height: 0 !important; aspect-ratio: auto; overflow: visible; }
   .work--paper .work__media--paper .scatter { display: none; }
-  .work--paper .sci__ph { position: absolute !important; inset: 0; width: 100% !important; height: 100%; margin: 0 !important; display: block !important; }
-  .work--paper .sci__ph .tl__ph { position: absolute !important; inset: 0; width: 100% !important; height: 100% !important; aspect-ratio: auto !important; padding: 0 !important; border-radius: 0 !important; transform: none !important; --r: 0deg !important; box-shadow: none !important; background: #1d0d0b; }
-  .work--paper .sci__ph .tl__ph .ph-img { position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover; object-position: 50% 45%; border-radius: 0; }
-  .work--paper .sci__ph .tl__ph::before, .work--paper .sci__ph .tl__ph::after { display: none !important; }
-  .work--paper .sci__ph .tl__ph > span { position: absolute; z-index: 2; opacity: 1 !important; mix-blend-mode: normal !important; font-style: italic; left: 16px; right: auto; bottom: 12px; top: auto; padding: 0; color: #fbf5ec !important; font-size: 16px !important; text-shadow: 0 1px 2px rgba(0, 0, 0, .75), 0 0 14px rgba(0, 0, 0, .35); background: none; filter: none !important; }
-  .work--paper .work__media--paper::after { content: ""; position: absolute; inset: auto 0 0 0; height: 46%; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(20, 8, 6, .82), rgba(20, 8, 6, .3) 55%, transparent); }
+  .work--paper .sci__ph { position: relative !important; inset: auto; width: min(66%, 250px) !important; max-width: none !important; height: auto; margin: 0 !important; display: block !important; }
+  .work--paper .sci__ph .tl__ph { position: relative !important; inset: auto; width: 100% !important; height: auto !important; aspect-ratio: 4 / 5 !important; padding: 10px 10px 42px !important; border-radius: 2px !important; transform: rotate(-2.2deg) !important; background: #faf6ee !important; outline: 1px solid rgba(94, 52, 30, .10); outline-offset: -1px;
+    box-shadow: inset 0 0 0 1px rgba(120, 88, 56, .10), inset 0 0 16px rgba(132, 98, 62, .16), 0 1px 1.5px rgba(10, 2, 1, .45), 0 6px 12px -4px rgba(10, 2, 1, .5), 0 22px 34px -14px rgba(10, 2, 1, .6), 0 44px 60px -30px rgba(10, 2, 1, .65) !important; }
+  .work--paper .sci__ph .tl__ph .ph-img { position: absolute; inset: 10px 10px 42px; width: calc(100% - 20px) !important; height: calc(100% - 52px) !important; object-fit: cover; object-position: 48% 50%; border-radius: 1px; filter: sepia(.12) saturate(.92); }
+  .work--paper .sci__ph .tl__ph::before { display: block !important; inset: 10px 10px 42px; }
+  .work--paper .sci__ph .tl__ph::after { display: block !important; inset: 10px 10px 42px; z-index: 2; opacity: .22; mix-blend-mode: multiply; }
+  .work--paper .sci__ph .tl__ph > span { position: absolute; z-index: 3; left: 8px; right: 8px; bottom: 12px; top: auto; padding: 0; text-align: center; opacity: 1 !important; mix-blend-mode: normal !important; color: #6b4630 !important; font-size: 15px !important; text-shadow: none !important; }
+  .work--paper .work__media--paper::after { content: none !important; }
   .work--paper .sci__q1 { top: 12px !important; right: 12px !important; z-index: 3; transform: scale(.84); transform-origin: top right; }
 
   /* Dijital kitaplar: ince, kapakla aynı genişlikte, dergi künyesi gibi bağlantı */
@@ -2425,6 +2428,10 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
   .book { gap: 0 !important; }
   .book__btn { width: 100%; min-height: 44px; display: flex !important; align-items: center; justify-content: center; gap: 6px; margin: 0; padding: 0 !important; border: 0 !important; border-bottom: 1px solid rgba(231, 185, 138, .38) !important; border-radius: 0 !important; background: none !important; color: #e7b98a !important; font: italic 400 16px/1 'Instrument Serif', Georgia, serif !important; letter-spacing: .01em; }
   .book__btn:active { color: #f6eee3 !important; border-bottom-color: #f6eee3 !important; }
+  /* v99f · daha da sade: ok yok, çizgi yalnız sözcüğün altında, ince bir kıl çizgisi */
+  .book__btn { border-bottom: 0 !important; font-size: 17px !important; color: #e2c08f !important; gap: 0; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; text-decoration-color: rgba(226, 192, 143, .45); }
+  .book__btn > span[aria-hidden="true"] { display: none !important; }
+  .book__btn:active { text-decoration-color: currentColor; }
 
   /* Kart içi ritim: daha ferah ama sıkı bir dergi düzeni */
   .work__body { padding: 28px 22px 32px !important; gap: 12px !important; }
@@ -5720,7 +5727,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
     if (c && c.display !== 'none' && (c.position === 'fixed' || c.position === 'sticky')) return n.getBoundingClientRect().height + 24;
     return 44;
   }
-  function want(t) { if (window.__thaw) window.__thaw(t); return Math.max(0, Math.min(absTop(head(t)) - gap(), de.scrollHeight - innerHeight)); }
+  function want(t) { if (window.__thaw) window.__thaw(t); var x = window.__wantX && window.__wantX(t, absTop, gap); if (x != null) return Math.max(0, Math.min(x, de.scrollHeight - innerHeight)); return Math.max(0, Math.min(absTop(head(t)) - gap(), de.scrollHeight - innerHeight)); }
   function jump(y) { var b = de.style.scrollBehavior; de.style.scrollBehavior = 'auto'; scrollTo(0, y); de.style.scrollBehavior = b; }
   function go(t, delay) {
     if (typeof t === 'string') t = document.getElementById(t);
@@ -5749,7 +5756,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
         fixes++; to(w, smooth && d > 120); settle(check);
       }
       var w0 = want(t), d0 = w0 - scrollY;
-      if (smooth && Math.abs(d0) > innerHeight * 2.5) jump(w0 - (d0 > 0 ? 1 : -1) * Math.round(innerHeight * .9));
+      if (smooth && Math.abs(d0) > innerHeight * 2.5) jump(w0 - (d0 > 0 ? 1 : -1) * Math.round(innerHeight * (matchMedia('(pointer: coarse)').matches ? .4 : .9)));
       to(want(t), smooth); settle(check);
     }
     if (delay && smooth) setTimeout(start, delay); else start();
@@ -5855,6 +5862,26 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   // ilk yerleşim ve görsel ölçüleri otursun diye load'dan sonra başlar; döndürmede (genişlik değişince; adres çubuğu yüksekliği sayılmaz) hepsi açılıp yeniden ölçülür
   addEventListener('load', function () { setTimeout(arm, 1200); });
   var rt, lw = innerWidth; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (!io || innerWidth === lw) return; lw = innerWidth; io.disconnect(); secs.forEach(thaw); requestAnimationFrame(arm); }, 300); });
+})();
+
+/* v99f · Tablette İletişim: iniş mektubun kendisine olur; mektup görünür yüksekliğe sığacak kadar ölçeklenir ve dikeyde ortalanır */
+(function () {
+  var tab = matchMedia('(min-width: 621px) and (pointer: coarse)');
+  window.__wantX = function (t, absTop, gap) {
+    if (!t || t.id !== 'iletisim' || !tab.matches) return null;
+    var w = t.querySelector('.mektup-wrap'); if (!w) return null;
+    var g = gap(), key = innerWidth + 'x' + innerHeight;
+    if (w.__fit !== key) {   // ölçek ekran boyu başına bir kez hesaplanır (iniş düzeltmeleri sırasında titremesin)
+      w.style.zoom = ''; var h0 = w.getBoundingClientRect().height, room = innerHeight - 2 * Math.min(g, 32);
+      if (h0 > room) w.style.zoom = Math.max(.72, room / h0).toFixed(3); w.__fit = key;
+    }
+    var h = w.getBoundingClientRect().height;
+    // zoom'lu öğede offsetTop ölçeklenir: konum, ölçeksiz ızgaradan ve iki kutunun ekrandaki farkından alınır
+    var gr = w.parentElement, top = absTop(gr) + (w.getBoundingClientRect().top - gr.getBoundingClientRect().top);
+    return top - Math.max(Math.min(g, 32), (innerHeight - h) / 2);
+  };
+  // döndürmede ölçek sıfırlanır (bir sonraki İletişim inişinde yeniden hesaplanır)
+  var lw = innerWidth; addEventListener('resize', function () { if (innerWidth === lw) return; lw = innerWidth; var w = document.querySelector('#iletisim .mektup-wrap'); if (w) { w.style.zoom = ''; w.__fit = null; } });
 })();
 
 </script>
