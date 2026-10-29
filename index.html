@@ -2575,7 +2575,6 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
 .tl__when { font-family: var(--font-mono) !important; letter-spacing: -.04em !important; }
 .tl__when--soft { letter-spacing: .04em !important; }
 /* Başlık altı metinler hafif: başlığın ağırlığına karşı */
-.section-lead, .band__lead { font-weight: 300; }
 *, *::before, *::after { font-style: normal !important; }
 .accent-strategic { font-weight: 600; color: var(--surface-strong); letter-spacing: -.01em; }
 .accent-curated { font-family: var(--font-mono) !important; font-size: .9em; opacity: .8; letter-spacing: .03em; }
@@ -2692,7 +2691,7 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
   </div>
 
   <div class="tag" id="tag" aria-hidden="true"><i></i><span></span><b></b></div>
-  <p class="hero__spine"><span>Hakan Altay</span><i>·</i><span>Portfolyo 2026</span><i>·</i><span>Van, Türkiye</span></p>
+  <p class="hero__spine" aria-hidden="true"><span>Hakan Altay</span><i>·</i><span>Portfolyo 2026</span><i>·</i><span>Van, Türkiye</span></p>
   <div class="footnote" aria-hidden="true">
     <span class="footnote__clock" id="vanClock">Van</span>
     <span>Van — Türkiye</span>
@@ -5960,6 +5959,43 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 })();
 
 </script>
+<!-- v109 · Okunurluk tabanı: sitedeki her yazı ölçüldü; rolüne göre alt boyut ve en az koyuluk.
+     Uzun metin ≥16px · künye satırı ≥14.5px · küçük etiket ≥13.5px · yazı koyuluğu ≥%74 (gövdede %80).
+     Renkler her öğenin kendi tonundan türetildi, yalnız saydamlık yükseldi. -->
+<style>
+/* Künye satırları */
+.pt__meta, .duty__role, .story__meta, .stat__l, .rc__title, .about__meta dt, .refs__foot { font-size: 14.5px !important; color: rgba(29, 23, 21, .74) !important; }
+/* tl__role rengini kartından alır (açık 'Bugün' kartında koyu): renk değil saydamlık yükselir */
+.tl__role { font-size: 14.5px !important; opacity: .84 !important; }
+.gv__sub, .gv__when-t, .gv__morelist, .sound__live-k, .tb__colo-l dt, .sci__colo dt, .sci__colo dd { font-size: 14.5px !important; color: rgba(246, 238, 227, .74) !important; }
+.give__meta, .pod__meta, .track__meta, .work__meta, .about__meta dd, .sci__link { font-size: 14.5px !important; }
+/* Uzun metin */
+.covers__text, .tb__dd, .gv__coins li span { font-size: 16px !important; color: rgba(246, 238, 227, .8) !important; }
+.rc__note, .tb__colo-l dd { font-size: 16px !important; }
+/* Küçük etiketler ve rozetler */
+.bd-badge, .tl__side-k, .tb__dl, .tb__dockick, .tb__src, .work__chip, .gv__when-live, .covers__by, .mektup__field > span,
+.mektup__topics legend, .bridge__go span, .kb__cap span, .v3d-strip__deg, .kb__label b { font-size: 13.5px !important; }
+.pod__count, .sitefoot span { font-size: 13.5px !important; color: rgba(246, 238, 227, .74) !important; }
+.domain__sub, .letter__sign span, .pt__foot span { font-size: 13.5px !important; color: rgba(29, 23, 21, .74) !important; }
+.chap__credit-line span { font-size: 13.5px !important; color: rgba(94, 26, 23, .74) !important; }
+.mektup__legal, .mektup .pv-link { font-size: 13.5px !important; color: rgba(30, 40, 70, .74) !important; }
+.sitefoot .pv-link { font-size: 13.5px !important; color: rgba(246, 238, 227, .74) !important; opacity: 1 !important; }
+.sci__q1 small { font-size: 10.5px !important; }
+.tl__when--soft { font-size: 14px !important; color: rgba(246, 238, 227, .74) !important; }
+.nav a { font-size: 14px !important; }
+/* Kart ve bölüm paragrafları: gövde metni en az 16px */
+.pt__desc, .duty__note, .give__text, .rg__lead { font-size: 16px !important; }
+/* tl__text rengini kartından alır (açık 'Bugün' kartında koyu): yalnız saydamlık yükselir */
+.tl__text { font-size: 16px !important; opacity: .92 !important; }
+.work__text, .gv__origin-t, .pod__text, .track__text, .contact__note,
+.gv__montext p:not(.gv__lede), .gv__icontext p:not(.gv__lede) { font-size: 16px !important; color: rgba(246, 238, 227, .86) !important; opacity: 1 !important; }
+.gv__sub, .sci__colo dd { font-size: 15.5px !important; }
+/* Soluk kalan vurgular */
+.giving__turn span { color: rgba(29, 23, 21, .72) !important; }
+.mektup__topics input:not(:checked) + span { color: rgba(34, 42, 76, .74) !important; }
+.gv__route-more { color: rgba(246, 238, 227, .72) !important; opacity: 1 !important; }
+.kb__cap em { color: rgba(246, 238, 227, .72) !important; }
+</style>
 <!-- v105 · Okunurluk: Instrument Serif dar ve ince bir başlık yazısı; italik kalkınca küçük boylarda
      okunmaz hale geldi. Cümle ve etiketler role göre büyütüldü (dosyanın sonunda, önceki !important kuralları yener). -->
 <style>
