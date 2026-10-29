@@ -2332,12 +2332,6 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
   .work--paper .work__title em { font-size: .9em; }
 
   /* C · Hikâye fotoğrafları: 2'li ızgara, sabit 4:5, kırpılmış doldurma (v99.js taşır) */
-  .story__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 14px; margin: 1.3em 0 1.7em; clear: both; }
-  #gonullu .story__grid .story__photo, #gonullu .story__grid .story__photo--r, #gonullu .story__grid .story__photo--l { float: none !important; width: auto !important; max-width: none !important; margin: 0 !important; }
-  #gonullu .story__grid > .story__photo:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 7px) !important; }
-  .story__grid .story__photo { display: block !important; grid-template-columns: none !important; padding: 0 !important; }
-  .story__grid .tl__ph { aspect-ratio: 4 / 5; width: 100% !important; max-width: none !important; margin: 0 !important; }
-  .story__grid .tl__ph > span { font-size: 13px !important; }
 
   /* 2 · Tevafuk tipografisi: büyük harf iki satırlık, metin nefes alır, alt çubuğa yer */
   .story__lead::first-letter { font-size: 3.3em !important; line-height: .8 !important; margin: .1em .08em 0 0 !important; }
@@ -2364,6 +2358,55 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 }
 
 /* 19 · Mobil künyelerde satır başına düşen ayraç (v99.js ayraçları önceki kelimeye bağlar) */
+
+@media (max-width: 900px) {
+  .story__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 14px; margin: 1.3em 0 1.7em; clear: both; }
+  #gonullu .story__grid .story__photo, #gonullu .story__grid .story__photo--r, #gonullu .story__grid .story__photo--l { float: none !important; width: auto !important; max-width: none !important; margin: 0 !important; }
+  #gonullu .story__grid > .story__photo:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 7px) !important; }
+  .story__grid .story__photo { display: block !important; grid-template-columns: none !important; padding: 0 !important; }
+  .story__grid .tl__ph { aspect-ratio: 4 / 5; width: 100% !important; max-width: none !important; margin: 0 !important; }
+  .story__grid .tl__ph > span { font-size: 13px !important; }
+}
+
+/* ═══ v99b · Sosyal girişi, Tevafuk, Kanatlı Melek: dergi sayfası mizanpajı ═══ */
+/* Polaroidler masaya bırakılmış kâğıt: temas gölgesi + yumuşak düşen gölge (her ekranda) */
+#gonullu .story__photo .tl__ph {
+  box-shadow: 0 1px 1px rgba(46, 24, 14, .30), 0 3px 6px -1px rgba(46, 24, 14, .26), 0 14px 22px -10px rgba(46, 24, 14, .42), 0 34px 48px -26px rgba(46, 24, 14, .50), 0 2px 0 rgba(255, 255, 255, .45) inset !important;
+}
+#gonullu .story__photo-cap { margin-top: 16px !important; }
+
+@media (min-width: 901px) {
+  /* Projeler'den Sosyal'e geçişte ölü boşluk kalkar; başlık dergi hiyerarşisinde */
+  #projeler { padding-bottom: var(--seam) !important; }
+  #gonullu { padding-top: clamp(56px, 5vw, 80px) !important; }
+  #gonullu > .wrap > .section-head { align-items: end; padding-bottom: clamp(22px, 2.2vw, 32px); margin-bottom: clamp(20px, 2vw, 28px) !important; }
+  #gonullu .stories--inline { padding-top: clamp(28px, 2.6vw, 40px) !important; margin-top: 0 !important; }
+  #gonullu > .wrap > .section-head .section-title { font-size: clamp(46px, 4.3vw, 64px) !important; line-height: 1.02; }
+  #gonullu .stories__head { margin-bottom: 0; }
+
+  /* Üç sütun: künye (yapışkan) · metin · fotoğraf sütunu; hepsi 1240 px kolonun içinde */
+  #gonullu .story { display: grid !important; grid-template-columns: 252px minmax(0, 1fr) 248px; column-gap: clamp(40px, 4vw, 60px); align-items: start; padding: clamp(48px, 4.4vw, 64px) 0 !important; }
+  #gonullu .story__side, #gonullu .story--journal .story__side { position: sticky !important; top: 96px; align-self: start; margin: 0; }
+  #gonullu .story__mark { position: static !important; margin: 34px 0 0 !important; font-size: clamp(64px, 6vw, 92px) !important; line-height: .9 !important; }
+  #gonullu .story__mark--words { font-size: clamp(36px, 3.2vw, 48px) !important; line-height: 1 !important; }
+  #gonullu .story__body { max-width: 62ch !important; min-width: 0; }
+  .story__rail { display: flex; flex-direction: column; gap: 40px; padding-top: 6px; }
+  .story__rail .story__photo { float: none !important; display: block !important; width: 100% !important; max-width: none !important; margin: 0 !important; grid-template-columns: none !important; }
+  .story__rail .story__photo:nth-child(2) { margin-left: -14px !important; width: calc(100% + 6px) !important; }
+  .story__rail .story__photo:nth-child(3) { margin-left: 10px !important; width: calc(100% - 10px) !important; }
+  .story__rail .tl__ph { width: 100% !important; margin: 0 !important; }
+
+  /* Büyük harf: üstü ilk satırın büyük harf çizgisinde, gövdesi üç satır */
+  #gonullu .story__lead::first-letter { font-size: 5.6em !important; line-height: .7 !important; margin: .075em .09em 0 -.03em !important; }
+  #gonullu .story__lead { margin-bottom: 1.1em !important; }
+  /* Alıntı: metnin içinde nefes alır, kopukluk yaratmaz */
+  #gonullu .story__pull { margin: 1.2em 0 1.3em !important; padding-block: 2px !important; }
+  #gonullu .story__pull + p { margin-top: 0 !important; }
+}
+@media (min-width: 621px) and (max-width: 900px) {
+  #gonullu .story__photo .tl__ph { width: 100%; }
+  .story__grid { max-width: 540px; margin-inline: auto !important; gap: 22px 20px !important; }
+}
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp?v=98" type="image/webp" media="(min-width: 901px)">
 <link rel="preload" as="image" href="assets/desk/ahsap-1024.webp?v=98" type="image/webp" media="(max-width: 900px)">
@@ -5632,21 +5675,27 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   // ayrı <i>/<span> ayraçları (pt__sep, hero__spine): bir önceki kardeşe yapışık dursun
   [].forEach.call(document.querySelectorAll('.pt__sep'), function (e) { e.style.marginLeft = '0'; });
 
-  // 2) Hikâye fotoğrafları: telefonda giriş paragrafının ardında tek bir 2'li ızgara
-  function grid() {
-    if (!mq.matches) return;
+  // 2) Hikâye fotoğrafları: telefonda/tablette giriş paragrafının ardında 2'li ızgara, masaüstünde metnin sağında kendi sütunu
+  var wide = matchMedia('(min-width: 901px)'), mid = matchMedia('(max-width: 900px)');
+  function photos() {
     [].forEach.call(document.querySelectorAll('#gonullu .story'), function (st) {
-      if (st.querySelector('.story__grid')) return;
-      var body = st.querySelector('.story__body'), lead = body && body.querySelector('.story__lead');
-      var ph = body ? [].slice.call(body.querySelectorAll(':scope > .story__photo')) : [];
-      if (!lead || !ph.length) return;
-      var g = document.createElement('div'); g.className = 'story__grid';
+      var body = st.querySelector('.story__body'), lead = body && body.querySelector('.story__lead'); if (!lead) return;
+      var box = st.querySelector('.story__grid, .story__rail');
+      var ph = box ? [].slice.call(box.querySelectorAll(':scope > .story__photo')) : [].slice.call(body.querySelectorAll(':scope > .story__photo'));
+      if (!ph.length) return;
+      var cap = st.querySelector('.story__photo-cap');
+      var want = wide.matches ? 'story__rail' : 'story__grid';
+      if (box && box.className === want) return;
+      var g = document.createElement('div'); g.className = want;
       ph.forEach(function (p) { g.appendChild(p); });
-      lead.after(g);
-      var cap = body.querySelector(':scope > .story__photo-cap'); if (cap) g.after(cap);
+      if (cap) g.appendChild(cap);
+      if (box) box.remove();
+      if (want === 'story__rail') { g.setAttribute('aria-label', 'Hikâyenin fotoğrafları'); st.appendChild(g); }
+      else { lead.after(g); if (cap) g.after(cap); }
     });
   }
-  grid(); mq.addEventListener && mq.addEventListener('change', grid);
+  photos(); wide.addEventListener && wide.addEventListener('change', photos);
+  void mid; void mq;
 
   // 3) Kaydırma ipucu: yalnız gerçekten yana taşan şeritlerde
   function hints() {
