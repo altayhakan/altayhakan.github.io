@@ -48,11 +48,8 @@
 ]}
 </script>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-full.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-full-italic.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-normal-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-normal-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-italic-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-italic-latin-ext.woff2" crossorigin>
 <style>
 @font-face {
   font-family: 'Instrument Serif';
@@ -1275,7 +1272,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 60; pointer-event
 :root { --cap-ink: #6b4630; }
 .tl__ph span, .spark__ph span, .memo__photo figcaption, .memo__ph span, .story__photo-cap,
 .cinar__poster figcaption, .cinar__poster-art span, .cinar__ph span, .quake__photos .tl__ph span {
-  font-family: var(--font-display) !important; font-style: italic !important; font-weight: 400 !important;
+  font-family: var(--font-display) !important; font-style: normal !important; font-weight: 400 !important;
   text-transform: none !important; letter-spacing: .005em !important; color: var(--cap-ink) !important; opacity: 1;
 }
 .memo__photo figcaption, .story__photo-cap, .cinar__poster figcaption { font-size: 16px !important; line-height: 1.25 !important; }
@@ -1658,14 +1655,14 @@ html.v3d-open { overflow: hidden; }
 .mektup::before { content: ""; position: absolute; inset: 0; left: 0; top: 0; width: auto; height: auto; pointer-events: none; background: var(--grain) 0 0 / 220px; opacity: .55; mix-blend-mode: multiply; }
 .mektup::after { content: ""; position: absolute; left: 0; right: 0; top: 46%; height: 1px; pointer-events: none; background: linear-gradient(90deg, rgba(120, 82, 40, 0), rgba(120, 82, 40, .16) 12%, rgba(255, 250, 238, .5) 50%, rgba(120, 82, 40, .16) 88%, rgba(120, 82, 40, 0)); }  /* katlanma izi */
 .mektup > * { position: relative; z-index: 1; }
-.mektup__kicker { color: var(--sepia) !important; font: italic 400 16px/1 'Instrument Serif', Georgia, serif !important; letter-spacing: 0 !important; }
+.mektup__kicker { color: var(--sepia) !important; font: 400 16px/1 'Instrument Serif', Georgia, serif !important; letter-spacing: 0 !important; }
 .mektup__title { color: #1d1715 !important; }
 .mektup__title em { color: #6e1f1a !important; }
 .mektup__topics legend, .mektup__field span { color: var(--sepia) !important; font-size: 12px !important; letter-spacing: .04em !important; }
 .mektup__topics span { color: rgba(34, 42, 76, .55) !important; border-color: transparent; }
 .mektup__topics label:hover span { color: var(--ink) !important; }
 .mektup__topics input:checked + span { color: #6e1f1a !important; border-bottom: 1px solid #6e1f1a !important; }
-.mektup__field input, .mektup__field textarea { color: var(--ink) !important; caret-color: #6e1f1a; font: italic 400 22px/1.3 'Instrument Serif', Georgia, serif !important; letter-spacing: .005em;
+.mektup__field input, .mektup__field textarea { color: var(--ink) !important; caret-color: #6e1f1a; font: 400 22px/1.3 'Instrument Serif', Georgia, serif !important; letter-spacing: .005em;
   border-bottom: 1px solid rgba(107, 70, 48, .38) !important; padding: 4px 0 6px !important; }
 .mektup__field textarea { resize: vertical; min-height: 128px !important; line-height: 32px !important; padding: 0 !important; border-bottom: 0 !important;
   background: repeating-linear-gradient(to bottom, transparent 0 31px, rgba(107, 70, 48, .3) 31px 32px) !important; background-attachment: local !important; }
@@ -1798,9 +1795,9 @@ html.v3d-open { overflow: hidden; }
 .mektup__field textarea { background: repeating-linear-gradient(to bottom, transparent 0 31px, rgba(107, 70, 48, .14) 31px 32px) !important; background-attachment: local !important; }
 .mektup__field input:focus, .mektup__field textarea:focus { border-color: rgba(110, 31, 26, .42) !important; }
 .mektup.was-tried .mektup__field :invalid { border-color: rgba(150, 62, 40, .42) !important; }
-.mektup__status.is-err { color: rgba(128, 42, 28, .8) !important; font: italic 400 18px/1.4 'Instrument Serif', Georgia, serif !important; letter-spacing: .004em;
+.mektup__status.is-err { color: rgba(128, 42, 28, .8) !important; font: 400 18px/1.4 'Instrument Serif', Georgia, serif !important; letter-spacing: .004em;
   text-shadow: 0 0 .6px rgba(128, 42, 28, .5), 0 0 3px rgba(128, 42, 28, .1); }
-.mektup__status.is-ok { font: italic 400 18px/1.4 'Instrument Serif', Georgia, serif !important; }
+.mektup__status.is-ok { font: 400 18px/1.4 'Instrument Serif', Georgia, serif !important; }
 /* mum mührü: taşmış kenar, damga kabartması; görsel assets/desk/muhur.webp (build/v75/seal.py) */
 .mektup__wax { width: 88px !important; height: 88px !important; border-radius: 50% !important; background: url("assets/desk/muhur.webp") center / contain no-repeat !important;
   box-shadow: none !important; filter: drop-shadow(1px 2px 1.2px rgba(40, 8, 5, .5)) drop-shadow(4px 8px 9px rgba(40, 8, 5, .28));
@@ -2437,7 +2434,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
   /* Dijital kitaplar: ince, kapakla aynı genişlikte, dergi künyesi gibi bağlantı */
   .books { gap: 12px !important; align-items: start !important; }
   .book { gap: 0 !important; }
-  .book__btn { width: 100%; min-height: 44px; display: flex !important; align-items: center; justify-content: center; gap: 6px; margin: 0; padding: 0 !important; border: 0 !important; border-bottom: 1px solid rgba(231, 185, 138, .38) !important; border-radius: 0 !important; background: none !important; color: #e7b98a !important; font: italic 400 16px/1 'Instrument Serif', Georgia, serif !important; letter-spacing: .01em; }
+  .book__btn { width: 100%; min-height: 44px; display: flex !important; align-items: center; justify-content: center; gap: 6px; margin: 0; padding: 0 !important; border: 0 !important; border-bottom: 1px solid rgba(231, 185, 138, .38) !important; border-radius: 0 !important; background: none !important; color: #e7b98a !important; font: 400 16px/1 'Instrument Serif', Georgia, serif !important; letter-spacing: .01em; }
   .book__btn:active { color: #f6eee3 !important; border-bottom-color: #f6eee3 !important; }
   /* v99f · daha da sade: ok yok, çizgi yalnız sözcüğün altında, ince bir kıl çizgisi */
   .book__btn { border-bottom: 0 !important; font-size: 17px !important; color: #e2c08f !important; gap: 0; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; text-decoration-color: rgba(226, 192, 143, .45); }
@@ -2558,6 +2555,15 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
   .fx-ink path { stroke: rgba(94, 26, 23, .11); }
   .fx-ink path + path { stroke: rgba(201, 149, 47, .14); }
 }
+
+/* ═══ v102 · İtaliksiz vurgu sistemi: eğik yazı yok, vurgu ağırlık / mono / kılcal çizgiyle ═══ */
+@font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(assets/fonts/geist-mono-regular.woff2) format('woff2'); }
+*, *::before, *::after { font-style: normal !important; }
+.accent-strategic { font-weight: 600; color: var(--surface-strong); letter-spacing: -.01em; }
+.accent-curated { font-family: 'Geist Mono', ui-monospace, monospace !important; font-size: .92em; opacity: .8; letter-spacing: .02em; }
+/* Kılcal çizgi: text-decoration, satır kırılsa da her satırın altında kalır */
+.accent-editorial { text-decoration: underline 1px; text-underline-offset: .2em; text-decoration-color: color-mix(in srgb, currentColor 30%, transparent); }
+.title--ed .t-last em.accent-strategic { font-weight: 600 !important; letter-spacing: -.01em; }
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp?v=98" type="image/webp" media="(min-width: 901px)">
 <link rel="preload" as="image" href="assets/desk/ahsap-1024.webp?v=98" type="image/webp" media="(max-width: 900px)">
@@ -2630,7 +2636,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
   <div class="hero__grid">
     <section class="hero__copy bd-surface-light" aria-labelledby="hero-name">
       <p class="eyebrow eyebrow--ed reveal" style="--i:0"><b>Eğitim Ekosistemi</b></p>
-      <h1 class="title title--ed reveal" id="hero-name" style="--i:1" aria-label="Hakan Altay"><span class="t-first" aria-hidden="true"><span class="t-ch" style="--k:0">H</span><span class="t-ch" style="--k:1">a</span><span class="t-ch" style="--k:2">k</span><span class="t-ch" style="--k:3">a</span><span class="t-ch" style="--k:4">n</span></span><span class="t-last" aria-hidden="true"><em>Altay</em></span></h1>
+      <h1 class="title title--ed reveal" id="hero-name" style="--i:1" aria-label="Hakan Altay"><span class="t-first" aria-hidden="true"><span class="t-ch" style="--k:0">H</span><span class="t-ch" style="--k:1">a</span><span class="t-ch" style="--k:2">k</span><span class="t-ch" style="--k:3">a</span><span class="t-ch" style="--k:4">n</span></span><span class="t-last" aria-hidden="true"><em class="accent-strategic">Altay</em></span></h1>
       <p class="lead reveal" style="--i:2">Sahada <em>öğretmen</em>, üretimde <em>geliştirici</em>, yönetimde <em>koordinatör</em>.</p>
 
       <ul class="domains reveal" style="--i:3" aria-label="Çalışma alanları" id="domains"><li><button type="button" class="domain" data-key="egitim" aria-pressed="false" style="--c:#a8873f">
@@ -2676,7 +2682,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 
     <div class="about">
       <aside class="about__aside will-reveal">
-        <p class="pull">“Öğrenmeye âşık biriyim. Gerisi bu aşkın <em>güzel yan etkileri.</em>”</p>
+        <p class="pull">“Öğrenmeye âşık biriyim. Gerisi bu aşkın <em class="accent-editorial">güzel yan etkileri.</em>”</p>
         <dl class="about__meta">
           <dt>Şu An</dt><dd>Müdür Yardımcısı, Özalp Atatürk İlkokulu</dd>
           <dt>Lisans</dt><dd>Marmara Üniversitesi, 2017</dd>
@@ -2857,7 +2863,7 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
         </div>
       </li>
       <li class="tl tl--now will-reveal">
-        <p class="tl__when tl__when--italic">Bugün</p><span class="tl__node" aria-hidden="true"></span>
+        <p class="tl__when tl__when--soft"><span class="accent-curated">Bugün</span></p><span class="tl__node" aria-hidden="true"></span>
         <div class="tl__card">
           <p class="tl__role">Yönetim · Özalp Atatürk İlkokulu · 2025’ten bugüne</p>
           <h3 class="tl__title">Müdür Yardımcısı</h3>
