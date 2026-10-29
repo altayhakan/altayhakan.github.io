@@ -2436,6 +2436,76 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
   .sci__colo > div { padding: 12px 0 !important; }
   .gv__intro { padding: 26px 22px 30px !important; }
 }
+
+/* ═══ v99d · Tablet (iPad yatay ve dikey): dokunmatik 621–1400 px ═══
+   Safari'de vh araç çubukları gizliyken ölçülür; görünür alan svh'dir. Hero yüksekliği ve aralıklar svh'ye bağlanır,
+   680 px'lik alt sınır kalkar, böylece iki buton da ilk ekranda kalır. */
+@media (min-width: 901px) and (max-width: 1400px) and (pointer: coarse), (min-width: 901px) and (max-width: 1400px) and (hover: none) {
+  .hero { height: 100vh; height: 100svh; min-height: 560px; }
+  .hero__grid { padding-top: clamp(58px, 9svh, 88px) !important; padding-bottom: clamp(18px, 3.4svh, 44px) !important; grid-template-columns: minmax(0, 560px) minmax(0, 1fr); gap: clamp(24px, 3vw, 48px); }
+  .hero .title.title--ed { font-size: clamp(74px, min(9.4vw, 14.6svh), 140px) !important; }
+  .hero .eyebrow { margin-bottom: clamp(6px, 1.5svh, 22px) !important; }
+  .hero .lead { margin-top: clamp(8px, 1.9svh, 26px) !important; font-size: clamp(16px, 2.45svh, 19px); line-height: 1.45; }
+  .hero .domains { margin-top: clamp(10px, 2.1svh, 30px) !important; }
+  .hero .domain { min-height: clamp(36px, 5svh, 52px) !important; padding-block: clamp(3px, calc(1.5svh - 6px), 9px) !important; }
+  .hero .domain__sub { line-height: 17px; }
+  .hero .status { margin-top: clamp(4px, .9svh, 10px); }
+  .hero .actions { margin-top: clamp(10px, 1.9svh, 22px); }
+}
+/* Çok alçak yatay (iPad mini + sekme çubuğu): künye satırı gizlenir, başlık bir kademe daha küçülür */
+@media (min-width: 901px) and (max-width: 1400px) and (max-height: 640px) and (pointer: coarse) {
+  .hero .status { display: none; }
+  .hero .title.title--ed { font-size: clamp(70px, 13.6svh, 120px) !important; }
+}
+
+/* Dikey tablet: masa bandı ekranın yarısına iner, ad ve alanlar ilk ekrana yaklaşır */
+@media (min-width: 621px) and (max-width: 900px) and (pointer: coarse), (min-width: 621px) and (max-width: 900px) and (hover: none) {
+  .hero__stage { height: 47vh; height: 47svh; min-height: 360px; }
+  .hero__grid { padding-inline: clamp(28px, 5vw, 48px) !important; }
+  .hero .title.title--ed { font-size: clamp(96px, 15vw, 128px) !important; }
+  .hero .lead { margin-top: 18px !important; }
+  /* alanlar 2 × 2: dört satır yerine iki satır, buton ilk ekrana girer */
+  .hero .domains { margin-top: 22px !important; max-width: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; }
+  .hero .domains > li { min-width: 0; }
+  .hero .domain { min-height: 64px !important; align-items: start; padding-block: 12px !important; }
+  .hero .domain__swatch { margin-top: 6px; }
+  .hero .actions { margin-top: 18px; }
+}
+
+/* Kariyer zaman çizelgesi: tabletin her iki yönünde de üç sütunlu esnek ızgara; tarih sütunu yazı kırmaz, kart taşmaz */
+@media (min-width: 621px) and (max-width: 1400px) {
+  #timeline .tl__when, #timeline .tl__side-k, #timeline .tl__role, #timeline .tl__title { writing-mode: horizontal-tb; text-orientation: mixed; }
+  #timeline .tl__when { white-space: nowrap; overflow-wrap: normal; word-break: normal; min-width: 0; }
+  #timeline .tl__card { box-sizing: border-box; min-width: 0; max-width: 100%; }
+  #timeline .tl__text, #timeline .tl__side-t, #timeline .tl__lede { overflow-wrap: break-word; hyphens: manual; }
+  #timeline .tl__photos, #timeline .tl__ph { max-width: 100%; }
+}
+@media (min-width: 901px) and (max-width: 1400px) and (pointer: coarse), (min-width: 901px) and (max-width: 1400px) and (hover: none) {
+  #timeline .tl { grid-template-columns: minmax(120px, .62fr) 32px minmax(0, 2fr); }
+  /* omurga, yeni tarih sütununun ardındaki düğüm ekseninde */
+  #timeline .timeline__spine { left: max(136px, calc((100% - 32px) * .62 / 2.62 + 16px)); }
+  #timeline .tl__when { font-size: clamp(56px, 6.2vw, 92px); padding-right: clamp(14px, 2vw, 28px); }
+  #timeline .tl__when.tl__when--soft { font-size: 12px !important; white-space: normal; }
+  #timeline .tl__card { max-width: none; }
+  #timeline .tl--side .tl__card--side { grid-template-columns: minmax(0, 1fr) auto; }
+}
+@media (min-width: 621px) and (max-width: 900px) {
+  /* dikey: düğüm solda, tarih kartın üstünde (tek sütun), kart tam genişlik */
+  #timeline .tl { grid-template-columns: 9px minmax(0, 1fr); }
+  #timeline .tl__card { width: 100%; }
+}
+
+/* v99d · Referanslar: Akademik grubundaki giriş paragrafı ikinci sütuna, isim ızgarası onun altına; künye iki satırı kaplar.
+   (Paragraf ızgaranın hücresini alıyordu; isimler dar sol sütuna sıkışıyor, yapışkan "16" üstlerine biniyordu.) */
+@media (min-width: 901px) {
+  .rg > .rg__head { grid-column: 1; grid-row: 1 / span 2; align-self: start; }
+  .rg > .rg__lead { grid-column: 2; grid-row: 1; }
+  .rg > .rg__grid { grid-column: 2; }
+  .rg > .rg__lead + .rg__grid { grid-row: 2; }
+}
+
+/* v99d · Mektup: tek sütuna düşünce alttaki ikinci kâğıt (gölge katmanı) formla aynı genişlikte kalır */
+@media (min-width: 621px) { .mektup-wrap { max-width: 660px; } }
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp?v=98" type="image/webp" media="(min-width: 901px)">
 <link rel="preload" as="image" href="assets/desk/ahsap-1024.webp?v=98" type="image/webp" media="(max-width: 900px)">
