@@ -1,0 +1,22 @@
+# Hakan Altay
+
+> Van'da eğitimci: sahada öğretmen, üretimde geliştirici, yönetimde koordinatör. Şu an Özalp Atatürk İlkokulu'nda müdür yardımcısı. Eğitim teknolojileri, eğitsel oyun tasarımı ve öğretmen eğitimi üzerine çalışıyor.
+
+Bu site tek sayfalık bir portfolyodur (Türkçe). Bölümlere aşağıdaki bağlantılarla doğrudan gidilebilir.
+
+## Bölümler
+
+- [Hakkımda](https://hakanaltay.net/#hakkimda): Kısa biyografi. Marmara Üniversitesi (lisans, 2017), Van Yüzüncü Yıl Üniversitesi (yüksek lisans, 2025).
+- [İlham ve Anılar](https://hakanaltay.net/#anilar): Doğan Cüceloğlu ve öğrenme zinciri üzerine kişisel anılar.
+- [Kariyer Yolculuğu](https://hakanaltay.net/#egitim): Marmara'dan Van'a, sınıf öğretmenliğinden okul yönetimine zaman çizelgesi.
+- [Liderlik](https://hakanaltay.net/#liderlik): Türkiye Yüzyılı Maarif Modeli formatörlüğü ve Tuşba Buluşmaları.
+- [Projeler](https://hakanaltay.net/#projeler): Tuşpa: Van Gölü'nün Kayıp Hafızası (eğitsel oyun, TÜBİTAK 4008), dijital kitaplar, SSCI makalesinde veri toplama ve atölyeler.
+- [Gönüllülük](https://hakanaltay.net/#gonullu): Kardeş Köy Okulu, TOG ve Kızılay çalışmaları.
+- [Müzik](https://hakanaltay.net/#muzik): Kaydedenler Kulübü podcast'i, besteler ve stüdyo kayıtları.
+- [İletişim](https://hakanaltay.net/#iletisim): İletişim formu.
+
+## Profiller
+
+- [LinkedIn](https://tr.linkedin.com/in/hakan-altay-0a0b1b14b)
+- [Instagram](https://www.instagram.com/altay.hakan/)
+- [X](https://x.com/altayhakann)
