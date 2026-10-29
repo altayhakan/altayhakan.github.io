@@ -3426,7 +3426,7 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
       <h2 class="section-title will-reveal" id="refs-title">Yoluma <em>ışık tutanlar.</em></h2>
     </header>
     <div class="rg">
-      <header class="rg__head"><h3 class="rg__label">Akademik</h3><span class="rg__count">16</span></header>
+      <header class="rg__head"><h3 class="rg__label">Akademik</h3><span class="rg__count">12</span></header>
       <p class="rg__lead">Lisans ve yüksek lisans yıllarımda derslerinde, araştırmalarında ve tez sürecimde yanında öğrendiğim akademisyenler.</p>
       <ul class="rg__grid">
         <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Hüseyin Anılan</p></li>
@@ -3435,16 +3435,12 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
         <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Zeliha Nurdan Baysal</p></li>
         <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Nermin Özcan</p></li>
         <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Hayati Akyol</p></li>
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Sabri Sidekli</p></li>
-        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Doç. Dr.</p><p class="rc__name">Yusuf Kızıltaş</p></li>
-        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Doç. Dr.</p><p class="rc__name">Nurhan Aktaş</p></li>
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Doç. Dr.</p><p class="rc__name">Vicdan Su Nalbur</p></li>
-        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Doç. Dr.</p><p class="rc__name">Halil Önal</p></li>
-        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Doç. Dr.</p><p class="rc__name">Alper Yorulmaz</p></li>
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Dr. Öğr. Üyesi</p><p class="rc__name">Sinan Arı</p></li>
-        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Dr. Öğr. Üyesi</p><p class="rc__name">Ela Elif Erberk</p></li>
-        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Dr. Öğr. Üyesi</p><p class="rc__name">Ayşen Arslan</p></li>
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Dr.</p><p class="rc__name">Bahattin Erkuş</p></li>
+        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Doç. Dr.</p><p class="rc__name">Nurhan Aktaş</p></li>
+        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Doç. Dr.</p><p class="rc__name">Vicdan Su Nalbur</p></li>
+        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Dr. Öğr. Üyesi</p><p class="rc__name">Sinan Arı</p></li>
+        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Dr. Öğr. Üyesi</p><p class="rc__name">Ela Elif Erberk</p></li>
+        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Dr. Öğr. Üyesi</p><p class="rc__name">Ayşen Arslan</p></li>
+        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Dr.</p><p class="rc__name">Bahattin Erkuş</p></li>
       </ul>
     </div>
     <div class="rg">
@@ -6048,7 +6044,11 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 @media (min-width: 621px) {
   .rg--ilham .rc { display: grid !important; grid-row: span 3; grid-template-rows: subgrid; row-gap: 8px; align-content: start; }
   .rg--ilham .rc > .rc__title { align-self: end; }
+  /* Notsuz gruplar (Akademik, Kurumsal): unvan + isim iki satırlık ortak hiza */
 }
+/* Notsuz gruplar telefonda da iki sütunlu: hiza her genişlikte */
+.rg:not(.rg--ilham) .rc { display: grid !important; grid-row: span 2; grid-template-rows: subgrid; row-gap: 8px; align-content: start; }
+.rg:not(.rg--ilham) .rc > .rc__title { align-self: end; }
 /* Bölüm etiketleri: numara ve çizgi yok, yalnız bölüm adı */
 .kicker .kno { display: none !important; }
 .kicker::before { display: none !important; }
