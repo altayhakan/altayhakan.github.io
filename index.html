@@ -2506,6 +2506,9 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 
 /* v99d · Mektup: tek sütuna düşünce alttaki ikinci kâğıt (gölge katmanı) formla aynı genişlikte kalır */
 @media (min-width: 621px) { .mektup-wrap { max-width: 660px; } }
+
+/* v99e · Ekrandan uzak bölüm: çizilmez, boyu JS'in ölçtüğü değerde sabit kalır */
+.is-far { content-visibility: hidden; }
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp?v=98" type="image/webp" media="(min-width: 901px)">
 <link rel="preload" as="image" href="assets/desk/ahsap-1024.webp?v=98" type="image/webp" media="(max-width: 900px)">
@@ -5708,7 +5711,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
    Sayfa içi # bağlantıları tarayıcıya bırakılmaz: uygulama içi tarayıcılarda ve önizleme çerçevesinde "sayfa açılamıyor" olmaz. */
 (function () {
   var de = document.documentElement, reduce = matchMedia('(prefers-reduced-motion: reduce)'), run = 0;
-  function head(t) { return t.querySelector(':scope > .wrap > .section-head') || t; }
+  function head(t) { return t.querySelector(':scope > .wrap > .section-head') || t.querySelector(':scope > .wrap > .contact__grid') || t; }  // v99e: İletişim'de başlık bloğu yok; ızgaranın üstü hedeflenir
   function absTop(el) { var y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }
   function gap() {
     var m = document.querySelector('.mnav');
@@ -5717,7 +5720,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
     if (c && c.display !== 'none' && (c.position === 'fixed' || c.position === 'sticky')) return n.getBoundingClientRect().height + 24;
     return 44;
   }
-  function want(t) { return Math.max(0, Math.min(absTop(head(t)) - gap(), de.scrollHeight - innerHeight)); }
+  function want(t) { if (window.__thaw) window.__thaw(t); return Math.max(0, Math.min(absTop(head(t)) - gap(), de.scrollHeight - innerHeight)); }
   function jump(y) { var b = de.style.scrollBehavior; de.style.scrollBehavior = 'auto'; scrollTo(0, y); de.style.scrollBehavior = b; }
   function go(t, delay) {
     if (typeof t === 'string') t = document.getElementById(t);
@@ -5737,13 +5740,16 @@ html.lb-open, html.lb-open body { overflow: hidden; }
     function start() {
       if (id !== run) return;
       var fixes = 0;
+      function guard() { if (!window.ResizeObserver) return; var ro = new ResizeObserver(function () { if (id !== run) { ro.disconnect(); return; } var w = want(t); if (Math.abs(w - scrollY) > 3) jump(w); }); ro.observe(document.body); setTimeout(function () { ro.disconnect(); }, 1500); }
       function to(y, soft) { if (soft) scrollTo({ top: y, behavior: 'smooth' }); else jump(y); }
       function check() {
         if (id !== run) return;
         var w = want(t), d = Math.abs(w - scrollY);
-        if (d <= 3 || fixes >= 3) return;
+        if (d <= 3 || fixes >= 3) { guard(); return; }
         fixes++; to(w, smooth && d > 120); settle(check);
       }
+      var w0 = want(t), d0 = w0 - scrollY;
+      if (smooth && Math.abs(d0) > innerHeight * 2.5) jump(w0 - (d0 > 0 ? 1 : -1) * Math.round(innerHeight * .9));
       to(want(t), smooth); settle(check);
     }
     if (delay && smooth) setTimeout(start, delay); else start();
@@ -5823,6 +5829,32 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   var m = document.querySelector('.mnav'); if (!m) return; var tmr;
   function arm() { clearTimeout(tmr); tmr = setTimeout(function () { if (scrollY > 160 && !m.classList.contains('is-open') && !m.matches(':focus-within')) m.classList.add('is-tucked'); }, 2200); }
   addEventListener('scroll', function () { if (!m.classList.contains('is-tucked')) arm(); }, { passive: true });
+})();
+
+/* v99e · Telefon/tablet bellek: ekrandan uzak bölümler çizilmez (content-visibility: hidden, boyu sabitlenir).
+   Hızlı kaydırmada iOS sekmeyi bellek yüzünden kapatıp "sayfa açılamıyor" göstermesin; uzak bölümlerin
+   görselleri, katmanları ve sonsuz animasyonları serbest kalır. Bölüm yaklaşınca (1,5 ekran) yeniden çizilir. */
+(function () {
+  var de = document.documentElement;
+  if (!de.classList.contains('perf-lite') || !window.IntersectionObserver || !(window.CSS && CSS.supports('content-visibility', 'hidden'))) return;
+  var secs = [].slice.call(document.querySelectorAll('body > section'));
+  function freeze(s) { if (s.classList.contains('is-far')) return; var h = s.offsetHeight; if (!h) return;
+    // contain-intrinsic-size içerik kutusudur: dolgu ve kenarlık düşülür, donmuş boy gerçek boyla aynı kalır
+    var c = getComputedStyle(s), v = parseFloat(c.paddingTop) + parseFloat(c.paddingBottom) + parseFloat(c.borderTopWidth) + parseFloat(c.borderBottomWidth),
+        x = parseFloat(c.paddingLeft) + parseFloat(c.paddingRight) + parseFloat(c.borderLeftWidth) + parseFloat(c.borderRightWidth);
+    s.style.containIntrinsicSize = Math.max(0, s.offsetWidth - x) + 'px ' + Math.max(0, h - v) + 'px'; s.classList.add('is-far'); }
+  function thaw(s) { if (!s.classList.contains('is-far')) return; s.classList.remove('is-far'); s.style.containIntrinsicSize = ''; }
+  window.__thaw = function (t) { var s = t && t.closest && t.closest('body > section'); if (s) thaw(s); };
+  var io;
+  function arm() {
+    if (io) io.disconnect();
+    io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) thaw(e.target); else freeze(e.target); }); },
+      { rootMargin: '150% 0px 150% 0px' });
+    secs.forEach(function (s) { io.observe(s); });
+  }
+  // ilk yerleşim ve görsel ölçüleri otursun diye load'dan sonra başlar; döndürmede (genişlik değişince; adres çubuğu yüksekliği sayılmaz) hepsi açılıp yeniden ölçülür
+  addEventListener('load', function () { setTimeout(arm, 1200); });
+  var rt, lw = innerWidth; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (!io || innerWidth === lw) return; lw = innerWidth; io.disconnect(); secs.forEach(thaw); requestAnimationFrame(arm); }, 300); });
 })();
 
 </script>
