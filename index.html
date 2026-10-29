@@ -3292,7 +3292,7 @@ DOMAINS.forEach((d, i) => {
     const target = document.getElementById({ egitim: 'liderlik', oyun: 'tuspa', muzik: 'muzik', sosyal: 'gonullu' }[d.key]);
     if (!target) return;
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setTimeout(() => target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }), reduce ? 0 : 380);
+    if (window.__goTo) window.__goTo(target, 380); else setTimeout(() => target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }), reduce ? 0 : 380);
   });
   list.appendChild(li);
 });
@@ -3834,7 +3834,7 @@ function endDrag(e) {
   if (drag.moved < 6 && hitKey) {
     togglePin(hitKey);
     const go = document.getElementById({ egitim: 'liderlik', oyun: 'tuspa', muzik: 'muzik', sosyal: 'gonullu' }[hitKey]);
-    if (go) setTimeout(() => go.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }), 380);
+    if (go) { if (window.__goTo) window.__goTo(go, 380); else setTimeout(() => go.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }), 380); }
   }
   idleFor = 0;
 }
@@ -5241,7 +5241,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
   list.addEventListener('click', function (e) {
     if (list.dataset.live) return;
     var b = e.target.closest('.domain'); if (!b) return;
-    var t = document.getElementById(map[b.dataset.key]); if (t) t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    var t = document.getElementById(map[b.dataset.key]); if (t && window.__goTo) window.__goTo(t); else if (t) t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   });
 })();
 </script>
@@ -5419,6 +5419,67 @@ html.lb-open, html.lb-open body { overflow: hidden; }
     if (e.target.closest('[data-pv-close]') || e.target === d) d.close();
   });
   d.addEventListener('close', function () { if (back) back.focus(); });
+})();
+</script>
+<script>
+/* v97 · Tek kaydırma yolu: hedef bölümün başlık bloğu sabit menünün hemen altına oturur.
+   Konum transform'dan bağımsız (offsetTop) ölçülür; yolda lazy görseller yüklenip sayfa uzarsa iniş birkaç kez düzeltilir.
+   Sayfa içi # bağlantıları tarayıcıya bırakılmaz: uygulama içi tarayıcılarda ve önizleme çerçevesinde "sayfa açılamıyor" olmaz. */
+(function () {
+  var de = document.documentElement, reduce = matchMedia('(prefers-reduced-motion: reduce)'), run = 0;
+  function head(t) { return t.querySelector(':scope > .wrap > .section-head') || t; }
+  function absTop(el) { var y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }
+  function gap() {
+    var m = document.querySelector('.mnav');
+    if (m && getComputedStyle(m).display !== 'none') return 56;           // telefon/tablet: başlık bloğu 14 px boşluk + 42 px menünün hemen altına
+    var n = document.querySelector('.nav'), c = n && getComputedStyle(n);
+    if (c && c.display !== 'none' && (c.position === 'fixed' || c.position === 'sticky')) return n.getBoundingClientRect().height + 24;
+    return 44;
+  }
+  function want(t) { return Math.max(0, Math.min(absTop(head(t)) - gap(), de.scrollHeight - innerHeight)); }
+  function jump(y) { var b = de.style.scrollBehavior; de.style.scrollBehavior = 'auto'; scrollTo(0, y); de.style.scrollBehavior = b; }
+  function go(t, delay) {
+    if (typeof t === 'string') t = document.getElementById(t);
+    if (!t) return false;
+    var id = ++run, smooth = !reduce.matches;
+    function settle(fn) {
+      if ('onscrollend' in window) {
+        var done = false, to;
+        function end() { if (done) return; done = true; clearTimeout(to); removeEventListener('scrollend', end); fn(); }
+        addEventListener('scrollend', end); to = setTimeout(end, 2600);    // hiç kaymadıysa scrollend gelmez
+        return;
+      }
+      var last = -1, still = 0, t0 = performance.now();
+      (function poll() { var cur = scrollY; still = Math.abs(cur - last) < 1 ? still + 1 : 0; last = cur;
+        if (still >= 6 || performance.now() - t0 > 4000) fn(); else setTimeout(poll, 80); })();
+    }
+    function start() {
+      if (id !== run) return;
+      var fixes = 0;
+      function to(y, soft) { if (soft) scrollTo({ top: y, behavior: 'smooth' }); else jump(y); }
+      function check() {
+        if (id !== run) return;
+        var w = want(t), d = Math.abs(w - scrollY);
+        if (d <= 3 || fixes >= 3) return;
+        fixes++; to(w, smooth && d > 120); settle(check);
+      }
+      to(want(t), smooth); settle(check);
+    }
+    if (delay && smooth) setTimeout(start, delay); else start();
+    return true;
+  }
+  ['wheel', 'touchmove', 'keydown'].forEach(function (ev) { addEventListener(ev, function () { run++; }, { passive: true }); });
+  window.__goTo = go;
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+    var h = a.getAttribute('href'), t = h.length > 1 && document.getElementById(decodeURIComponent(h.slice(1)));
+    if (h !== '#top' && !t) return;
+    e.preventDefault();
+    if (h === '#top') { run++; if (reduce.matches) jump(0); else scrollTo({ top: 0, behavior: 'smooth' }); } else go(t);
+    try { history.replaceState(null, '', h === '#top' ? location.pathname + location.search : h); } catch (err) {}
+  }, true);
+  if (location.hash.length > 1) addEventListener('load', function () { var t = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (t) setTimeout(function () { jump(want(t)); }, 60); });
 })();
 </script>
 </body>
