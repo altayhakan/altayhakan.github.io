@@ -48,7 +48,7 @@
 ]}
 </script>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-full.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-normal-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/work-sans-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-normal-latin.woff2" crossorigin>
 <style>
 @font-face {
@@ -1237,7 +1237,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 60; pointer-event
 .mektup__field { display: block; margin: 0 0 18px; }
 .mektup__field span { display: block; margin-bottom: 4px; font-size: 12.5px; letter-spacing: .02em; color: rgba(246, 238, 227, .58); transition: color .3s; }
 .mektup__field input, .mektup__field textarea { width: 100%; padding: 8px 0 10px; border: 0; border-bottom: 1px solid rgba(243, 210, 168, .28); border-radius: 0; background: transparent;
-  font: 400 16px/1.5 var(--font-body, Inter), system-ui, sans-serif; color: #f7efe4; outline: none; resize: vertical; transition: border-color .35s; }
+  font: 400 16px/1.5 var(--font-sans); color: #f7efe4; outline: none; resize: vertical; transition: border-color .35s; }
 .mektup__field textarea { min-height: 104px; }
 .mektup__field:focus-within span { color: #f3d2a8; }
 .mektup__field input:focus, .mektup__field textarea:focus { border-color: #c9a052; }
@@ -1552,7 +1552,7 @@ html, body { overflow-x: clip; }
 @media (max-width: 900px) {
   .mnav { display: block; position: fixed; z-index: 60; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); }
   .mnav__btn { display: inline-flex; align-items: center; gap: 10px; height: 42px; padding: 0 18px 0 16px; border-radius: 999px; cursor: pointer;
-    font: 500 13px/1 Inter, system-ui, sans-serif; letter-spacing: .02em; color: var(--text-primary);
+    font: 500 13px/1 var(--font-sans); letter-spacing: .02em; color: var(--text-primary);
     background: rgba(255, 252, 247, .72); border: 1px solid rgba(29, 23, 21, .1); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%);
     box-shadow: 0 8px 24px -12px rgba(20, 8, 4, .45); }
   .mnav__btn i { position: relative; width: 16px; height: 8px; display: block; }
@@ -1573,7 +1573,7 @@ html, body { overflow-x: clip; }
 .v3d-strip { margin-top: clamp(34px, 4vw, 52px); padding-top: 26px; border-top: 1px solid rgba(246, 238, 227, .1); }
 .v3d-strip__k { margin: 0 0 18px; font: italic 400 clamp(19px, 1.7vw, 23px)/1.2 'Instrument Serif', Georgia, serif; color: rgba(246, 238, 227, .86); }
 .v3d-strip__k em { color: #e6c48c; }
-.v3d-strip__deg { display: inline-block; margin-right: 10px; font: 500 11px/1 Inter, system-ui, sans-serif; letter-spacing: .18em; color: #e6c48c; padding: 6px 9px; border: 1px solid rgba(230, 196, 140, .35); border-radius: 999px; vertical-align: 3px; font-style: normal; }
+.v3d-strip__deg { display: inline-block; margin-right: 10px; font: 500 11px/1 var(--font-sans); letter-spacing: .18em; color: #e6c48c; padding: 6px 9px; border: 1px solid rgba(230, 196, 140, .35); border-radius: 999px; vertical-align: 3px; font-style: normal; }
 .v3d-strip__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 20px); perspective: 900px; }
 .v3d-card { --tx: 0; --ty: 0; position: relative; display: block; width: 100%; padding: 0 0 12px; border: 0; cursor: zoom-in; text-align: left; color: inherit; background: none;
   transform: rotateY(calc(var(--tx) * 16deg)) rotateX(calc(var(--ty) * -12deg)); transform-style: preserve-3d; transition: transform 500ms cubic-bezier(.2, .8, .2, 1), scale 120ms var(--ease-out-strong); touch-action: manipulation; }
@@ -1583,7 +1583,7 @@ html, body { overflow-x: clip; }
 .v3d-card--gold img { background: radial-gradient(70% 70% at 50% 42%, rgba(230, 196, 140, .14), rgba(230, 196, 140, 0) 70%), #171213; }
 .v3d-card__t { display: block; margin-top: 12px; font: 400 18px/1.15 'Instrument Serif', Georgia, serif; color: #f6eee3; }
 .v3d-card__s { display: block; margin-top: 3px; font: italic 400 14px/1.2 'Instrument Serif', Georgia, serif; color: rgba(230, 196, 140, .8); }
-.v3d-card::after { content: "360°"; position: absolute; right: 9px; top: 9px; font: 500 10px/1 Inter, system-ui, sans-serif; letter-spacing: .12em; color: rgba(246, 238, 227, .7); padding: 5px 7px; border-radius: 999px; background: rgba(19, 16, 17, .55); border: 1px solid rgba(246, 238, 227, .12); }
+.v3d-card::after { content: "360°"; position: absolute; right: 9px; top: 9px; font: 500 10px/1 var(--font-sans); letter-spacing: .12em; color: rgba(246, 238, 227, .7); padding: 5px 7px; border-radius: 999px; background: rgba(19, 16, 17, .55); border: 1px solid rgba(246, 238, 227, .12); }
 .v3d-card:hover img, .v3d-card:focus-visible img { box-shadow: inset 0 0 0 1px rgba(230, 196, 140, .35), 0 26px 44px -22px rgba(0, 0, 0, .95); }
 .v3d-card:focus-visible { outline: 2px solid #e6c48c; outline-offset: 4px; border-radius: 6px; }
 @media (prefers-reduced-motion: no-preference) {
@@ -1613,12 +1613,12 @@ html, body { overflow-x: clip; }
 .v3d__load { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); font: italic 400 15px/1 'Instrument Serif', Georgia, serif; color: rgba(246, 238, 227, .7); opacity: 0; transition: opacity 200ms ease; }
 .v3d__stage.is-loading .v3d__load { opacity: 1; }
 .v3d__cap { color: #f6eee3; }
-.v3d__k { margin: 0 0 14px; font: 500 11px/1.4 Inter, system-ui, sans-serif; letter-spacing: .18em; color: #e6c48c; }
+.v3d__k { margin: 0 0 14px; font: 500 11px/1.4 var(--font-sans); letter-spacing: .18em; color: #e6c48c; }
 .v3d__t { margin: 0; font: 400 clamp(36px, 4.4vw, 60px)/1 'Instrument Serif', Georgia, serif; }
 .v3d__s { margin: 12px 0 0; font: italic 400 19px/1.35 'Instrument Serif', Georgia, serif; color: rgba(246, 238, 227, .78); }
-.v3d__hint { margin: 26px 0 0; padding-top: 16px; border-top: 1px solid rgba(246, 238, 227, .12); font: 400 13px/1.5 Inter, system-ui, sans-serif; color: rgba(246, 238, 227, .56); }
+.v3d__hint { margin: 26px 0 0; padding-top: 16px; border-top: 1px solid rgba(246, 238, 227, .12); font: 400 13px/1.5 var(--font-sans); color: rgba(246, 238, 227, .56); }
 .v3d__nav { display: flex; gap: 10px; margin-top: 20px; }
-.v3d__btn, .v3d__x { width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(246, 238, 227, .2); background: rgba(246, 238, 227, .04); color: #f6eee3; font: 400 18px/1 Inter, system-ui, sans-serif; cursor: pointer; transition: background 200ms ease, border-color 200ms ease; }
+.v3d__btn, .v3d__x { width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(246, 238, 227, .2); background: rgba(246, 238, 227, .04); color: #f6eee3; font: 400 18px/1 var(--font-sans); cursor: pointer; transition: background 200ms ease, border-color 200ms ease; }
 .v3d__btn:hover, .v3d__x:hover { background: rgba(246, 238, 227, .1); border-color: rgba(230, 196, 140, .5); }
 .v3d__x { position: absolute; right: -6px; top: -6px; font-size: 24px; }
 html.v3d-open { overflow: hidden; }
@@ -2557,10 +2557,21 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
 }
 
 /* ═══ v102 · İtaliksiz vurgu sistemi: eğik yazı yok, vurgu ağırlık / mono / kılcal çizgiyle ═══ */
-@font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(assets/fonts/geist-mono-regular.woff2) format('woff2'); }
+/* v106 · Humanist modernizm: gövde Work Sans, teknik ayrıntı ve sayılar IBM Plex Mono; başlıklar (Instrument Serif / Fraunces) aynen */
+@font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(assets/fonts/work-sans-latin-ext-wght-normal.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(assets/fonts/work-sans-latin-wght-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(assets/fonts/ibm-plex-mono-latin-ext-400-normal.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(assets/fonts/ibm-plex-mono-latin-400-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+:root { --font-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif; --font-mono: 'IBM Plex Mono', ui-monospace, monospace; }
+body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialiased; }
+/* Yıllar mono: veri kaydı gibi */
+.tl__when { font-family: var(--font-mono) !important; letter-spacing: -.04em !important; }
+.tl__when--soft { letter-spacing: .04em !important; }
+/* Başlık altı metinler hafif: başlığın ağırlığına karşı */
+.section-lead, .band__lead { font-weight: 300; }
 *, *::before, *::after { font-style: normal !important; }
 .accent-strategic { font-weight: 600; color: var(--surface-strong); letter-spacing: -.01em; }
-.accent-curated { font-family: 'Geist Mono', ui-monospace, monospace !important; font-size: .92em; opacity: .8; letter-spacing: .02em; }
+.accent-curated { font-family: var(--font-mono) !important; font-size: .9em; opacity: .8; letter-spacing: .03em; }
 .tl__when--now { color: #e7b98a; }
 /* Kılcal çizgi: text-decoration, satır kırılsa da her satırın altında kalır */
 .accent-editorial { text-decoration: underline 1px; text-underline-offset: .2em; text-decoration-color: color-mix(in srgb, currentColor 30%, transparent); }
@@ -4854,7 +4865,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 .tl__ph .ph-img { object-position: var(--op, 50% 50%); }
 .spark__ph { aspect-ratio: 4 / 5; }
 .tl__ph[hidden] { display: none !important; }
-.ph-more { position: absolute; z-index: 4; left: 14px; top: 14px; padding: 3px 9px 4px; border-radius: 2px; background: rgba(29, 23, 21, .62); color: #f6eee3; font: 500 12px/1.2 var(--font-body, Inter, sans-serif); font-style: normal; letter-spacing: .02em; backdrop-filter: blur(4px); pointer-events: none; }
+.ph-more { position: absolute; z-index: 4; left: 14px; top: 14px; padding: 3px 9px 4px; border-radius: 2px; background: rgba(29, 23, 21, .62); color: #f6eee3; font: 500 12px/1.2 var(--font-sans); font-style: normal; letter-spacing: .02em; backdrop-filter: blur(4px); pointer-events: none; }
 .cinar__poster-art { aspect-ratio: 4 / 5; }
 .cinar__poster-art img { filter: none; }
 .cinar__gallery .tl__ph { width: 100%; }
@@ -4863,7 +4874,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 .chap__body .chap__aside { margin: 6px 0 30px; padding-left: 18px; border-left: 1px solid rgba(94, 26, 23, .35); font-family: var(--font-display); font-style: italic; font-size: clamp(19px, 1.5vw, 22px); line-height: 1.45; color: #5e1a17; }
 .chap__credit { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; padding-top: 16px; border-top: 1px solid rgba(94, 26, 23, .18); }
 .chap__body .chap__credit-line { margin: 0; font-family: var(--font-display); font-size: 20px; line-height: 1.2; color: #1d1715; }
-.chap__credit-line span { display: block; margin-bottom: 3px; font-family: var(--font-body, Inter, sans-serif); font-size: 12px; font-weight: 500; letter-spacing: .015em; color: rgba(94, 26, 23, .72); }
+.chap__credit-line span { display: block; margin-bottom: 3px; font-family: var(--font-sans); font-size: 12px; font-weight: 500; letter-spacing: .015em; color: rgba(94, 26, 23, .72); }
 .chap__credit .bd-badges { margin: 0; }
 
 /* v38 · III. bölüm: fotoğraf bloğu metnin alt çizgisine oturur (üstü giriş paragrafıyla hizalanır) */
