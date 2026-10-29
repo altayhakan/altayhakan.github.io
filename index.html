@@ -5373,10 +5373,16 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 
   slots.forEach(function (slot) {
     slot.classList.add('zoomable');
-    slot.setAttribute('role', 'button');
-    slot.setAttribute('tabindex', '0');
-    slot.setAttribute('aria-haspopup', 'dialog');
-    slot.setAttribute('aria-label', 'Büyüt: ' + (shortCap(slot) || 'fotoğraf'));
+    // v123 · figcaption'lı <figure> düğme rolü alamaz (figür anlamı bozulur): rol içteki görsel çerçevesine geçer
+    var hit = (slot.tagName === 'FIGURE' && slot.querySelector(':scope > figcaption') && (slot.querySelector(slot.getAttribute('data-photo-target') || ':scope > :not(figcaption)'))) || slot;
+    hit.setAttribute('role', 'button');
+    hit.setAttribute('tabindex', '0');
+    hit.setAttribute('aria-haspopup', 'dialog');
+    // Erişilebilir ad görünen yazıyla başlar (alt yazı, "+8" gibi): ekran okuyucu ile göz aynı şeyi okur
+    var seen = [], tw = document.createTreeWalker(hit, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { return n.parentElement.closest('[aria-hidden="true"]') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } });
+    while (tw.nextNode()) { var tx = tw.currentNode.textContent.trim(); if (tx) seen.push(tx); }
+    seen = seen.join(' ');
+    hit.setAttribute('aria-label', seen ? seen + ', büyüt' : 'Büyüt: ' + (shortCap(slot) || 'fotoğraf'));
     var z = document.createElement('i'); z.className = 'ph-zoom'; z.innerHTML = ICON_ZOOM; z.setAttribute('aria-hidden', 'true');
     slot.appendChild(z);
     slot.addEventListener('click', function (e) { e.preventDefault(); open(slot); });
