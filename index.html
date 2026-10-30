@@ -6341,6 +6341,17 @@ html:root .gv__sub { font-size: 16.5px !important; }
   html:root .hero .domain__label { font-size: 16px !important; }
   html:root .hero .domain__sub { font-size: 14.5px !important; }
 }
+/* ═══ v130 · Tablet polaroidleri: künye şeridi tablette büyür, yazı fotoğrafın içine taşmaz ═══ */
+@media (min-width: 621px) and (max-width: 1100px) {
+  html body .tl__ph { padding-bottom: 52px !important; }
+  html body .tl__ph::before, html body .tl__ph::after { inset: 6px 6px 52px !important; }
+  html body .tl__ph .ph-img { inset: 6px 6px 52px !important; width: auto !important; height: auto !important; }
+  html body .tl__ph span {
+    top: auto !important; left: 10px !important; right: 10px !important; bottom: 8px !important; height: auto !important;
+    display: flex !important; align-items: center; justify-content: center; text-align: center; white-space: normal !important;
+    font-size: 15px !important; line-height: 1.25 !important; padding: 0 !important; margin: 0 !important;
+  }
+}
 </style>
 <!-- v100 · Masaüstü dokunuşları: ilerleme çizgisi, netleşerek belirme, ortam ışığı, imleç ve mıknatıs.
      Yalnız fare + hover olan, hareketi azaltmayan, perf-lite olmayan cihazlarda çalışır. -->
