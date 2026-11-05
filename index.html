@@ -2608,6 +2608,17 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp?v=98" type="image/webp" media="(min-width: 901px)">
 <link rel="preload" as="image" href="assets/desk/ahsap-1024.webp?v=98" type="image/webp" media="(max-width: 900px)">
+<style id="v134-oyna">
+.gv__play { order: 4; margin: 6px 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; position: relative; z-index: 2; }
+.gv__play-btn { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 24px; border-radius: 2px; background: #f6eee3; color: #2a0b09; font-family: var(--font-sans); font-size: 15px; font-weight: 500; letter-spacing: .015em; text-decoration: none; box-shadow: 0 18px 36px -18px rgba(0, 0, 0, .7); transition: background .3s, color .3s, box-shadow .3s; }
+.gv__play-btn span { transition: transform .25s cubic-bezier(.2, .7, .2, 1); }
+.gv__play-btn:hover { background: #5e1a17; color: #f6eee3; box-shadow: inset 0 0 0 1px rgba(246, 238, 227, .55), 0 22px 40px -18px rgba(0, 0, 0, .75); }
+.gv__play-btn:hover span { transform: translate(2px, -2px); }
+.gv__play-btn:focus-visible { outline: 2px solid #e7b98a; outline-offset: 3px; }
+.gv__play-note { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .04em; color: rgba(246, 238, 227, .66); text-shadow: 0 1px 10px rgba(0, 0, 0, .6); }
+@media (max-width: 1100px) { .gv__play { justify-content: center; flex-direction: column; gap: 10px; margin-top: 10px; } }
+@media print { .gv__play { display: none !important; } }
+</style>
 <style media="print" id="e-dergi">
 /* v129 · E-Dergi: yazdırma / "PDF olarak kaydet" için A4 dergi düzeni.
    Menüler, düğmeler, form, WebGL, imleç ve ortam katmanları gizlenir; metin, polaroid ve kâğıt dokusu kalır. */
@@ -3096,6 +3107,7 @@ a { text-decoration: none !important; }
             <p class="gv__when"><span class="gv__when-d">2025’ten bu yana</span><span class="gv__when-live"><i aria-hidden="true"></i>Devam ediyor</span><span class="gv__when-t">Godot &amp; Blender</span></p>
             <h3 class="gv__title" id="gv-title"><img loading="lazy" class="gv__logo" src="assets/tuspa/logo.webp" width="720" height="565" alt="Tuşpa: Van Gölü’nün Kayıp Hafızası"></h3>
             <p class="gv__quote">“Su… hafızayı saklar. <em>Ama efsaneler asla gömülü kalmaz.</em>”</p>
+            <p class="gv__play"><a class="gv__play-btn" href="oyna.html" data-link="tuspa-oyna">Oyunu Oyna <span aria-hidden="true">↗</span></a><span class="gv__play-note">Kapalı beta · davet şifresiyle</span></p>
           </div>
         </div>
 
@@ -3104,7 +3116,7 @@ a { text-decoration: none !important; }
           <ol class="gv__route" aria-label="Oyunda gezilen yerlerden bazıları">
             <li>Gevaş İskelesi</li><li>Akdamar Adası</li><li>Kahvaltıcılar Sokağı</li><li>Van Kalesi · Horhor</li><li>Çavuştepe</li><li>Halime Hatun Kümbeti</li><li>Muradiye Şelalesi</li><li class="gv__route-more">ve diğer mekânlar</li>
           </ol>
-          <ul class="bd-badges"><li class="bd-badge">Godot 4</li><li class="bd-badge">Blender</li><li class="bd-badge">9 dil</li><li class="bd-badge">Kapalı beta</li><li class="bd-badge">Android · Tablet</li></ul>
+          <ul class="bd-badges"><li class="bd-badge">Godot 4</li><li class="bd-badge">Blender</li><li class="bd-badge">9 dil</li><li class="bd-badge">Kapalı beta</li><li class="bd-badge">Tarayıcı · PC</li></ul>
         </div>
 
         <section class="gv__row gv__row--origin" id="fractal" aria-labelledby="gv-r0">
