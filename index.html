@@ -2567,6 +2567,20 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
 .contact__bg::before { display: none !important; }
 </style>
 <style id="v139-akis">
+/* v143 · Hero tek odak: Eğitsel Oyun büyük satır, diğer üç alan "Besleyen alanlar" künyesinde (bloga açılır) */
+html .hero .domains { display: flex; flex-wrap: wrap; align-items: baseline; }
+html .hero .domains > li { flex: 0 0 auto; }
+html .hero .domains > li:first-child { flex: 1 0 100%; }
+html .hero .domains > li.domains__feed { margin: 14px 12px 0 0; font: italic 400 15px/1.2 'Instrument Serif', Georgia, serif; color: #6b4630; }
+html .hero .domains > li:nth-child(n+3) .domain { min-height: 0 !important; padding: 0 !important; margin-top: 14px; border: 0 !important; background: none !important; width: auto; display: inline-flex; }
+html .hero .domains > li:nth-child(n+3) .domain__idx, html .hero .domains > li:nth-child(n+3) .domain__sub, html .hero .domains > li:nth-child(n+3) .domain__swatch { display: none !important; }
+html .hero .domains > li:nth-child(n+3) .domain__label { font-size: 14px !important; text-decoration: underline; text-decoration-color: rgba(94, 26, 23, .3); text-underline-offset: 3px; }
+html .hero .domains > li:nth-child(n+3) .domain:hover .domain__label, html .hero .domains > li:nth-child(n+3) .domain[aria-pressed="true"] .domain__label { color: #6a1d18; text-decoration-color: currentColor; }
+html .hero .domains > li:nth-child(n+3):not(:last-child)::after { content: "·"; margin: 0 .6em; opacity: .5; }
+html .hero .domains > li:last-child::after { content: "↗"; margin-left: .45em; color: #6a1d18; font-size: 13px; }
+.hero__beta { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; letter-spacing: .015em; color: rgba(29, 23, 21, .62); }
+.hero__beta i { width: 6px; height: 6px; border-radius: 50%; background: #6a1d18; box-shadow: 0 0 0 3px rgba(106, 29, 24, .14); }
+@media (max-width: 620px) { .hero__beta { flex-basis: 100%; } }
 .about .columns a { color: #6a1d18; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 /* Yol Haritası: krem zeminde üç durak, ince cetvel, serif numara */
 #yol, #liderlik { padding-top: 72px !important; padding-bottom: 56px !important; }
@@ -2695,7 +2709,7 @@ a { text-decoration: none !important; }
     <div class="desk" aria-hidden="true">
       <svg class="desk__obj desk__stain" style="--z:20;--ox:.7;--oy:-.5" viewBox="0 0 160 160"><defs><filter id="dkStain" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="7"/><feGaussianBlur stdDeviation=".6"/></filter></defs><g filter="url(#dkStain)"><circle cx="80" cy="80" r="60" fill="rgba(122,70,38,.05)"/><circle cx="80" cy="80" r="60" fill="none" stroke="rgba(110,58,30,.30)" stroke-width="2.4"/><path d="M28 70 A54 54 0 0 1 96 24" fill="none" stroke="rgba(110,58,30,.22)" stroke-width="4"/></g></svg>
       <figure class="desk__obj desk__pol desk__pol--a" style="--z:10;--ox:-.5;--oy:-.85;--rot:-8deg"><img src="assets/foto/surki-ilk-derslik-800.webp" srcset="assets/foto/surki-ilk-derslik-360.webp 360w, assets/foto/surki-ilk-derslik-800.webp 800w" sizes="(max-width: 900px) 110px, 280px" width="800" height="600" alt="İlk dersliğim, 2019" loading="eager" decoding="async"></figure>
-      <figure class="desk__obj desk__pol desk__pol--b" style="--z:16;--ox:.9;--oy:.2;--rot:11deg"><img src="assets/foto/dogan-imza-800.webp" srcset="assets/foto/dogan-imza-360.webp 360w, assets/foto/dogan-imza-800.webp 800w" sizes="(max-width: 900px) 100px, 280px" width="640" height="800" alt="Doğan Cüceloğlu’nun imzası" loading="eager" decoding="async"></figure>
+      <figure class="desk__obj desk__pol desk__pol--b" style="--z:16;--ox:.9;--oy:.2;--rot:11deg"><img src="assets/desk/tuspa-pol-800.webp" srcset="assets/desk/tuspa-pol-360.webp 360w, assets/desk/tuspa-pol-800.webp 800w" sizes="(max-width: 900px) 100px, 280px" width="640" height="800" alt="Tuşpa: Van Gölü’nün Kayıp Hafızası oyunundan bir kare: Akdamar ve gölün canavarı" loading="eager" decoding="async"></figure>
       <span class="desk__obj desk__shine desk__shine--cup" style="--z:22;--ox:.75;--oy:-.65;--m:url(assets/desk/fincan-m.webp)" aria-hidden="true"></span><img class="desk__obj desk__cup" style="--z:22;--ox:.75;--oy:-.65" src="assets/desk/fincan.webp" srcset="assets/desk/fincan-320.webp 320w, assets/desk/fincan.webp 607w" sizes="(max-width: 900px) 104px, 300px" alt="" width="607" height="608" decoding="async" fetchpriority="high">
       <span class="desk__obj desk__shine desk__shine--pen" style="--z:28;--ox:-.15;--oy:1;--rot:-4deg;--m:url(assets/desk/kalem-m.webp)" aria-hidden="true"></span><img class="desk__obj desk__pen" style="--z:28;--ox:-.15;--oy:1;--rot:-4deg" src="assets/desk/kalem.webp" srcset="assets/desk/kalem-560.webp 560w, assets/desk/kalem.webp 1299w" sizes="(max-width: 900px) 168px, 560px" alt="" width="1299" height="230" decoding="async">
     </div>
@@ -2721,19 +2735,19 @@ a { text-decoration: none !important; }
 
       <ul class="domains reveal" style="--i:3" aria-label="Çalışma alanları" id="domains"><li><button type="button" class="domain" data-key="oyun" aria-pressed="false" style="--c:#3e6a69">
       <span class="domain__idx">01</span>
-      <span class="domain__text"><span class="domain__label">Eğitsel Oyun · Teknoloji</span><span class="domain__sub">Tuşpa: Van Gölü’nün Kayıp Hafızası · TÜBİTAK 4008</span></span>
+      <span class="domain__text"><span class="domain__label">Eğitsel Oyun</span><span class="domain__sub">Tuşpa: Van Gölü’nün Kayıp Hafızası</span></span>
       <span class="domain__swatch" aria-hidden="true"></span>
-    </button></li><li><button type="button" class="domain" data-key="egitim" aria-pressed="false" style="--c:#a8873f">
+    </button></li><li class="domains__feed">Besleyen alanlar</li><li><button type="button" class="domain" data-key="egitim" aria-pressed="false" style="--c:#a8873f">
       <span class="domain__idx">02</span>
-      <span class="domain__text"><span class="domain__label">Eğitim · Formatörlük</span><span class="domain__sub">Türkiye Yüzyılı Maarif Modeli · Tuşba Buluşmaları</span></span>
+      <span class="domain__text"><span class="domain__label">Eğitim</span><span class="domain__sub">Türkiye Yüzyılı Maarif Modeli · Tuşba Buluşmaları</span></span>
       <span class="domain__swatch" aria-hidden="true"></span>
     </button></li><li><button type="button" class="domain" data-key="sosyal" aria-pressed="false" style="--c:#b27a55">
       <span class="domain__idx">03</span>
-      <span class="domain__text"><span class="domain__label">Sosyal Sorumluluk</span><span class="domain__sub">Kızılay · TOG · Kardeş Köy Okulu</span></span>
+      <span class="domain__text"><span class="domain__label">Sosyal</span><span class="domain__sub">Kızılay · TOG · Kardeş Köy Okulu</span></span>
       <span class="domain__swatch" aria-hidden="true"></span>
     </button></li><li><button type="button" class="domain" data-key="muzik" aria-pressed="false" style="--c:#9a4b37">
       <span class="domain__idx">04</span>
-      <span class="domain__text"><span class="domain__label">Müzik · Kültür</span><span class="domain__sub">Kaydedenler Kulübü · Kozmik Kalıntılar</span></span>
+      <span class="domain__text"><span class="domain__label">Müzik</span><span class="domain__sub">Kaydedenler Kulübü · Kozmik Kalıntılar</span></span>
       <span class="domain__swatch" aria-hidden="true"></span>
     </button></li></ul>
       <p class="status" id="status" aria-live="polite"></p>
@@ -2741,6 +2755,7 @@ a { text-decoration: none !important; }
       <div class="actions reveal" style="--i:4">
         <a class="bd-btn bd-btn--primary" href="#tuspa">Tuşpa’yı Keşfet <span class="bd-btn__arrow" aria-hidden="true">→</span></a>
         <a class="bd-link" href="#hakkimda">Hikâyem</a>
+        <span class="hero__beta"><i aria-hidden="true"></i>Tuşpa · kapalı beta</span>
       </div>
     </section>
   </div>
@@ -3162,10 +3177,10 @@ const { meshGradientFragmentShader, getShaderColorFromString, ShaderMount, grain
 
 /* ═══ İçerik ═══════════════════════════════════════════════════════════ */
 const DOMAINS = [
-  { key: 'oyun',   label: 'Eğitsel Oyun · Teknoloji', sub: 'Tuşpa: Van Gölü’nün Kayıp Hafızası · TÜBİTAK 4008', color: '#3e6a69' },
-  { key: 'egitim', label: 'Eğitim · Formatörlük', sub: 'Türkiye Yüzyılı Maarif Modeli · Tuşba Buluşmaları', color: '#a8873f' },
-  { key: 'sosyal', label: 'Sosyal Sorumluluk',    sub: 'Kızılay · TOG · Kardeş Köy Okulu', color: '#b27a55' },
-  { key: 'muzik',  label: 'Müzik · Kültür',       sub: 'Kaydedenler Kulübü · Kozmik Kalıntılar',   color: '#9a4b37' },
+  { key: 'oyun',   label: 'Eğitsel Oyun', sub: 'Tuşpa: Van Gölü’nün Kayıp Hafızası', color: '#3e6a69' },
+  { key: 'egitim', label: 'Eğitim', sub: 'Türkiye Yüzyılı Maarif Modeli · Tuşba Buluşmaları', color: '#a8873f' },
+  { key: 'sosyal', label: 'Sosyal',    sub: 'Kızılay · TOG · Kardeş Köy Okulu', color: '#b27a55' },
+  { key: 'muzik',  label: 'Müzik',       sub: 'Kaydedenler Kulübü · Kozmik Kalıntılar',   color: '#9a4b37' },
 ];
 const css = (n, f) => getComputedStyle(document.documentElement).getPropertyValue(n).trim() || f;
 const CREAM = css('--surface-muted', '#e9e0cf');
@@ -3211,6 +3226,7 @@ DOMAINS.forEach((d, i) => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (window.__goTo) window.__goTo(target, 380); else setTimeout(() => target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }), reduce ? 0 : 380);
   });
+  if (i === 1) { const lab = document.createElement('li'); lab.className = 'domains__feed'; lab.textContent = 'Besleyen alanlar'; list.appendChild(lab); }
   list.appendChild(li);
 });
 function renderUI(active) {
