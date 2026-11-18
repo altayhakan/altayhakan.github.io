@@ -2566,6 +2566,33 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
 .sound__bg::before { background: linear-gradient(180deg, var(--seam-tint) 0, var(--seam-tint) calc(var(--seam) * .3), transparent var(--seam)) top / 100% var(--seam) no-repeat !important; }
 .contact__bg::before { display: none !important; }
 </style>
+<style id="v139-akis">
+/* v139 · Tam akış: Kariyer (koyu) doğrudan Projeler'e (mürekkep) bağlanır; arada krem şerit ve sepya dikiş kalmasın */
+#egitim.band { padding-bottom: calc(var(--seam) * .5 + 40px) !important;
+  background: linear-gradient(0deg, #1f110f 0, #1c0f0e var(--seam), transparent var(--seam)) !important; }
+#projeler { padding-top: calc(var(--seam) * .5 + 56px) !important;
+  background: linear-gradient(180deg, #1a0e0d 0, #1a0e0d var(--seam), transparent var(--seam)) !important; }
+.band__bg::before { background: linear-gradient(180deg, var(--seam-tint) 0, var(--seam-tint) calc(var(--seam) * .3), transparent var(--seam)) top / 100% var(--seam) no-repeat !important; }
+.showcase__bg::before { background: linear-gradient(0deg, var(--seam-tint) 0, var(--seam-tint) calc(var(--seam) * .3), transparent var(--seam)) bottom / 100% var(--seam) no-repeat !important; }
+#egitim { position: relative; }
+/* Yol Haritası: krem zeminde üç durak, ince cetvel, serif numara */
+#yol, #liderlik { padding-top: 72px !important; padding-bottom: 56px !important; }
+.yol__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--hairline-strong, rgba(29,23,21,.22)); }
+.yol__step { position: relative; padding: 30px 32px 34px 0; display: flex; flex-direction: column; gap: 10px; }
+.yol__step + .yol__step { padding-left: 32px; border-left: 1px solid var(--hairline, rgba(29,23,21,.12)); }
+.yol__no { font-family: var(--font-display); font-style: italic; font-size: 30px; line-height: 1; color: var(--surface-strong); }
+.yol__k { margin: 0; font-size: 14.5px; font-weight: 500; letter-spacing: .015em; color: rgba(29, 23, 21, .74); }
+.yol__t { margin: 0; max-width: 30ch; font-family: 'Instrument Serif', var(--font-display); font-size: clamp(22px, 1.9vw, 28px); line-height: 1.25; color: var(--text-primary); text-wrap: pretty; }
+.yol__step:first-child .yol__no { color: #6a1d18; }
+.yol__step:first-child::before { content: ""; position: absolute; left: 0; top: -1px; width: 56px; height: 2px; background: var(--surface-strong); }
+.yol__call { margin: 36px 0 0; }
+.yol__call a { font-family: 'Instrument Serif', var(--font-display); font-style: italic; font-size: 22px; color: var(--surface-strong); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+@media (max-width: 900px) {
+  .yol__steps { grid-template-columns: 1fr; }
+  .yol__step, .yol__step + .yol__step { padding: 24px 0 26px; border-left: 0; border-bottom: 1px solid var(--hairline, rgba(29,23,21,.12)); }
+}
+@media (max-width: 620px) { #yol, #liderlik { padding-top: 48px !important; padding-bottom: 40px !important; } }
+</style>
 <style media="print" id="e-dergi">
 /* v129 · E-Dergi: yazdırma / "PDF olarak kaydet" için A4 dergi düzeni.
    Menüler, düğmeler, form, WebGL, imleç ve ortam katmanları gizlenir; metin, polaroid ve kâğıt dokusu kalır. */
@@ -2685,10 +2712,11 @@ a { text-decoration: none !important; }
     <nav aria-label="Ana menü">
       <ul class="nav">
         <li><a href="#hakkimda">Hakkımda</a></li>
-        <li><a href="#anilar">İlham</a></li>
         <li><a href="#egitim">Kariyer</a></li>
-        <li><a href="#liderlik">Liderlik</a></li>
         <li><a href="#projeler">Projeler</a></li>
+        <li><a href="#yol">Yol Haritası</a></li>
+        <li><a href="#liderlik">Liderlik</a></li>
+        <li><a href="#anilar">İlham</a></li>
         <li><a href="#gonullu">Sosyal</a></li>
         <li><a href="#muzik">Müzik</a></li>
         <li><a href="#iletisim">İletişim</a></li>
@@ -2698,32 +2726,32 @@ a { text-decoration: none !important; }
 
   <div class="hero__grid">
     <section class="hero__copy bd-surface-light" aria-labelledby="hero-name">
-      <p class="eyebrow eyebrow--ed reveal" style="--i:0"><b>Eğitim Ekosistemi</b></p>
+      <p class="eyebrow eyebrow--ed reveal" style="--i:0"><b>Eğitsel Oyun Tasarımı</b></p>
       <h1 class="title title--ed reveal" id="hero-name" style="--i:1" aria-label="Hakan Altay"><span class="t-first" aria-hidden="true"><span class="t-ch" style="--k:0">H</span><span class="t-ch" style="--k:1">a</span><span class="t-ch" style="--k:2">k</span><span class="t-ch" style="--k:3">a</span><span class="t-ch" style="--k:4">n</span></span> <span class="t-last" aria-hidden="true"><em class="accent-strategic">Altay</em></span></h1>
       <p class="lead reveal" style="--i:2"><em>Eğitsel oyun tasarımcısı</em>: çocuklara yaşadıkları şehri oyunla keşfettiriyorum.</p>
 
-      <ul class="domains reveal" style="--i:3" aria-label="Çalışma alanları" id="domains"><li><button type="button" class="domain" data-key="egitim" aria-pressed="false" style="--c:#a8873f">
+      <ul class="domains reveal" style="--i:3" aria-label="Çalışma alanları" id="domains"><li><button type="button" class="domain" data-key="oyun" aria-pressed="false" style="--c:#3e6a69">
       <span class="domain__idx">01</span>
+      <span class="domain__text"><span class="domain__label">Eğitsel Oyun · Teknoloji</span><span class="domain__sub">Tuşpa: Van Gölü’nün Kayıp Hafızası · TÜBİTAK 4008</span></span>
+      <span class="domain__swatch" aria-hidden="true"></span>
+    </button></li><li><button type="button" class="domain" data-key="egitim" aria-pressed="false" style="--c:#a8873f">
+      <span class="domain__idx">02</span>
       <span class="domain__text"><span class="domain__label">Eğitim · Formatörlük</span><span class="domain__sub">Türkiye Yüzyılı Maarif Modeli · Tuşba Buluşmaları</span></span>
       <span class="domain__swatch" aria-hidden="true"></span>
-    </button></li><li><button type="button" class="domain" data-key="oyun" aria-pressed="false" style="--c:#3e6a69">
-      <span class="domain__idx">02</span>
-      <span class="domain__text"><span class="domain__label">Oyun · Teknoloji</span><span class="domain__sub">Tuşpa: Van Gölü’nün Kayıp Hafızası · TÜBİTAK 4008</span></span>
+    </button></li><li><button type="button" class="domain" data-key="sosyal" aria-pressed="false" style="--c:#b27a55">
+      <span class="domain__idx">03</span>
+      <span class="domain__text"><span class="domain__label">Sosyal Sorumluluk</span><span class="domain__sub">Kızılay · TOG · Kardeş Köy Okulu</span></span>
       <span class="domain__swatch" aria-hidden="true"></span>
     </button></li><li><button type="button" class="domain" data-key="muzik" aria-pressed="false" style="--c:#9a4b37">
-      <span class="domain__idx">03</span>
-      <span class="domain__text"><span class="domain__label">Müzik · Kültür</span><span class="domain__sub">Kaydedenler Kulübü · Kozmik Kalıntılar</span></span>
-      <span class="domain__swatch" aria-hidden="true"></span>
-    </button></li><li><button type="button" class="domain" data-key="sosyal" aria-pressed="false" style="--c:#b27a55">
       <span class="domain__idx">04</span>
-      <span class="domain__text"><span class="domain__label">Sosyal Sorumluluk</span><span class="domain__sub">Kızılay · TOG · Kardeş Köy Okulu</span></span>
+      <span class="domain__text"><span class="domain__label">Müzik · Kültür</span><span class="domain__sub">Kaydedenler Kulübü · Kozmik Kalıntılar</span></span>
       <span class="domain__swatch" aria-hidden="true"></span>
     </button></li></ul>
       <p class="status" id="status" aria-live="polite"></p>
 
       <div class="actions reveal" style="--i:4">
-        <a class="bd-btn bd-btn--primary" href="#hakkimda">Keşfetmeye Başla <span class="bd-btn__arrow" aria-hidden="true">→</span></a>
-        <a class="bd-link" href="#projeler">Projeleri gör</a>
+        <a class="bd-btn bd-btn--primary" href="#tuspa">Tuşpa’yı Keşfet <span class="bd-btn__arrow" aria-hidden="true">→</span></a>
+        <a class="bd-link" href="#hakkimda">Hikâyem</a>
       </div>
     </section>
   </div>
@@ -2740,7 +2768,7 @@ a { text-decoration: none !important; }
   <div class="wrap">
     <header class="section-head">
       <p class="kicker"><span class="kno" aria-hidden="true">01</span>Hakkımda</p>
-      <h2 class="section-title will-reveal" id="about-title">Hepsi aynı merakın <em>farklı hâlleri.</em></h2>
+      <h2 class="section-title will-reveal" id="about-title">Bir oyun tasarımcısının <em>dört kaynağı.</em></h2>
     </header>
 
     <div class="about">
@@ -2766,90 +2794,13 @@ a { text-decoration: none !important; }
     </div>
 
     <div class="portraits">
-      <div class="portraits__head will-reveal"><p class="kicker">Portreler</p><p class="portraits__line">Aynı merakın <em>dört hâli.</em></p><p class="portraits__count">01 – 04</p></div>
+      <div class="portraits__head will-reveal"><p class="kicker">Portreler</p><p class="portraits__line">Tasarımı besleyen <em>dört hâl.</em></p><p class="portraits__count">01 – 04</p></div>
       <ul class="roles" aria-label="Roller">
-<li class="will-reveal" style="--d:0ms"><article class="pt" style="--c:#a8873f"><div class="pt__head"><span class="pt__no">01</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="17"/><path d="M22 7v4M22 33v4M7 22h4M33 22h4"/><path d="M27 17l-3.5 8.5L15 29l3.5-8.5z"/></svg></span></div><p class="pt__meta">Eğitim · Formatörlük</p><h3 class="pt__title">Öğretmen</h3><p class="pt__desc">Hafta içi sınıfta, hafta sonu öğretmenlerle: modeli önce kendi sınıfımda yaşıyor, sonra paylaşıyorum.</p><p class="pt__foot"><span>Türkiye Yüzyılı Maarif Modeli</span></p></article></li>
-<li class="will-reveal" style="--d:110ms"><article class="pt" style="--c:#3e6a69"><div class="pt__head"><span class="pt__no">02</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="14" width="32" height="18" rx="2"/><path d="M14 19v8M10 23h8"/><circle cx="29" cy="21" r="1.5"/><circle cx="33" cy="25" r="1.5"/></svg></span></div><p class="pt__meta">Oyun · Teknoloji</p><h3 class="pt__title">Geliştirici</h3><p class="pt__desc">Van’ın binlerce yıllık hafızasını bir oyuna dönüştürüyorum: kodu Godot’ta yazıyor, dünyayı Blender’da kuruyorum.</p><p class="pt__foot"><span>Tuşpa</span><span class="pt__sep" aria-hidden="true">·</span><span>TÜBİTAK 4008</span></p></article></li>
-<li class="will-reveal" style="--d:220ms"><article class="pt" style="--c:#9a4b37"><div class="pt__head"><span class="pt__no">03</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="16" y="6" width="12" height="20" rx="6"/><path d="M11 21a11 11 0 0 0 22 0"/><path d="M22 32v6M16 38h12"/><path d="M16 14h4M16 19h4"/></svg></span></div><p class="pt__meta">Müzik · Kültür</p><h3 class="pt__title">Müzisyen</h3><p class="pt__desc">Podcast’te soruları soruyor, stüdyoda gitar, davul ve vokalle cevabını arıyorum.</p><p class="pt__foot"><span>Kaydedenler Kulübü</span><span class="pt__sep" aria-hidden="true">·</span><span>Kozmik Kalıntılar</span></p></article></li>
-<li class="will-reveal" style="--d:330ms"><article class="pt" style="--c:#b27a55"><div class="pt__head"><span class="pt__no">04</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 35s-12-7-12-15.5A6.5 6.5 0 0 1 22 15a6.5 6.5 0 0 1 12 4.5C34 28 22 35 22 35z"/><path d="M15 21h4l2-3 3 6 2-3h3"/></svg></span></div><p class="pt__meta">Sosyal Sorumluluk</p><h3 class="pt__title">Gönüllü</h3><p class="pt__desc">Erzurum’un köy okullarından deprem bölgesindeki destek sınıflarına: öğrendiğimi dayanışmayla çoğaltıyorum.</p><p class="pt__foot"><span>Kızılay</span><span class="pt__sep" aria-hidden="true">·</span><span>TOG</span><span class="pt__sep" aria-hidden="true">·</span><span>Kardeş Köy Okulu</span></p></article></li>
+<li class="will-reveal" style="--d:0ms"><article class="pt" style="--c:#3e6a69"><div class="pt__head"><span class="pt__no">01</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="14" width="32" height="18" rx="2"/><path d="M14 19v8M10 23h8"/><circle cx="29" cy="21" r="1.5"/><circle cx="33" cy="25" r="1.5"/></svg></span></div><p class="pt__meta">Eğitsel Oyun · Teknoloji</p><h3 class="pt__title">Geliştirici</h3><p class="pt__desc">Van’ın binlerce yıllık hafızasını bir oyuna dönüştürüyorum: kodu Godot’ta yazıyor, dünyayı Blender’da kuruyorum.</p><p class="pt__foot"><span>Tuşpa</span><span class="pt__sep" aria-hidden="true">·</span><span>TÜBİTAK 4008</span></p></article></li>
+<li class="will-reveal" style="--d:110ms"><article class="pt" style="--c:#a8873f"><div class="pt__head"><span class="pt__no">02</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="17"/><path d="M22 7v4M22 33v4M7 22h4M33 22h4"/><path d="M27 17l-3.5 8.5L15 29l3.5-8.5z"/></svg></span></div><p class="pt__meta">Eğitim · Formatörlük</p><h3 class="pt__title">Öğretmen</h3><p class="pt__desc">Hafta içi sınıfta, hafta sonu öğretmenlerle: modeli önce kendi sınıfımda yaşıyor, sonra paylaşıyorum.</p><p class="pt__foot"><span>Türkiye Yüzyılı Maarif Modeli</span></p></article></li>
+<li class="will-reveal" style="--d:220ms"><article class="pt" style="--c:#b27a55"><div class="pt__head"><span class="pt__no">03</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 35s-12-7-12-15.5A6.5 6.5 0 0 1 22 15a6.5 6.5 0 0 1 12 4.5C34 28 22 35 22 35z"/><path d="M15 21h4l2-3 3 6 2-3h3"/></svg></span></div><p class="pt__meta">Sosyal Sorumluluk</p><h3 class="pt__title">Gönüllü</h3><p class="pt__desc">Erzurum’un köy okullarından deprem bölgesindeki destek sınıflarına: öğrendiğimi dayanışmayla çoğaltıyorum.</p><p class="pt__foot"><span>Kızılay</span><span class="pt__sep" aria-hidden="true">·</span><span>TOG</span><span class="pt__sep" aria-hidden="true">·</span><span>Kardeş Köy Okulu</span></p></article></li>
+<li class="will-reveal" style="--d:330ms"><article class="pt" style="--c:#9a4b37"><div class="pt__head"><span class="pt__no">04</span><span class="pt__icon"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="16" y="6" width="12" height="20" rx="6"/><path d="M11 21a11 11 0 0 0 22 0"/><path d="M22 32v6M16 38h12"/><path d="M16 14h4M16 19h4"/></svg></span></div><p class="pt__meta">Müzik · Kültür</p><h3 class="pt__title">Müzisyen</h3><p class="pt__desc">Podcast’te soruları soruyor, stüdyoda gitar, davul ve vokalle cevabını arıyorum.</p><p class="pt__foot"><span>Kaydedenler Kulübü</span><span class="pt__sep" aria-hidden="true">·</span><span>Kozmik Kalıntılar</span></p></article></li>
 </ul>
-    </div>
-  </div>
-</section>
-
-<section class="section memo" id="anilar" aria-labelledby="memo-title">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="kicker"><span class="kno" aria-hidden="true">02</span>İlham ve Anılar</p>
-      <h2 class="section-title" id="memo-title">Bir selam, bir imza, <em>bir heykel.</em></h2>
-    </header>
-
-    <!-- I · Bir selam -->
-    <article class="chap chap--selam" aria-labelledby="chap1-title">
-      <div class="chap__body" data-par="-0.03">
-        <p class="chap__meta will-reveal"><span class="chap__no">I</span> ÖRAV Buluşmaları · Kadir Has Üniversitesi · 2015</p>
-        <h3 class="chap__title" id="chap1-title">Bir selam, <em>bir zincir.</em></h3>
-        <p class="chap__lead will-reveal" style="--d:80ms">Prof. Dr. Alev Önder hocamın selamını, onun hocası Doğan Cüceloğlu’na iletmek için Kadir Has Üniversitesi’ndeki ÖRAV buluşmalarına gittim.</p>
-        <p class="will-reveal" style="--d:160ms">Bir öğrencinin, hocasının selamını onun hocasına götürmesi… O gün elimde bir selamdan fazlası vardı: kuşaktan kuşağa uzanan bir öğrenme zincirinin küçük bir halkası.</p>
-        <p class="will-reveal" style="--d:240ms">Sayfalarda tanıdığım sesi ilk kez karşımda dinlemek, yazdıklarının ardındaki insanı görmek demekti. Bir hocanın emeği, öğrencisinin öğrencisine kadar uzanıyordu; ben de o zincirin içinde durduğumu hissettim.</p>
-      </div>
-      <div class="chap__photos will-reveal" style="--d:160ms" data-par="0.06" aria-label="Doğan Cüceloğlu ile fotoğraflar">
-        <figure data-photo="dogan-hoca-2015" class="tl__ph" style="--r:-3deg"><span>Doğan Hoca ile, 2015</span></figure>
-        <figure data-photo="dogan-hoca-2019" class="tl__ph" style="--r:2.5deg"><span>Doğan Hoca ile, 2019</span></figure>
-      </div>
-    </article>
-
-    <!-- II · Bir imza: gönderilemeyen hikâyeler -->
-    <article class="chap chap--imza" id="dogan-hoca" aria-labelledby="chap2-title">
-      <div class="imza__photos" data-par="0.05" aria-label="Bir imza, gönderilemeyen hikâyeler">
-      <figure class="memo__photo will-reveal" data-photo="dogan-imzali-not" data-photo-target=".memo__frame" data-photo-alt="Eskicide bulduğum kitabın ilk sayfası: 1994’te bir oğlun annesine yazdığı not">
-        <span class="memo__tape" aria-hidden="true"></span>
-        <div class="memo__frame">
-          <div class="memo__ph" aria-hidden="true">
-            <svg viewBox="0 0 160 60"><path d="M8 40 C20 12 30 52 42 30 S60 14 66 38 C70 50 84 20 96 30 C104 37 110 26 122 28 C132 30 140 36 152 22" /></svg>
-            <span>Doğan Cüceloğlu<br>İmzalı Not</span>
-          </div>
-        </div>
-        <figcaption>Anneye Yazılan Not · 1994</figcaption>
-      </figure>
-      <figure class="spark__ph imza__sig will-reveal" style="--r:-3deg;--d:160ms" data-photo="dogan-imza" data-photo-alt="Doğan Cüceloğlu’nun İçimizdeki Çocuk kitabına attığı imza: Hakan Öğretmen’e, iç çocuk hep gülsün! 26.02.2019"><span>Doğan Hoca’nın imzası · 2019</span></figure>
-      </div>
-      <div class="chap__body" data-par="-0.03">
-        <p class="chap__meta will-reveal"><span class="chap__no">II</span> Eskici Tezgâhı · 1994</p>
-        <h3 class="chap__title" id="chap2-title">Bir imza, <em>gönderilemeyen hikâyeler.</em></h3>
-        <p class="chap__lead will-reveal" style="--d:80ms">Bir gün bir eskicinin tezgâhında Doğan Cüceloğlu’nun bir kitabına rastladım. İlk sayfasında 1994 tarihli bir not vardı: biri bu kitabı annesine hediye etmişti.</p>
-        <p class="will-reveal" style="--d:160ms">Yıllar sonra o armağan, el değiştire değiştire benim ellerime ulaşmıştı. O kitabı Doğan Hoca’ya götürdüm. 26 Şubat 2019’da, annesine yazılmış o notun yanına kendi imzasını ekledi: “Hakan Öğretmen’e, iç çocuk hep gülsün!” Sonra bana e-posta adresini verdi ve şöyle dedi:</p>
-        <blockquote class="letter__quote will-reveal" style="--d:200ms">“Hayatın içinden bu hikâyeleri <em>bana yaz.</em>”</blockquote>
-        <p class="will-reveal">Ben de yazdım. Köy okullarında yaşadıklarımı, sınıfta bana öğretilenleri, bir çocuğun gözlerinde yanan o küçük ışığı… Hikâyeleri tamamlayıp göndermeye hazırlandığımda ise Doğan Hoca Hakk’ın rahmetine kavuşmuştu. O satırlar hiç yayımlanmadı.</p>
-        <p class="will-reveal">Ama “yaz” deyişi hâlâ kulağımda. Bu sayfadaki her cümle biraz da ona yazılmış, gönderilemeyen bir mektup.</p>
-        <p class="letter__sign will-reveal">Doğan Cüceloğlu <span>Psikolog · Yazar · 1938 – 2021</span></p>
-      </div>
-    </article>
-
-    <!-- III · Bir heykel -->
-    <article class="chap chap--heykel" id="kivilcim" aria-labelledby="chap3-title">
-      <div class="chap__body" data-par="-0.03">
-        <p class="chap__meta will-reveal"><span class="chap__no">III</span> Felsefe ve Estetik · 3D Baskı · Şubat 2019</p>
-        <h3 class="chap__title" id="chap3-title">Bir heykelden doğan <em>kıvılcım.</em></h3>
-        <p class="chap__lead will-reveal" style="--d:80ms">Michelangelo’nun David’i bana güzelliğin bir oran ve sabır meselesi olduğunu öğretti; Sokrates ise iyi bir sorunun iyi bir cevaptan daha uzağa taşıdığını.</p>
-        <p class="will-reveal" style="--d:160ms">Görsel tasarımcı Murat Tüvör’le 2016’dan beri tanışıyoruz. Şubat 2019’da benim için özel bir 3D tasarım hazırladı ve onu Türkiye’nin ilk yerli 3D yazıcısıyla bastı; Blender’la da onun vesilesiyle tanıştım. Bu heykelleri sonra kalıba alıp yeniden üretirken, katman katman yükselen bir heykelin bir öğrenme sürecine ne kadar benzediğini gördüm. Biri estetiği, diğeri sorgulamayı temsil ediyor; sınıfta da, oyun tasarlarken de aradığım şey bu ikisinin buluştuğu yer.</p>
-        <p class="chap__aside will-reveal" style="--d:220ms">O gün zihnimde kurulan bağ, bugün tasarladığım oyunun, Tuşpa’nın temel taşlarından biri.</p>
-        <div class="chap__credit will-reveal" style="--d:280ms">
-          <p class="chap__credit-line"><span>Heykel Tasarımları</span> Murat Tüvör</p>
-          <ul class="bd-badges"><li class="bd-badge">Türkiye’nin ilk yerli 3D yazıcısı · 2019</li></ul>
-        </div>
-      </div>
-          <div class="spark__photos chap__photos" data-par="0.05">
-        <figure class="spark__ph will-reveal" style="--r:-2.5deg" data-photo="david-3d-baski" data-photo-alt="Michelangelo’nun David heykelinin 3D baskısı"><span>David · 3D baskı</span></figure>
-        <figure class="spark__ph will-reveal" style="--r:2deg;--d:120ms" data-photo="sokrates-3d-baski" data-photo-alt="Sokrates heykelinin 3D baskısı"><span>Sokrates · 3D baskı</span></figure>
-        <figure data-photo="david-murat-tuvor" class="spark__ph will-reveal" style="--r:-1.2deg;--d:200ms" data-photo-alt="Murat Tüvör’ün benim için tasarlayıp bastığı David büstüyle, Şubat 2019"><span>David ile · Şubat 2019</span></figure>
-      </div>
-    </article>
-
-    <div class="bridge">
-      <span class="bridge__rule" aria-hidden="true"></span>
-      <h2 class="bridge__text will-reveal">Felsefeden aldığım ilhamı <em>sahaya taşımak</em> için yola çıktım.</h2>
-      <a class="bridge__go will-reveal" style="--d:140ms" href="#egitim"><span>Kariyer Yolculuğu</span><span class="bridge__arrow" aria-hidden="true">↓</span></a>
     </div>
   </div>
 </section>
@@ -2869,7 +2820,7 @@ a { text-decoration: none !important; }
   </div>
   <div class="wrap band__inner">
     <header class="section-head">
-      <p class="kicker"><span class="kno" aria-hidden="true">03</span>Kariyer Yolculuğu</p>
+      <p class="kicker"><span class="kno" aria-hidden="true">02</span>Kariyer Yolculuğu</p>
       <div class="section-head__text">
         <h2 class="section-title mg-title" id="edu-title">Marmara’dan Van’a, <em>sınıftan oyuna.</em></h2>
       </div>
@@ -2938,121 +2889,13 @@ a { text-decoration: none !important; }
   </div>
 </section>
 
-<section class="section" id="liderlik" aria-labelledby="lead-title">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="kicker">Liderlik ve Eğitim</p>
-      <div class="section-head__text">
-        <h2 class="section-title will-reveal" id="lead-title">Öğretmenden öğretmene, <em>sınıftan sahaya.</em></h2>
-        <p class="section-lead will-reveal" style="--d:120ms">Türkiye Yüzyılı Maarif Modeli’ni sahaya taşıyan formatörlerden biri olarak öğretmenlerle yan yana öğreniyorum. Bir öğretmene dokunmak, yüzlerce öğrenciye dokunmak demek.</p>
-      </div>
-    </header>
-
-    <div class="ldr">
-      <aside class="ldr__stats will-reveal">
-        <p class="stat"><span class="stat__n">3</span><span class="stat__l">Okulda<br>Formatörlük</span></p>
-        <p class="stat"><span class="stat__n">1</span><span class="stat__l">Eğitici Eğitimi<br>Kızılcahamam</span></p>
-        <p class="stat"><span class="stat__n">2</span><span class="stat__l">Kademe<br>İlkokul ve Meslek Lisesi</span></p>
-      </aside>
-
-      <div class="ldr__main">
-        <ol class="duties">
-          <li class="duty will-reveal">
-            <span class="duty__i">01</span>
-            <div><h3 class="duty__place">Kızılcahamam</h3><p class="duty__role">Eğitici Eğitimi · Türkiye Yüzyılı Maarif Modeli</p></div>
-            <p class="duty__note">Formatörlük yolculuğunun başladığı yer: modeli önce öğrenmek, sonra öğretmek için.</p>
-          </li>
-          <li class="duty will-reveal" style="--d:60ms">
-            <span class="duty__i">02</span>
-            <div><h3 class="duty__place">Hasanpaşa İlkokulu</h3><p class="duty__role">Formatör · İstanbul · 27 Haziran 2024</p></div>
-            <p class="duty__note">Öğretmenlerle modeli sınıf pratiğine dönüştürdüğümüz oturumlar.</p>
-          </li>
-          <li class="duty will-reveal" style="--d:120ms">
-            <span class="duty__i">03</span>
-            <div><h3 class="duty__place">Fatih Sultan Mehmet İlkokulu</h3><p class="duty__role">Formatör · Van · 5 Eylül 2024</p></div>
-            <p class="duty__note">Deneyimi paylaşmak, soruları birlikte çözmek.</p>
-          </li>
-          <li class="duty will-reveal" style="--d:180ms">
-            <span class="duty__i">04</span>
-            <div><h3 class="duty__place">Gevaş MTAL</h3><p class="duty__role">Formatör · Van · 14 Mayıs 2025</p></div>
-            <p class="duty__note">İlkokuldan meslek lisesine: aynı model, farklı bir sınıf iklimi.</p>
-          </li>
-        </ol>
-        <div class="ldr__proof">
-          <p class="ldr__proof-k">Sahadan <em>kareler</em></p>
-          <div class="tl__photos tl__photos--two" aria-label="Formatörlük sahadan kareler"><figure data-photo="formator-kizilcahamam" data-keep-empty class="tl__ph" style="--r:-2.2deg;--op:30% 50%"><span>Kızılcahamam · eğitici eğitimi</span></figure><figure data-photo="formator-gevas" data-keep-empty class="tl__ph" style="--r:1.6deg;--op:46% 50%"><span>Gevaş MTAL · formatörlük hatırası</span></figure></div>
-        </div>
-
-      </div>
-    </div>
-    <article class="tb will-reveal" id="tusba-bulusmalari" aria-labelledby="tb-title">
-      <div class="tb__bg" aria-hidden="true"></div>
-      <header class="tb__head">
-        <p class="tb__kicker">Liderlik ve Koordinasyon <span aria-hidden="true">·</span> Türkiye Yüzyılı Maarif Modeli</p>
-        <h3 class="tb__title" id="tb-title">Tuşba <em>Buluşmaları</em></h3>
-        <p class="tb__motto">Erdem, Değer, Eylem</p>
-        <p class="tb__when"><time datetime="2026-09-03">3–4 Eylül 2026</time> · TED Van Koleji &amp; Evliya Çelebi Uygulama Oteli</p>
-        <p class="tb__deck">Müfredatın mimarlarını, sahanın öğretmenleriyle aynı masada buluşturan iki gün.</p>
-      </header>
-      <div class="tb__body">
-        <div class="tb__story">
-          <p class="tb__text"><span class="tb__drop">T</span>ürkiye Yüzyılı Maarif Modeli’nin mimarları; ülkemizin dört bir yanından gelen müfredat tasarımcıları, ders kitabı yazarları ve editörleri… Türkiye’nin eğitim geleceğini yeniden kuran ekip, bu isimlerden oluşuyordu. Ve biz, Van’ın üç merkez ilçesinden (İpekyolu, Edremit, Tuşba) gelen idareci ve öğretmenlerle onları aynı masada buluşturduk. Koordinatörlüğünü üstlendiğim iki günlük program, bu iki dünya arasında bir köprü olsun diye tasarlandı.</p>
-          <blockquote class="tb__pull"><p>Sahadaki uygulayıcılar ile müfredatın mimarları, aynı masada.</p></blockquote>
-          <p class="tb__text">İlk gün TED Van Koleji’nde, modeli yazanlarla onu sınıfa taşıyacak olanlar atölyelerde yan yana çalıştı. İkinci gün Evliya Çelebi Uygulama Oteli’nde “Erdem, Değer, Eylem” paneliyle program tamamlandı.</p>
-          <ol class="tb__days" aria-label="Programın iki günü">
-            <li><span class="tb__n">I</span><div><p class="tb__dl">Birinci gün</p><p class="tb__dt">TED Van Koleji</p><p class="tb__dd">Atölye uygulamaları</p></div></li>
-            <li><span class="tb__n">II</span><div><p class="tb__dl">İkinci gün</p><p class="tb__dt">Evliya Çelebi Uygulama Oteli</p><p class="tb__dd">“Erdem, Değer, Eylem” paneli</p></div></li>
-          </ol>
-        </div>
-        <div class="tb__media">
-        <div class="tl__photos tb__photos" aria-label="Tuşba Buluşmaları · Erdem, Değer, Eylem">
-          <figure data-photo="tusba-atolye-1" data-keep-empty class="tl__ph" style="--r:-2deg;--op:80% 45%" data-photo-alt="TED Van Koleji’ndeki açılışta kürsüde konuşurken; arkada Erdem, Değer, Eylem afişleri"><span>TED Van Koleji · açılış</span></figure>
-          <figure data-photo="tusba-atolye-2" data-keep-empty class="tl__ph" style="--r:1.4deg;--op:50% 50%" data-photo-alt="TED Van Koleji’nde atölye uygulamaları: öğretmen ve akademisyenlerle aynı masada"><span>Atölye uygulamaları</span></figure>
-          <figure data-photo="tusba-panel-1" data-keep-empty class="tl__ph" style="--r:1.1deg;--op:34% 50%" data-photo-alt="“Erdem, Değer, Eylem” panelinde konuşmacılar kürsüde; arkadaki ekranda Türkiye Yüzyılı Maarif Modeli Öğretmen Buluşmaları, 3–4 Eylül 2026"><span>Erdem, Değer, Eylem paneli</span></figure>
-          <figure data-photo="tusba-panel-2" data-photo-thumb="tusba-panel-2-kadraj" data-keep-empty class="tl__ph" style="--r:-1.3deg;--op:50% 50%" data-photo-alt="Programın sonunda Evliya Çelebi Uygulama Oteli salonunda, idareci, öğretmen ve konuşmacılarla toplu hatıra fotoğrafı"><span>Hatıra fotoğrafı</span></figure>
-        </div>
-        </div>
-        <div class="tb__docs" aria-label="Programın resmî afişleri">
-          <figure class="tb__doc tb__doc--h" data-photo="tusba-afis-yatay" data-photo-target=".tb__docimg" data-keep-empty style="--r:.8deg;--ar:1179 / 582" data-photo-alt="Sahne ekranındaki resmî afiş: Türkiye Yüzyılı Maarif Modeli Bağlamında Erdem, Değer, Eylem">
-            <div class="tb__docimg"></div>
-            <figcaption class="tb__doccap"><span class="tb__dockick">Arşivden · sahne ekranı</span><span class="tb__doct">Türkiye Yüzyılı Maarif Modeli bağlamında</span></figcaption>
-          </figure>
-          <aside class="tb__colo" aria-label="Program künyesi">
-            <p class="tb__colo-k">Arşivden · program künyesi</p>
-            <dl class="tb__colo-l">
-              <div><dt>Kapsam</dt><dd>İpekyolu, Edremit, Tuşba</dd></div>
-              <div><dt>Çerçeve</dt><dd>Türkiye Yüzyılı Maarif Modeli</dd></div>
-              <div><dt>Görevim</dt><dd>Koordinatör</dd></div>
-            </dl>
-            <p class="tb__colo-q">“Erdem, Değer, Eylem”: üç kelime, iki gün, aynı masa.</p>
-          </aside>
-          <figure class="tb__doc tb__doc--v" data-photo="tusba-afis-dikey" data-photo-target=".tb__docimg" data-keep-empty style="--r:-2.2deg;--ar:1414 / 2000" data-photo-alt="Tuşba Buluşmaları’nın resmî afişi: Erdem, Değer, Eylem; konuşmacılar ve kurum logoları">
-            <div class="tb__docimg"></div>
-            <figcaption class="tb__doccap"><span class="tb__dockick">Davetiye</span><span class="tb__doct">Erdem, Değer, Eylem · 3–4 Eylül 2026</span></figcaption>
-          </figure>
-        </div>
-      </div>
-      <footer class="tb__foot">
-        <blockquote class="tb__thanks"><p class="tb__thk">Teşekkür ve vefa</p><p>Bu anlamlı sürecin gerçekleşmesinde emeği geçen Van Vali Yardımcısı Sayın Musa Göktaş’a, Tuşba İlçe Millî Eğitim Müdürü Sayın Muhlis Ceylani’ye, TED Van Koleji Kurucusu Sayın Ahmet Tanrıtanır’a, proje ortağım Ali A. Bakan’a ve ülkemizin eğitim geleceğine emek veren tüm akademisyenlere içtenlikle teşekkür ederim.</p></blockquote>
-        <nav class="tb__press" aria-label="Basındaki yansımalar">
-          <p class="tb__presshead">Basındaki <em>yansımalar</em></p>
-          <a class="tb__pl" href="https://vanbolgehaber.com/turkiye-yuzyili-maarif-modeli-tusbada-ele-alindi/" target="_blank" rel="noopener"><span class="tb__src">Van Bölge Haber</span><span class="tb__hl">Türkiye Yüzyılı Maarif Modeli Tuşba’da ele alındı · 5 Eylül 2026</span><span class="tb__go" aria-hidden="true">↗</span></a>
-          <a class="tb__pl" href="https://www.vanolay.com/turkiye-yuzyili-maarif-modeli-tusbada-ele-alindi" target="_blank" rel="noopener"><span class="tb__src">Van Olay</span><span class="tb__hl">“Eğitim yalnızca akademik başarıdan ibaret değil”</span><span class="tb__go" aria-hidden="true">↗</span></a>
-          <a class="tb__pl" href="https://www.tusba.gov.tr/turkiye-yuzyili-maarif-modeli-kapsaminda-erdem-deger-ve-eylem-programi-devam-etti" target="_blank" rel="noopener"><span class="tb__src">Tuşba Kaymakamlığı</span><span class="tb__hl">“Erdem, Değer ve Eylem” programı devam etti</span><span class="tb__go" aria-hidden="true">↗</span></a>
-        </nav>
-        <ul class="bd-badges tb__badges"><li class="bd-badge">Koordinatör</li><li class="bd-badge">Türkiye Yüzyılı Maarif Modeli</li><li class="bd-badge">İpekyolu · Edremit · Tuşba</li><li class="bd-badge">İki günlük program</li></ul>
-      </footer>
-    </article>
-  </div>
-</section>
-
 <section class="section showcase" id="projeler" aria-labelledby="proj-title">
   <div class="showcase__bg" aria-hidden="true"></div>
   <div class="wrap">
     <header class="section-head">
-      <p class="kicker"><span class="kno" aria-hidden="true">04</span>Yaratıcı Teknoloji ve Projeler</p>
+      <p class="kicker"><span class="kno" aria-hidden="true">03</span>Yaratıcı Teknoloji ve Projeler</p>
       <div class="section-head__text">
-        <h2 class="section-title will-reveal" id="proj-title">Merakın <em>somut hâlleri.</em></h2>
+        <h2 class="section-title will-reveal" id="proj-title">Şehri <em>oyuna dönüştürmek.</em></h2>
         <p class="section-lead will-reveal" style="--d:120ms">Bir oyun, üç dijital kitap, bir makale ve iki atölye. Hepsinin başında sınıfta sorulmuş bir soru var.</p>
       </div>
     </header>
@@ -3286,11 +3129,213 @@ a { text-decoration: none !important; }
   </div>
 </section>
 
+<section class="section yol" id="yol" aria-labelledby="yol-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="kicker"><span class="kno" aria-hidden="true">04</span>Yol Haritası</p>
+      <div class="section-head__text">
+        <h2 class="section-title will-reveal" id="yol-title">Van ilk durak.</h2>
+      </div>
+    </header>
+    <ol class="yol__steps">
+      <li class="yol__step will-reveal"><span class="yol__no">I</span><p class="yol__k">Bugün · Van</p><p class="yol__t">Tuşpa ile çocuklar Van Gölü’nün hafızasını oynayarak keşfediyor.</p></li>
+      <li class="yol__step will-reveal" style="--d:110ms"><span class="yol__no">II</span><p class="yol__k">Sıradaki şehirler</p><p class="yol__t">Her şehir kendi tarihi, kültür noktaları ve bugünüyle bir oyuna dönüşüyor.</p></li>
+      <li class="yol__step will-reveal" style="--d:220ms"><span class="yol__no">III</span><p class="yol__k">Türkiye</p><p class="yol__t">Dezavantajlı çocuklar, yaşadıkları şehri oyunla tanıyor.</p></li>
+    </ol>
+    <p class="yol__call will-reveal"><a href="#iletisim">Şehriniz için birlikte tasarlayalım<span aria-hidden="true"> →</span></a></p>
+  </div>
+</section>
+
+<section class="section" id="liderlik" aria-labelledby="lead-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="kicker">Liderlik ve Eğitim</p>
+      <div class="section-head__text">
+        <h2 class="section-title will-reveal" id="lead-title">Öğretmenden öğretmene, <em>sınıftan sahaya.</em></h2>
+        <p class="section-lead will-reveal" style="--d:120ms">Türkiye Yüzyılı Maarif Modeli’ni sahaya taşıyan formatörlerden biri olarak öğretmenlerle yan yana öğreniyorum. Bir öğretmene dokunmak, yüzlerce öğrenciye dokunmak demek.</p>
+      </div>
+    </header>
+
+    <div class="ldr">
+      <aside class="ldr__stats will-reveal">
+        <p class="stat"><span class="stat__n">3</span><span class="stat__l">Okulda<br>Formatörlük</span></p>
+        <p class="stat"><span class="stat__n">1</span><span class="stat__l">Eğitici Eğitimi<br>Kızılcahamam</span></p>
+        <p class="stat"><span class="stat__n">2</span><span class="stat__l">Kademe<br>İlkokul ve Meslek Lisesi</span></p>
+      </aside>
+
+      <div class="ldr__main">
+        <ol class="duties">
+          <li class="duty will-reveal">
+            <span class="duty__i">01</span>
+            <div><h3 class="duty__place">Kızılcahamam</h3><p class="duty__role">Eğitici Eğitimi · Türkiye Yüzyılı Maarif Modeli</p></div>
+            <p class="duty__note">Formatörlük yolculuğunun başladığı yer: modeli önce öğrenmek, sonra öğretmek için.</p>
+          </li>
+          <li class="duty will-reveal" style="--d:60ms">
+            <span class="duty__i">02</span>
+            <div><h3 class="duty__place">Hasanpaşa İlkokulu</h3><p class="duty__role">Formatör · İstanbul · 27 Haziran 2024</p></div>
+            <p class="duty__note">Öğretmenlerle modeli sınıf pratiğine dönüştürdüğümüz oturumlar.</p>
+          </li>
+          <li class="duty will-reveal" style="--d:120ms">
+            <span class="duty__i">03</span>
+            <div><h3 class="duty__place">Fatih Sultan Mehmet İlkokulu</h3><p class="duty__role">Formatör · Van · 5 Eylül 2024</p></div>
+            <p class="duty__note">Deneyimi paylaşmak, soruları birlikte çözmek.</p>
+          </li>
+          <li class="duty will-reveal" style="--d:180ms">
+            <span class="duty__i">04</span>
+            <div><h3 class="duty__place">Gevaş MTAL</h3><p class="duty__role">Formatör · Van · 14 Mayıs 2025</p></div>
+            <p class="duty__note">İlkokuldan meslek lisesine: aynı model, farklı bir sınıf iklimi.</p>
+          </li>
+        </ol>
+        <div class="ldr__proof">
+          <p class="ldr__proof-k">Sahadan <em>kareler</em></p>
+          <div class="tl__photos tl__photos--two" aria-label="Formatörlük sahadan kareler"><figure data-photo="formator-kizilcahamam" data-keep-empty class="tl__ph" style="--r:-2.2deg;--op:30% 50%"><span>Kızılcahamam · eğitici eğitimi</span></figure><figure data-photo="formator-gevas" data-keep-empty class="tl__ph" style="--r:1.6deg;--op:46% 50%"><span>Gevaş MTAL · formatörlük hatırası</span></figure></div>
+        </div>
+
+      </div>
+    </div>
+    <article class="tb will-reveal" id="tusba-bulusmalari" aria-labelledby="tb-title">
+      <div class="tb__bg" aria-hidden="true"></div>
+      <header class="tb__head">
+        <p class="tb__kicker">Liderlik ve Koordinasyon <span aria-hidden="true">·</span> Türkiye Yüzyılı Maarif Modeli</p>
+        <h3 class="tb__title" id="tb-title">Tuşba <em>Buluşmaları</em></h3>
+        <p class="tb__motto">Erdem, Değer, Eylem</p>
+        <p class="tb__when"><time datetime="2026-09-03">3–4 Eylül 2026</time> · TED Van Koleji &amp; Evliya Çelebi Uygulama Oteli</p>
+        <p class="tb__deck">Müfredatın mimarlarını, sahanın öğretmenleriyle aynı masada buluşturan iki gün.</p>
+      </header>
+      <div class="tb__body">
+        <div class="tb__story">
+          <p class="tb__text"><span class="tb__drop">T</span>ürkiye Yüzyılı Maarif Modeli’nin mimarları; ülkemizin dört bir yanından gelen müfredat tasarımcıları, ders kitabı yazarları ve editörleri… Türkiye’nin eğitim geleceğini yeniden kuran ekip, bu isimlerden oluşuyordu. Ve biz, Van’ın üç merkez ilçesinden (İpekyolu, Edremit, Tuşba) gelen idareci ve öğretmenlerle onları aynı masada buluşturduk. Koordinatörlüğünü üstlendiğim iki günlük program, bu iki dünya arasında bir köprü olsun diye tasarlandı.</p>
+          <blockquote class="tb__pull"><p>Sahadaki uygulayıcılar ile müfredatın mimarları, aynı masada.</p></blockquote>
+          <p class="tb__text">İlk gün TED Van Koleji’nde, modeli yazanlarla onu sınıfa taşıyacak olanlar atölyelerde yan yana çalıştı. İkinci gün Evliya Çelebi Uygulama Oteli’nde “Erdem, Değer, Eylem” paneliyle program tamamlandı.</p>
+          <ol class="tb__days" aria-label="Programın iki günü">
+            <li><span class="tb__n">I</span><div><p class="tb__dl">Birinci gün</p><p class="tb__dt">TED Van Koleji</p><p class="tb__dd">Atölye uygulamaları</p></div></li>
+            <li><span class="tb__n">II</span><div><p class="tb__dl">İkinci gün</p><p class="tb__dt">Evliya Çelebi Uygulama Oteli</p><p class="tb__dd">“Erdem, Değer, Eylem” paneli</p></div></li>
+          </ol>
+        </div>
+        <div class="tb__media">
+        <div class="tl__photos tb__photos" aria-label="Tuşba Buluşmaları · Erdem, Değer, Eylem">
+          <figure data-photo="tusba-atolye-1" data-keep-empty class="tl__ph" style="--r:-2deg;--op:80% 45%" data-photo-alt="TED Van Koleji’ndeki açılışta kürsüde konuşurken; arkada Erdem, Değer, Eylem afişleri"><span>TED Van Koleji · açılış</span></figure>
+          <figure data-photo="tusba-atolye-2" data-keep-empty class="tl__ph" style="--r:1.4deg;--op:50% 50%" data-photo-alt="TED Van Koleji’nde atölye uygulamaları: öğretmen ve akademisyenlerle aynı masada"><span>Atölye uygulamaları</span></figure>
+          <figure data-photo="tusba-panel-1" data-keep-empty class="tl__ph" style="--r:1.1deg;--op:34% 50%" data-photo-alt="“Erdem, Değer, Eylem” panelinde konuşmacılar kürsüde; arkadaki ekranda Türkiye Yüzyılı Maarif Modeli Öğretmen Buluşmaları, 3–4 Eylül 2026"><span>Erdem, Değer, Eylem paneli</span></figure>
+          <figure data-photo="tusba-panel-2" data-photo-thumb="tusba-panel-2-kadraj" data-keep-empty class="tl__ph" style="--r:-1.3deg;--op:50% 50%" data-photo-alt="Programın sonunda Evliya Çelebi Uygulama Oteli salonunda, idareci, öğretmen ve konuşmacılarla toplu hatıra fotoğrafı"><span>Hatıra fotoğrafı</span></figure>
+        </div>
+        </div>
+        <div class="tb__docs" aria-label="Programın resmî afişleri">
+          <figure class="tb__doc tb__doc--h" data-photo="tusba-afis-yatay" data-photo-target=".tb__docimg" data-keep-empty style="--r:.8deg;--ar:1179 / 582" data-photo-alt="Sahne ekranındaki resmî afiş: Türkiye Yüzyılı Maarif Modeli Bağlamında Erdem, Değer, Eylem">
+            <div class="tb__docimg"></div>
+            <figcaption class="tb__doccap"><span class="tb__dockick">Arşivden · sahne ekranı</span><span class="tb__doct">Türkiye Yüzyılı Maarif Modeli bağlamında</span></figcaption>
+          </figure>
+          <aside class="tb__colo" aria-label="Program künyesi">
+            <p class="tb__colo-k">Arşivden · program künyesi</p>
+            <dl class="tb__colo-l">
+              <div><dt>Kapsam</dt><dd>İpekyolu, Edremit, Tuşba</dd></div>
+              <div><dt>Çerçeve</dt><dd>Türkiye Yüzyılı Maarif Modeli</dd></div>
+              <div><dt>Görevim</dt><dd>Koordinatör</dd></div>
+            </dl>
+            <p class="tb__colo-q">“Erdem, Değer, Eylem”: üç kelime, iki gün, aynı masa.</p>
+          </aside>
+          <figure class="tb__doc tb__doc--v" data-photo="tusba-afis-dikey" data-photo-target=".tb__docimg" data-keep-empty style="--r:-2.2deg;--ar:1414 / 2000" data-photo-alt="Tuşba Buluşmaları’nın resmî afişi: Erdem, Değer, Eylem; konuşmacılar ve kurum logoları">
+            <div class="tb__docimg"></div>
+            <figcaption class="tb__doccap"><span class="tb__dockick">Davetiye</span><span class="tb__doct">Erdem, Değer, Eylem · 3–4 Eylül 2026</span></figcaption>
+          </figure>
+        </div>
+      </div>
+      <footer class="tb__foot">
+        <blockquote class="tb__thanks"><p class="tb__thk">Teşekkür ve vefa</p><p>Bu anlamlı sürecin gerçekleşmesinde emeği geçen Van Vali Yardımcısı Sayın Musa Göktaş’a, Tuşba İlçe Millî Eğitim Müdürü Sayın Muhlis Ceylani’ye, TED Van Koleji Kurucusu Sayın Ahmet Tanrıtanır’a, proje ortağım Ali A. Bakan’a ve ülkemizin eğitim geleceğine emek veren tüm akademisyenlere içtenlikle teşekkür ederim.</p></blockquote>
+        <nav class="tb__press" aria-label="Basındaki yansımalar">
+          <p class="tb__presshead">Basındaki <em>yansımalar</em></p>
+          <a class="tb__pl" href="https://vanbolgehaber.com/turkiye-yuzyili-maarif-modeli-tusbada-ele-alindi/" target="_blank" rel="noopener"><span class="tb__src">Van Bölge Haber</span><span class="tb__hl">Türkiye Yüzyılı Maarif Modeli Tuşba’da ele alındı · 5 Eylül 2026</span><span class="tb__go" aria-hidden="true">↗</span></a>
+          <a class="tb__pl" href="https://www.vanolay.com/turkiye-yuzyili-maarif-modeli-tusbada-ele-alindi" target="_blank" rel="noopener"><span class="tb__src">Van Olay</span><span class="tb__hl">“Eğitim yalnızca akademik başarıdan ibaret değil”</span><span class="tb__go" aria-hidden="true">↗</span></a>
+          <a class="tb__pl" href="https://www.tusba.gov.tr/turkiye-yuzyili-maarif-modeli-kapsaminda-erdem-deger-ve-eylem-programi-devam-etti" target="_blank" rel="noopener"><span class="tb__src">Tuşba Kaymakamlığı</span><span class="tb__hl">“Erdem, Değer ve Eylem” programı devam etti</span><span class="tb__go" aria-hidden="true">↗</span></a>
+        </nav>
+        <ul class="bd-badges tb__badges"><li class="bd-badge">Koordinatör</li><li class="bd-badge">Türkiye Yüzyılı Maarif Modeli</li><li class="bd-badge">İpekyolu · Edremit · Tuşba</li><li class="bd-badge">İki günlük program</li></ul>
+      </footer>
+    </article>
+  </div>
+</section>
+
+<section class="section memo" id="anilar" aria-labelledby="memo-title">
+  <div class="wrap">
+    <header class="section-head">
+      <p class="kicker"><span class="kno" aria-hidden="true">05</span>İlham ve Anılar</p>
+      <h2 class="section-title" id="memo-title">Bir selam, bir imza, <em>bir heykel.</em></h2>
+    </header>
+
+    <!-- I · Bir selam -->
+    <article class="chap chap--selam" aria-labelledby="chap1-title">
+      <div class="chap__body" data-par="-0.03">
+        <p class="chap__meta will-reveal"><span class="chap__no">I</span> ÖRAV Buluşmaları · Kadir Has Üniversitesi · 2015</p>
+        <h3 class="chap__title" id="chap1-title">Bir selam, <em>bir zincir.</em></h3>
+        <p class="chap__lead will-reveal" style="--d:80ms">Prof. Dr. Alev Önder hocamın selamını, onun hocası Doğan Cüceloğlu’na iletmek için Kadir Has Üniversitesi’ndeki ÖRAV buluşmalarına gittim.</p>
+        <p class="will-reveal" style="--d:160ms">Bir öğrencinin, hocasının selamını onun hocasına götürmesi… O gün elimde bir selamdan fazlası vardı: kuşaktan kuşağa uzanan bir öğrenme zincirinin küçük bir halkası.</p>
+        <p class="will-reveal" style="--d:240ms">Sayfalarda tanıdığım sesi ilk kez karşımda dinlemek, yazdıklarının ardındaki insanı görmek demekti. Bir hocanın emeği, öğrencisinin öğrencisine kadar uzanıyordu; ben de o zincirin içinde durduğumu hissettim.</p>
+      </div>
+      <div class="chap__photos will-reveal" style="--d:160ms" data-par="0.06" aria-label="Doğan Cüceloğlu ile fotoğraflar">
+        <figure data-photo="dogan-hoca-2015" class="tl__ph" style="--r:-3deg"><span>Doğan Hoca ile, 2015</span></figure>
+        <figure data-photo="dogan-hoca-2019" class="tl__ph" style="--r:2.5deg"><span>Doğan Hoca ile, 2019</span></figure>
+      </div>
+    </article>
+
+    <!-- II · Bir imza: gönderilemeyen hikâyeler -->
+    <article class="chap chap--imza" id="dogan-hoca" aria-labelledby="chap2-title">
+      <div class="imza__photos" data-par="0.05" aria-label="Bir imza, gönderilemeyen hikâyeler">
+      <figure class="memo__photo will-reveal" data-photo="dogan-imzali-not" data-photo-target=".memo__frame" data-photo-alt="Eskicide bulduğum kitabın ilk sayfası: 1994’te bir oğlun annesine yazdığı not">
+        <span class="memo__tape" aria-hidden="true"></span>
+        <div class="memo__frame">
+          <div class="memo__ph" aria-hidden="true">
+            <svg viewBox="0 0 160 60"><path d="M8 40 C20 12 30 52 42 30 S60 14 66 38 C70 50 84 20 96 30 C104 37 110 26 122 28 C132 30 140 36 152 22" /></svg>
+            <span>Doğan Cüceloğlu<br>İmzalı Not</span>
+          </div>
+        </div>
+        <figcaption>Anneye Yazılan Not · 1994</figcaption>
+      </figure>
+      <figure class="spark__ph imza__sig will-reveal" style="--r:-3deg;--d:160ms" data-photo="dogan-imza" data-photo-alt="Doğan Cüceloğlu’nun İçimizdeki Çocuk kitabına attığı imza: Hakan Öğretmen’e, iç çocuk hep gülsün! 26.02.2019"><span>Doğan Hoca’nın imzası · 2019</span></figure>
+      </div>
+      <div class="chap__body" data-par="-0.03">
+        <p class="chap__meta will-reveal"><span class="chap__no">II</span> Eskici Tezgâhı · 1994</p>
+        <h3 class="chap__title" id="chap2-title">Bir imza, <em>gönderilemeyen hikâyeler.</em></h3>
+        <p class="chap__lead will-reveal" style="--d:80ms">Bir gün bir eskicinin tezgâhında Doğan Cüceloğlu’nun bir kitabına rastladım. İlk sayfasında 1994 tarihli bir not vardı: biri bu kitabı annesine hediye etmişti.</p>
+        <p class="will-reveal" style="--d:160ms">Yıllar sonra o armağan, el değiştire değiştire benim ellerime ulaşmıştı. O kitabı Doğan Hoca’ya götürdüm. 26 Şubat 2019’da, annesine yazılmış o notun yanına kendi imzasını ekledi: “Hakan Öğretmen’e, iç çocuk hep gülsün!” Sonra bana e-posta adresini verdi ve şöyle dedi:</p>
+        <blockquote class="letter__quote will-reveal" style="--d:200ms">“Hayatın içinden bu hikâyeleri <em>bana yaz.</em>”</blockquote>
+        <p class="will-reveal">Ben de yazdım. Köy okullarında yaşadıklarımı, sınıfta bana öğretilenleri, bir çocuğun gözlerinde yanan o küçük ışığı… Hikâyeleri tamamlayıp göndermeye hazırlandığımda ise Doğan Hoca Hakk’ın rahmetine kavuşmuştu. O satırlar hiç yayımlanmadı.</p>
+        <p class="will-reveal">Ama “yaz” deyişi hâlâ kulağımda. Bu sayfadaki her cümle biraz da ona yazılmış, gönderilemeyen bir mektup.</p>
+        <p class="letter__sign will-reveal">Doğan Cüceloğlu <span>Psikolog · Yazar · 1938 – 2021</span></p>
+      </div>
+    </article>
+
+    <!-- III · Bir heykel -->
+    <article class="chap chap--heykel" id="kivilcim" aria-labelledby="chap3-title">
+      <div class="chap__body" data-par="-0.03">
+        <p class="chap__meta will-reveal"><span class="chap__no">III</span> Felsefe ve Estetik · 3D Baskı · Şubat 2019</p>
+        <h3 class="chap__title" id="chap3-title">Bir heykelden doğan <em>kıvılcım.</em></h3>
+        <p class="chap__lead will-reveal" style="--d:80ms">Michelangelo’nun David’i bana güzelliğin bir oran ve sabır meselesi olduğunu öğretti; Sokrates ise iyi bir sorunun iyi bir cevaptan daha uzağa taşıdığını.</p>
+        <p class="will-reveal" style="--d:160ms">Görsel tasarımcı Murat Tüvör’le 2016’dan beri tanışıyoruz. Şubat 2019’da benim için özel bir 3D tasarım hazırladı ve onu Türkiye’nin ilk yerli 3D yazıcısıyla bastı; Blender’la da onun vesilesiyle tanıştım. Bu heykelleri sonra kalıba alıp yeniden üretirken, katman katman yükselen bir heykelin bir öğrenme sürecine ne kadar benzediğini gördüm. Biri estetiği, diğeri sorgulamayı temsil ediyor; sınıfta da, oyun tasarlarken de aradığım şey bu ikisinin buluştuğu yer.</p>
+        <p class="chap__aside will-reveal" style="--d:220ms">O gün zihnimde kurulan bağ, bugün tasarladığım oyunun, Tuşpa’nın temel taşlarından biri.</p>
+        <div class="chap__credit will-reveal" style="--d:280ms">
+          <p class="chap__credit-line"><span>Heykel Tasarımları</span> Murat Tüvör</p>
+          <ul class="bd-badges"><li class="bd-badge">Türkiye’nin ilk yerli 3D yazıcısı · 2019</li></ul>
+        </div>
+      </div>
+          <div class="spark__photos chap__photos" data-par="0.05">
+        <figure class="spark__ph will-reveal" style="--r:-2.5deg" data-photo="david-3d-baski" data-photo-alt="Michelangelo’nun David heykelinin 3D baskısı"><span>David · 3D baskı</span></figure>
+        <figure class="spark__ph will-reveal" style="--r:2deg;--d:120ms" data-photo="sokrates-3d-baski" data-photo-alt="Sokrates heykelinin 3D baskısı"><span>Sokrates · 3D baskı</span></figure>
+        <figure data-photo="david-murat-tuvor" class="spark__ph will-reveal" style="--r:-1.2deg;--d:200ms" data-photo-alt="Murat Tüvör’ün benim için tasarlayıp bastığı David büstüyle, Şubat 2019"><span>David ile · Şubat 2019</span></figure>
+      </div>
+    </article>
+
+    <div class="bridge">
+      <span class="bridge__rule" aria-hidden="true"></span>
+      <h2 class="bridge__text will-reveal">Felsefeden aldığım ilhamı <em>sahaya taşımak</em> için yola çıktım.</h2>
+      <a class="bridge__go will-reveal" style="--d:140ms" href="#gonullu"><span>Sosyal Sorumluluk</span><span class="bridge__arrow" aria-hidden="true">↓</span></a>
+    </div>
+  </div>
+</section>
+
 <section class="section giving" id="gonullu" aria-labelledby="give-title">
   <div class="giving__bg" aria-hidden="true"></div>
   <div class="wrap">
     <header class="section-head">
-      <p class="kicker"><span class="kno" aria-hidden="true">05</span>Sosyal Sorumluluk</p>
+      <p class="kicker"><span class="kno" aria-hidden="true">06</span>Sosyal Sorumluluk</p>
       <h2 class="section-title will-reveal" id="give-title">Öğrenme en çok <em>dayanışmada</em> büyür.</h2>
     </header>
     <div class="stories stories--inline" id="insan-hikayeleri" aria-labelledby="stories-title">
@@ -3406,7 +3451,7 @@ a { text-decoration: none !important; }
   <div class="sound__bg" aria-hidden="true"><div class="sound__grain"></div></div>
   <div class="wrap">
     <header class="section-head">
-      <p class="kicker"><span class="kno" aria-hidden="true">06</span>Müzik ve Ses</p>
+      <p class="kicker"><span class="kno" aria-hidden="true">07</span>Müzik ve Ses</p>
       <div class="section-head__text">
         <h2 class="section-title will-reveal" id="sound-title">Sesin içinde <em>bir anlam arayışı.</em></h2>
         <p class="section-lead will-reveal" style="--d:120ms">Bir podcast, bir beste, stüdyoda geçen geceler. Müzik benim için hep başka bir öğrenme biçimi oldu.</p>
@@ -3464,10 +3509,10 @@ a { text-decoration: none !important; }
   <div class="wrap">
     <div class="contact__grid">
       <div class="contact__lead">
-        <p class="kicker"><span class="kno" aria-hidden="true">07</span>İletişim</p>
+        <p class="kicker"><span class="kno" aria-hidden="true">08</span>İletişim</p>
         <h2 class="contact__title will-reveal" id="contact-title">Birlikte <em>öğrenelim.</em></h2>
         <div class="contact__row will-reveal" style="--d:120ms">
-          <p class="contact__note">Bir proje, bir atölye ya da sadece bir sohbet için. Her yeni soru, yeni bir ders.</p>
+          <p class="contact__note">Bir şehir oyunu, bir atölye ya da sadece bir sohbet için. Her yeni soru, yeni bir ders.</p>
           <a class="bd-link bd-link--light" href="https://youtube.com/@kaydedenlerpodcast?si=HDdzGssgM_zvTM3_" target="_blank" rel="noopener" data-link="youtube">YouTube</a>
           <ul class="contact__social" aria-label="Sosyal medya"><li><a href="https://tr.linkedin.com/in/hakan-altay-0a0b1b14b" target="_blank" rel="noopener me" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM10 9.5h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a></li><li><a href="https://www.instagram.com/altay.hakan/" target="_blank" rel="noopener me" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><rect x="2.75" y="2.75" width="18.5" height="18.5" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.15" fill="currentColor"/></svg></a></li><li><a href="https://x.com/altayhakann" target="_blank" rel="noopener me" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78zm-1.08 16.2h1.7L7.4 4.73H5.58z"/></svg></a></li></ul>
         </div>
@@ -3590,10 +3635,10 @@ const { meshGradientFragmentShader, getShaderColorFromString, ShaderMount, grain
 
 /* ═══ İçerik ═══════════════════════════════════════════════════════════ */
 const DOMAINS = [
+  { key: 'oyun',   label: 'Eğitsel Oyun · Teknoloji', sub: 'Tuşpa: Van Gölü’nün Kayıp Hafızası · TÜBİTAK 4008', color: '#3e6a69' },
   { key: 'egitim', label: 'Eğitim · Formatörlük', sub: 'Türkiye Yüzyılı Maarif Modeli · Tuşba Buluşmaları', color: '#a8873f' },
-  { key: 'oyun',   label: 'Oyun · Teknoloji',     sub: 'Tuşpa: Van Gölü’nün Kayıp Hafızası · TÜBİTAK 4008', color: '#3e6a69' },
-  { key: 'muzik',  label: 'Müzik · Kültür',       sub: 'Kaydedenler Kulübü · Kozmik Kalıntılar',   color: '#9a4b37' },
   { key: 'sosyal', label: 'Sosyal Sorumluluk',    sub: 'Kızılay · TOG · Kardeş Köy Okulu', color: '#b27a55' },
+  { key: 'muzik',  label: 'Müzik · Kültür',       sub: 'Kaydedenler Kulübü · Kozmik Kalıntılar',   color: '#9a4b37' },
 ];
 const css = (n, f) => getComputedStyle(document.documentElement).getPropertyValue(n).trim() || f;
 const CREAM = css('--surface-muted', '#e9e0cf');
