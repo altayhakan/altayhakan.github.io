@@ -594,18 +594,6 @@ body { font-family: var(--font-sans); font-feature-settings: "ss01", "cv11"; -we
 .tl__photos--one { grid-template-columns: minmax(0, 200px); }
 /* Eser adı vurgusu */
 .title-ref, .bd-card__desc em, .tl__text em { font-family: var(--font-display); font-style: italic; font-size: 1.14em; letter-spacing: 0; }
-/* Referanslar */
-.section--refs { padding-bottom: 120px; }
-.refs { list-style: none; margin: 0; padding: 0; }
-.ref {
-  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 6fr); gap: 32px; align-items: baseline;
-  padding: 36px 0; border-bottom: 1px solid rgba(29, 23, 21, .18);
-}
-.ref__name { margin: 0; font-family: var(--font-display); font-size: clamp(36px, 3.6vw, 56px); line-height: 1; letter-spacing: -.02em; }
-.ref__role { margin: 0; font-size: 11px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--surface-strong); }
-.ref__note { margin: 0; max-width: 52ch; font-size: 15.5px; line-height: 1.8; color: #2b2320; text-wrap: pretty; }
-@media (max-width: 900px) { .ref { grid-template-columns: 1fr; gap: 12px; } .refs { margin-top: 0; } }
-
 /* Bir hikâye — Doğan Hoca */
 .letter { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-8); align-items: start; }
 .letter__photos { position: sticky; top: 120px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 460px; }
@@ -804,9 +792,7 @@ body { font-family: var(--font-sans); font-feature-settings: "ss01", "cv11"; -we
 .wave path { fill: none; stroke: #e7b98a; stroke-width: 1.4; stroke-dasharray: 900; stroke-dashoffset: 900; transition: stroke-dashoffset 2.4s var(--ease-out); }
 .track.is-in .wave path { stroke-dashoffset: 0; }
 
-/* ═══ Referanslar + İletişim ═══ */
-.refs__group { margin: 56px 0 0; font-size: 11px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--surface-strong); padding-bottom: 14px; border-bottom: 1px solid var(--hairline); }
-.refs__group:first-of-type { margin-top: 0; }
+/* ═══ İletişim ═══ */
 .contact { position: relative; isolation: isolate; overflow: hidden; color: var(--text-secondary); padding-block: 140px 56px; }
 .contact__bg { position: absolute; inset: 0; z-index: -1; background: radial-gradient(70% 90% at 80% 0%, #a5482e, transparent 65%), linear-gradient(160deg, #5e1a17, #240a08); }
 .contact__bg::after { content: ""; position: absolute; inset: 0; background-image: var(--grain); background-size: 220px; opacity: .45; mix-blend-mode: overlay; }
@@ -856,31 +842,6 @@ body { font-family: var(--font-sans); font-feature-settings: "ss01", "cv11"; -we
   .eq i { animation: none; transform: scaleY(.6); }
   .wave path { stroke-dashoffset: 0; transition: none; }
 }
-.refs__foot { margin: 28px 0 0; font-size: 13px; letter-spacing: .01em; color: var(--text-inverse); }
-
-/* ═══ Referanslar: editoryal ızgara ═══ */
-.rg { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: var(--space-8); padding: 48px 0 56px; border-top: 1px solid var(--hairline-strong); }
-.rg:first-of-type { border-top: 0; padding-top: 0; }
-.rg__head { display: flex; flex-direction: column; gap: 14px; align-self: start; position: sticky; top: 110px; }
-.rg__label { margin: 0; font-size: 11px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--surface-strong); }
-.rg__count { font-family: var(--font-display); font-style: italic; font-size: clamp(64px, 6vw, 96px); line-height: .8; color: var(--surface-strong); opacity: .9; }
-.rg__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--hairline); }
-.rc { position: relative; padding: 26px 24px 28px 0; border-bottom: 1px solid var(--hairline); display: flex; flex-direction: column; gap: 8px; }
-.rc::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%; background: var(--surface-strong); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease-out); }
-.rc:hover::after { transform: scaleX(1); }
-.rc__title { margin: 0; font-size: 10.5px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--text-inverse); }
-.rc__name { margin: 0; font-family: var(--font-display); font-size: clamp(26px, 2.2vw, 36px); line-height: 1.04; letter-spacing: -.015em; color: var(--text-primary); transition: transform .5s var(--ease-out); }
-.rc:hover .rc__name { transform: translateX(6px); }
-.rc__note { margin: 8px 0 0; max-width: 34ch; font-size: 14.5px; line-height: 1.7; color: #4a3d38; text-wrap: pretty; }
-.rg--ilham .rc__name { font-style: italic; color: var(--surface-strong); }
-@media (max-width: 1100px) { .rg__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 900px) {
-  .rg { grid-template-columns: 1fr; gap: 24px; }
-  .rg__head { position: static; flex-direction: row; align-items: baseline; justify-content: space-between; }
-  .rg__count { font-size: 48px; }
-}
-@media (max-width: 620px) { .rc { padding: 20px 12px 22px 0; } .rc__name { font-size: 22px; } .rg--ilham .rg__grid { grid-template-columns: 1fr; } }
-
 /* ═══ Öne çıkan kart: Çınarlar ve Fidanların Buluşma Günü ═══ */
 .give--feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center; padding: 28px; }
 .cinar__media { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 14px; align-items: end; }
@@ -1067,7 +1028,7 @@ body { font-family: var(--font-sans); font-feature-settings: "ss01", "cv11"; -we
 #egitim, #projeler, #muzik, #gonullu { padding-top: calc(var(--seam) + 24px) !important; padding-bottom: calc(var(--seam) + 24px) !important; }
 #iletisim { padding-top: calc(var(--seam) + 28px) !important; }
 /* Krem bölümler arka arkaya gelince aradaki boşluğu daraltır; perde payı zaten nefes veriyor */
-#liderlik, #referanslar { padding-top: 56px !important; padding-bottom: 56px !important; }
+#liderlik { padding-top: 56px !important; padding-bottom: 56px !important; }
 /* Tek gren: bütün sayfanın üstünde aynı kâğıt dokusu, geçişlerde de kesintisiz */
 body::after { content: ""; position: fixed; inset: 0; z-index: 60; pointer-events: none; background-image: var(--grain); background-size: 220px; opacity: .055; mix-blend-mode: multiply; }
 
@@ -1097,7 +1058,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 60; pointer-event
 .section-title em, .bridge__text em, .contact__title em { font-family: inherit !important; font-weight: 360 !important; font-variation-settings: 'opsz' 144, 'WONK' 0, 'SOFT' 0; letter-spacing: -.02em !important; }
 
 /* ── 7 · Başlık kalıbı kırıldı: italik vurgu yalnızca anlamı taşıyan dört yerde (anılar, köprü, dayanışma, final) ── */
-#about-title em, #edu-title em, #lead-title em, #proj-title em, #sound-title em, #refs-title em {
+#about-title em, #edu-title em, #lead-title em, #proj-title em, #sound-title em {
   font-style: normal !important; color: inherit !important; font-weight: inherit !important; letter-spacing: inherit !important; }
 
 /* ── 7 · Etiket kutucukları → dergi künyesi: ince çizgi, aralarında nokta ── */
@@ -1114,7 +1075,7 @@ body::after { content: ""; position: fixed; inset: 0; z-index: 60; pointer-event
 
 @media (max-width: 620px) {
   :root { --seam: 110px; }
-  #liderlik, #referanslar { padding-top: 40px !important; padding-bottom: 40px !important; }
+  #liderlik { padding-top: 40px !important; padding-bottom: 40px !important; }
 }
 /* Sosyal'in vurgu rengi tuğla turuncusundan derin tuğla-bordoya: aynı sıcaklık, aynı aile */
 .giving__quote em, .give--feature .give__title em, .give--quake .give__title em { color: #8e3524 !important; }
@@ -2313,9 +2274,6 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
   #deprem .quake__body > :nth-child(4) { grid-area: 2 / 2; }
 }
 
-/* Referanslar: Akademik listenin bağlamı */
-.rg__lead { margin: -6px 0 22px; max-width: 62ch; font-size: 15px; line-height: 1.7; color: #5b4c45; text-wrap: pretty; }
-
 /* Kaydırılabilir şeritler için küçük ipucu (yalnız taşan şeritte, kaydırınca söner) */
 .v99-swipe { display: none; margin: 0 0 8px; font: italic 400 15px/1 'Instrument Serif', Georgia, serif; letter-spacing: .01em; color: rgba(231, 185, 138, .85); transition: opacity .4s ease; }
 .v99-swipe.on { display: block; }
@@ -2514,15 +2472,6 @@ blockquote, .pull, [class*="quote"] { hanging-punctuation: first allow-end; }
   #timeline .tl__card { width: 100%; }
 }
 
-/* v99d · Referanslar: Akademik grubundaki giriş paragrafı ikinci sütuna, isim ızgarası onun altına; künye iki satırı kaplar.
-   (Paragraf ızgaranın hücresini alıyordu; isimler dar sol sütuna sıkışıyor, yapışkan "16" üstlerine biniyordu.) */
-@media (min-width: 901px) {
-  .rg > .rg__head { grid-column: 1; grid-row: 1 / span 2; align-self: start; }
-  .rg > .rg__lead { grid-column: 2; grid-row: 1; }
-  .rg > .rg__grid { grid-column: 2; }
-  .rg > .rg__lead + .rg__grid { grid-row: 2; }
-}
-
 /* v99d · Mektup: tek sütuna düşünce alttaki ikinci kâğıt (gölge katmanı) formla aynı genişlikte kalır */
 @media (min-width: 621px) { .mektup-wrap { max-width: 660px; } }
 
@@ -2608,6 +2557,15 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
 </style>
 <link rel="preload" as="image" href="assets/desk/ahsap.webp?v=98" type="image/webp" media="(min-width: 901px)">
 <link rel="preload" as="image" href="assets/desk/ahsap-1024.webp?v=98" type="image/webp" media="(max-width: 900px)">
+<style id="v137-muzik-iletisim">
+/* v137 · Referanslar kaldırıldı: Müzik doğrudan İletişim'e bağlanır. İki koyu zemin arasında krem şerit ve sepya dikiş kalmasın. */
+#muzik { padding-bottom: calc(var(--seam) * .5 + 40px) !important;
+  background: linear-gradient(0deg, #230b09 0, #230b09 var(--seam), transparent var(--seam)) !important; }
+#iletisim { padding-top: calc(var(--seam) * .5 + 56px) !important;
+  background: linear-gradient(180deg, #230b09 0, #230b09 var(--seam), transparent var(--seam)) !important; }
+.sound__bg::before { background: linear-gradient(180deg, var(--seam-tint) 0, var(--seam-tint) calc(var(--seam) * .3), transparent var(--seam)) top / 100% var(--seam) no-repeat !important; }
+.contact__bg::before { display: none !important; }
+</style>
 <style media="print" id="e-dergi">
 /* v129 · E-Dergi: yazdırma / "PDF olarak kaydet" için A4 dergi düzeni.
    Menüler, düğmeler, form, WebGL, imleç ve ortam katmanları gizlenir; metin, polaroid ve kâğıt dokusu kalır. */
@@ -2646,11 +2604,10 @@ body > section, .is-far { content-visibility: visible !important; contain-intrin
 
 /* Bölümler: her ana bölüm yeni sayfada; fotoğraflar ve kartlar bölünmez */
 body > section { break-before: page; }
-#referanslar { break-before: auto; }
 #anilar, #liderlik { break-before: auto; }
 .section-head, h1, h2, h3, .chap__title { break-after: avoid; }
 p, blockquote, li { orphans: 3; widows: 3; }
-figure, .polaroid, [data-photo], .tl__card, .work, .story__photo, .rg__item, .give, .kb__item, img { break-inside: avoid; }
+figure, .polaroid, [data-photo], .tl__card, .work, .story__photo, .give, .kb__item, img { break-inside: avoid; }
 .tl__photos, .gv__strip, .v3d-strip__grid, .kb__grid { overflow: visible !important; flex-wrap: wrap !important; }
 a { text-decoration: none !important; }
 .contact { break-before: page; }
@@ -3502,54 +3459,6 @@ a { text-decoration: none !important; }
   </div>
 </section>
 
-
-
-<section class="section section--refs" id="referanslar" aria-labelledby="refs-title">
-  <div class="wrap">
-    <header class="section-head">
-      <p class="kicker">Referanslar</p>
-      <h2 class="section-title will-reveal" id="refs-title">Yoluma <em>ışık tutanlar.</em></h2>
-    </header>
-    <div class="rg">
-      <header class="rg__head"><h3 class="rg__label">Akademik</h3><span class="rg__count">12</span></header>
-      <p class="rg__lead">“Öğrenmek, benim için sadece bir diploma süreci değil, ömür boyu süren bir yolculuk. Bu yolculukta; sınıflarda, kütüphanelerde, kod satırlarında ve ortak hayaller kurduğumuz projelerde bana eşlik eden, hatalarıma tahammül edip doğrularıma ışık tutan tüm hocalarıma ve dostlarıma kalben teşekkür ederim.”</p>
-      <ul class="rg__grid">
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Hüseyin Anılan</p></li>
-        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Emre Ünal</p></li>
-        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Veli Toptaş</p></li>
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Zeliha Nurdan Baysal</p></li>
-        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Nermin Özcan</p></li>
-        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Prof. Dr.</p><p class="rc__name">Hayati Akyol</p></li>
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Doç. Dr.</p><p class="rc__name">Nurhan Aktaş</p></li>
-        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Doç. Dr.</p><p class="rc__name">Vicdan Su Nalbur</p></li>
-        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Dr. Öğr. Üyesi</p><p class="rc__name">Sinan Arı</p></li>
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Dr. Öğr. Üyesi</p><p class="rc__name">Ela Elif Erberk</p></li>
-        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Dr. Öğr. Üyesi</p><p class="rc__name">Ayşen Arslan</p></li>
-        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Dr.</p><p class="rc__name">Bahattin Erkuş</p></li>
-      </ul>
-    </div>
-    <div class="rg">
-      <header class="rg__head"><h3 class="rg__label">Kurumsal ve Saha</h3><span class="rg__count">03</span></header>
-      <ul class="rg__grid">
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Tuşba İlçe Millî Eğitim Müdürü</p><p class="rc__name">Muhlis Ceylani</p></li>
-        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Sosyal Girişimci · TOG Mütevelli Heyeti Üyesi</p><p class="rc__name">Nevin Yağmur</p></li>
-        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Proje Ortağı</p><p class="rc__name">Ali A. Bakan</p></li>
-      </ul>
-    </div>
-    <div class="rg rg--ilham">
-      <header class="rg__head"><h3 class="rg__label">İlham</h3><span class="rg__count">06</span></header>
-      <ul class="rg__grid">
-        <li class="rc will-reveal" style="--d:0ms"><p class="rc__title">Çizer · Fractal İstanbul</p><p class="rc__name">Tarık Tolunay</p><p class="rc__note">Fractal İstanbul’la bir şehrin tek bir çizimde nasıl yaşayabileceğini gösterdi; Tuşpa’nın şehir tasarımı o sergide filizlendi.</p></li>
-        <li class="rc will-reveal" style="--d:60ms"><p class="rc__title">Psikolog · Yazar · 1938 – 2021</p><p class="rc__name">Doğan Cüceloğlu</p><p class="rc__note">Bana hikâyelerimi yazmayı emanet eden gönül insanı. Ruhu şad olsun.</p></li>
-        <li class="rc will-reveal" style="--d:120ms"><p class="rc__title">Görsel Tasarımcı</p><p class="rc__name">Murat Tüvör</p><p class="rc__note">Şubat 2019’da beni Blender ve 3D tasarımla tanıştırdı; Tuşpa’nın ilk tohumu onunla atıldı.</p></li>
-        <li class="rc will-reveal" style="--d:180ms"><p class="rc__title">Eğitim Tasarımcısı · Sosyal Girişimci</p><p class="rc__name">Emre Alettin Keskin</p><p class="rc__note">Eğitim tasarımcısı ve sosyal girişimci; öğrenmenin sınıf dışında da tasarlanabileceğini hatırlatan isimlerden.</p></li>
-        <li class="rc will-reveal" style="--d:240ms"><p class="rc__title">Çoklu Enstrüman Sanatçısı · Besteci · Söz Yazarı</p><p class="rc__name">Onur Bolat</p><p class="rc__note">Hâlâ süren bir yolculuğun yol arkadaşı: müzikte, üretimde, düşüncede.</p></li>
-        <li class="rc will-reveal" style="--d:300ms"><p class="rc__title">Müzisyen · Düşünür · Fikir İnsanı</p><p class="rc__name">Nihat Altay</p><p class="rc__note">Öz ağabeyim; müziği ve düşünmeyi hayatıma ilk taşıyan isim.</p></li>
-      </ul>
-    </div>
-    <p class="refs__foot">Referansların iletişim bilgileri talep üzerine paylaşılır.</p>
-  </div>
-</section>
 
 <section class="contact" id="iletisim" aria-labelledby="contact-title">
   <div class="contact__bg" aria-hidden="true"></div>
@@ -4634,7 +4543,7 @@ requestAnimationFrame(() => requestAnimationFrame(() => { globeScreen(); dispatc
 @media (prefers-reduced-motion: reduce) { .bridge__rule, .bridge__arrow { animation: none; } }
 
 /* ── Tutarlılık: tüm üst-etiketler tek tip (11px · 500 · .22em) ── */
-.kicker, .about__meta dt, .bd-card__meta, .tl__role, .ref__role, .stat__l, .duty__role, .feature__kicker, .work__meta, .give__meta, .pod__meta, .track__meta, .refs__group, .memo__meta, .bridge__go { font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; }
+.kicker, .about__meta dt, .bd-card__meta, .tl__role, .stat__l, .duty__role, .feature__kicker, .work__meta, .give__meta, .pod__meta, .track__meta, .memo__meta, .bridge__go { font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; }
 /* Bölüm başlarına sabit nav payı */
 section[id] { scroll-margin-top: 72px; }
 
@@ -4779,11 +4688,10 @@ section[id] { scroll-margin-top: 72px; }
 /* ═══ Tipografi: büyük harf (all-caps) yok; etiketler başlık düzeninde, dergi tonunda ═══ */
 body *, body *::before, body *::after { text-transform: none !important; }
 .eyebrow, .kicker, .about__meta dt, .bd-card__meta, .chap__meta, .memo__meta, .bridge__go, .tl__role, .tl__when, .stat__l, .duty__role, .feature__kicker, .work__meta, .book__series, .work__chip,
-.give__meta, .pod__meta, .pod__count, .track__meta, .rg__label, .rc__title, .ref__role, .refs__group, .sitefoot, .footnote, .letter__sign span, .memo__photo figcaption, .cinar__ph span {
+.give__meta, .pod__meta, .pod__count, .track__meta, .sitefoot, .footnote, .letter__sign span, .memo__photo figcaption, .cinar__ph span {
   letter-spacing: .015em !important; }
-.kicker, .chap__meta, .bd-card__meta, .tl__role, .work__meta, .give__meta, .pod__meta, .track__meta, .rc__title, .duty__role, .feature__kicker, .about__meta dt, .stat__l { font-size: 13px !important; font-weight: 500; }
+.kicker, .chap__meta, .bd-card__meta, .tl__role, .work__meta, .give__meta, .pod__meta, .track__meta, .duty__role, .feature__kicker, .about__meta dt, .stat__l { font-size: 13px !important; font-weight: 500; }
 .eyebrow { font-size: 13px; letter-spacing: .02em !important; }
-.rg__label, .refs__group { font-size: 14px !important; font-weight: 500; }
 
 /* ── v27 · Galeri ve büyütme (lightbox) ───────────────────────────── */
 /* Polaroidler: kartın genişliğini kullanır, dokunulabilir hissi verir */
@@ -6081,13 +5989,13 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 <style>
 /* Hareket orkestrası (masaüstü): her bölümün kendi girişi var; telefonda sade yükselme kalır */
 @media (prefers-reduced-motion: no-preference) and (min-width: 901px) {
-  .js :is(#hakkimda, #referanslar) .will-reveal:not(.is-in) { transform: none; clip-path: none; }
+  .js :is(#hakkimda) .will-reveal:not(.is-in) { transform: none; clip-path: none; }
   .js :is(#anilar, #gonullu) .will-reveal:not(.is-in) { transform: translateX(-48px); }
   .js #egitim .will-reveal:not(.is-in) { transform: translateX(48px); }
   .js #projeler .will-reveal:not(.is-in) { transform: scale(.94); }
   .js #projeler .will-reveal:not(.is-in) { clip-path: none; }
   /* v72'nin kısa geçişleri hareketi ~200ms'de bitiriyordu; masaüstü girişleri göz izleyebilsin diye uzun ve yumuşak */
-  .js :is(#hakkimda, #anilar, #egitim, #liderlik, #projeler, #gonullu, #referanslar, #iletisim) .will-reveal.is-in {
+  .js :is(#hakkimda, #anilar, #egitim, #liderlik, #projeler, #gonullu, #iletisim) .will-reveal.is-in {
     transition: opacity 800ms cubic-bezier(.22, 1, .36, 1), transform 1100ms cubic-bezier(.22, 1, .36, 1), filter 800ms cubic-bezier(.22, 1, .36, 1) !important;
     transition-delay: var(--d, 0ms) !important; }
   /* v72 belirmelerde maskeyi !important ile kapatıyor; müzik perdesi onu açıkça geçersiz kılar */
@@ -6179,7 +6087,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
      Renkler her öğenin kendi tonundan türetildi, yalnız saydamlık yükseldi. -->
 <style>
 /* Künye satırları */
-.pt__meta, .duty__role, .story__meta, .stat__l, .rc__title, .about__meta dt, .refs__foot { font-size: 14.5px !important; color: rgba(29, 23, 21, .74) !important; }
+.pt__meta, .duty__role, .story__meta, .stat__l, .about__meta dt { font-size: 14.5px !important; color: rgba(29, 23, 21, .74) !important; }
 /* tl__role rengini kartından alır (açık 'Bugün' kartında koyu): renk değil saydamlık yükselir */
 .tl__role { font-size: 14.5px !important; opacity: .84 !important; }
 .gv__sub, .gv__when-t, .gv__morelist, .sound__live-k, .tb__colo-l dt, .sci__colo dt, .sci__colo dd { font-size: 14.5px !important; color: rgba(246, 238, 227, .74) !important; }
@@ -6199,7 +6107,7 @@ html.lb-open, html.lb-open body { overflow: hidden; }
 .tl__when--soft { font-size: 14px !important; color: rgba(246, 238, 227, .74) !important; }
 .nav a { font-size: 14px !important; }
 /* Kart ve bölüm paragrafları: gövde metni en az 16px */
-.pt__desc, .duty__note, .give__text, .rg__lead { font-size: 16px !important; }
+.pt__desc, .duty__note, .give__text { font-size: 16px !important; }
 /* tl__text rengini kartından alır (açık 'Bugün' kartında koyu): yalnız saydamlık yükselir */
 .tl__text { font-size: 16px !important; opacity: .92 !important; }
 .work__text, .gv__origin-t, .pod__text, .track__text, .contact__note,
@@ -6269,8 +6177,6 @@ html:root .give__text,
 html:root .pod__text,
 html:root .track__text,
 html:root .covers__text,
-html:root .rg__lead,
-html:root .rc__note,
 html:root .contact__note,
 html:root .tb__dd,
 html:root .gv__coins li span,
@@ -6292,8 +6198,6 @@ html:root .give__meta,
 html:root .pod__meta,
 html:root .track__meta,
 html:root .sound__live-k,
-html:root .rc__title,
-html:root .refs__foot,
 html:root .chap__meta { font-size: 15px !important; }
 html:root .kicker,
 html:root .bd-badge,
@@ -6321,8 +6225,7 @@ html:root .mektup__topics legend,
 html:root .mektup__legal,
 html:root .pv-link,
 html:root .sitefoot span,
-html:root .sitefoot .bd-link,
-html:root .rg__label { font-size: 14px !important; }
+html:root .sitefoot .bd-link { font-size: 14px !important; }
 html:root .bd-btn,
 html:root .bd-link { font-size: 15px !important; }
 html:root .hero .domain__sub { font-size: 15px !important; }
@@ -6353,8 +6256,6 @@ html:root .give__text,
 html:root .pod__text,
 html:root .track__text,
 html:root .covers__text,
-html:root .rg__lead,
-html:root .rc__note,
 html:root .contact__note,
 html:root .tb__dd,
 html:root .gv__coins li span,
