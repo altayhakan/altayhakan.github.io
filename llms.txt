@@ -8,8 +8,8 @@ Bu site tek sayfalık bir portfolyodur (Türkçe). Bölümlere aşağıdaki bağ
 
 - [Hakkımda](https://hakanaltay.net/#hakkimda): Kısa biyografi. Marmara Üniversitesi (lisans, 2017), Van Yüzüncü Yıl Üniversitesi (yüksek lisans, 2025).
 - [İlham ve Anılar](https://hakanaltay.net/#anilar): Doğan Cüceloğlu ve öğrenme zinciri üzerine kişisel anılar.
-- [Blog · Sahadan Notlar](https://hakanaltay.net/blog): Türkiye Yüzyılı Maarif Modeli formatörlüğü ve Tuşba Buluşmaları.
-- [Projeler](https://hakanaltay.net/#projeler): Tuşpa: Van Gölü'nün Kayıp Hafızası (eğitsel oyun, TÜBİTAK 4008), dijital kitaplar, SSCI makalesinde veri toplama ve atölyeler.
+- [Blog · Sahadan Notlar](https://hakanaltay.net/blog): Türkiye Yüzyılı Maarif Modeli formatörlüğü, Tuşba Buluşmaları ve SSCI Q1 makalesine veri katkısı.
+- [Projeler](https://hakanaltay.net/#projeler): Tuşpa: Van Gölü'nün Kayıp Hafızası (eğitsel oyun, TÜBİTAK 4008), dijital kitaplar ve atölyeler.
 - [Gönüllülük](https://hakanaltay.net/#gonullu): Kardeş Köy Okulu, TOG ve Kızılay çalışmaları.
 - [Müzik](https://hakanaltay.net/#muzik): Kaydedenler Kulübü podcast'i, besteler ve stüdyo kayıtları.
 - [İletişim](https://hakanaltay.net/#iletisim): İletişim formu.
