@@ -2651,8 +2651,9 @@ body { background: var(--surface-muted, #e9e0cf); }
   border-bottom: 1px solid rgba(29, 23, 21, .1); }
 .blogbar__home { font-family: 'Fraunces HA', var(--font-display); font-size: 22px; color: var(--text-primary); text-decoration: none; letter-spacing: -.02em; }
 .blogbar__home em { color: #6a1d18; }
-.blogbar .nav { display: flex; gap: 22px; margin: 0; padding: 0; list-style: none; }
-.blogbar .nav a { color: var(--text-primary); text-decoration: none; font-size: 14px; }
+.blogbar .nav.nav { display: flex; gap: 22px; margin: 0; padding: 0; list-style: none; background: none !important; border: 0 !important; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border-radius: 0 !important; }
+.blogbar nav { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; }
+.blogbar .nav.nav a { background: none !important; padding: 2px 0 !important; color: var(--text-primary); text-decoration: none; font-size: 14px; }
 .blogbar .nav a[aria-current] { color: #6a1d18; border-bottom: 1px solid currentColor; }
 .bloghead { padding: clamp(64px, 9vw, 120px) 0 8px; }
 .bloghead__title { margin: 14px 0 0; font-family: 'Fraunces HA', var(--font-display); font-weight: 370; font-variation-settings: 'opsz' 144, 'WONK' 0, 'SOFT' 0;
