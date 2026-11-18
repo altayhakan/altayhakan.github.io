@@ -2535,6 +2535,8 @@ body { line-height: 1.7; letter-spacing: .01em; -webkit-font-smoothing: antialia
 html .hero .domains { display: flex; flex-wrap: wrap; align-items: baseline; }
 html .hero .domains > li { flex: 0 0 auto; }
 html .hero .domains > li:first-child { flex: 1 0 100%; }
+html .hero .domains > li:first-child .domain { grid-template-columns: 1fr auto; }
+html .hero .domains > li:first-child .domain__idx { display: none !important; } /* v145: tek odakta sıra numarası gereksiz */
 html .hero .domains > li.domains__feed { margin: 14px 12px 0 0; font: italic 400 15px/1.2 'HA Serif', Georgia, serif; color: #6b4630; }
 html .hero .domains > li:nth-child(n+3) .domain { min-height: 0 !important; padding: 0 !important; margin-top: 14px; border: 0 !important; background: none !important; width: auto; display: inline-flex; }
 html .hero .domains > li:nth-child(n+3) .domain__idx, html .hero .domains > li:nth-child(n+3) .domain__sub, html .hero .domains > li:nth-child(n+3) .domain__swatch { display: none !important; }
